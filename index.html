@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ali Abbas Qureshi | Enterprise Systems Architect</title>
     
-    <!-- Browser Tab Favicon (Fixes the blank icon seen in image_d4c8a8.png) -->
-    <link rel="icon" type="image/png" href="favicon.png">
+    <!-- Premium Inline Favicon (Fixes missing icon in image_d4b9fd.png matching styled circle style) -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23a855f7'/%3E%3Cstop offset='100%25' stop-color='%23ff3322'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='32' cy='32' r='32' fill='url(%23g)'/%3E%3Ctext x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' fill='%23ffffff' font-family='sans-serif' font-weight='800' font-size='22'%3EAQ%3C/text%3E%3C/svg%3E">
     
     <!-- Premium Display & Interface Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -93,19 +93,24 @@
 
         .logo {
             font-family: var(--font-display); 
-            font-size: 1.45rem;                
+            font-size: 1.35rem;                
             font-weight: 800;                 
-            letter-spacing: -0.04em;          
+            letter-spacing: -0.03em;          
             color: var(--text-pure);          
             text-transform: uppercase;        
             display: inline-flex;
             align-items: center;
             white-space: nowrap;
+            gap: 0.5rem;
+        }
+
+        .logo i {
+            color: var(--accent-red);
+            font-size: 1.25rem;
         }
 
         .logo .brand-red {
             color: var(--accent-red);         
-            margin-right: 0.25em;
         }
 
         .nav-links {
@@ -660,7 +665,10 @@
     <div class="cursor-outline"></div>
 
     <nav>
-        <div class="logo">&lt;&gt;CODE <span class="brand-red">WITH</span>ALI QURESHI</div>
+        <!-- Professional PL/SQL Developer Logo Matrix -->
+        <div class="logo">
+            <i class="fa-solid fa-database"></i> PL/SQL // <span class="brand-red">WITH</span> ALI QURESHI
+        </div>
         <ul class="nav-links">
             <li><a href="#expertise">Expertise</a></li>
             <li><a href="#detailed-projects">Details</a></li>
@@ -859,7 +867,6 @@
                         </ul>
                     </div>
                     
-                    <!-- Dynamic Glowing Action Launch Badge (Updated with custom URL) -->
                     <a href="https://oracleapex.com/ords/r/aliabbasqureshi786/novel-2-0/login" target="_blank" class="live-app-badge-trigger">
                         <i class="fa-solid fa-bolt"></i> Launch Live Application
                     </a>
