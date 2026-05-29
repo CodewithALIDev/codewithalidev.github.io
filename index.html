@@ -4,54 +4,69 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ali Abbas Qureshi | Oracle & PL/SQL Developer Portfolio</title>
+    
+    <!-- Premium Fonts Setup -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for clean icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
-        /* Modern Dark Theme Variables */
+        /* Sleek Tech Palette & Font Scales */
         :root {
-            --bg-primary: #0a0f1d;
-            --bg-secondary: #111827;
-            --bg-card: #1f2937;
-            --accent-glow: #38bdf8;
-            --accent-apex: #a855f7; /* Purple accent for modern APEX tech */
-            --accent-finance: #10b981; /* Green accent for Financial/GL system */
-            --text-main: #f3f4f6;
-            --text-muted: #9ca3af;
-            --border-color: #374151;
+            --bg-primary: #060913;
+            --bg-secondary: #0d1324;
+            --bg-card: #141d33;
+            --accent-glow: #00f2fe;     /* Electric cyan core */
+            --accent-apex: #bd00ff;     /* Vibrant tech purple */
+            --accent-finance: #00ff87;  /* High-contrast neon green */
+            --accent-scm: #ff9f43;      /* SCM / Logistics Warm Amber */
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-color: #1e293b;
+            --font-sans: 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: var(--font-sans);
             scroll-behavior: smooth;
         }
 
         body {
             background-color: var(--bg-primary);
             color: var(--text-main);
-            line-height: 1.6;
+            line-height: 1.7;
+            font-size: 1rem;
+            overflow-x: hidden;
         }
 
-        /* Navigation */
+        /* Top Bar Navigation Alignment */
         nav {
             position: fixed;
             top: 0;
             width: 100%;
-            background-color: rgba(11, 24, 43, 0.9);
-            backdrop-filter: blur(10px);
+            background-color: rgba(6, 9, 19, 0.85);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
             border-bottom: 1px solid var(--border-color);
             z-index: 1000;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.2rem 10%;
+            padding: 1.2rem 12%;
         }
 
         .logo {
-            font-size: 1.5rem;
+            font-family: var(--font-mono);
+            font-size: 1.3rem;
             font-weight: 700;
-            letter-spacing: 1px;
+            letter-spacing: -0.5px;
         }
 
         .logo span {
@@ -61,23 +76,25 @@
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 2rem;
+            gap: 2.5rem;
         }
 
         .nav-links a {
-            color: var(--text-main);
+            color: var(--text-muted);
             text-decoration: none;
             font-weight: 500;
-            transition: color 0.3s;
+            font-size: 0.95rem;
+            letter-spacing: -0.2px;
+            transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .nav-links a:hover {
             color: var(--accent-glow);
         }
 
-        /* Sections General */
+        /* Structural Grid Alignment */
         section {
-            padding: 6rem 10% 4rem 10%;
+            padding: 8rem 12% 6rem 12%;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -85,68 +102,74 @@
         }
 
         .section-title {
-            font-size: 2.2rem;
-            margin-bottom: 3rem;
+            font-size: 2.4rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 4rem;
             position: relative;
-            display: inline-block;
         }
 
         .section-title::after {
             content: '';
             position: absolute;
             left: 0;
-            bottom: -8px;
-            width: 50px;
-            height: 4px;
+            bottom: -10px;
+            width: 40px;
+            height: 3px;
             background-color: var(--accent-glow);
-            border-radius: 2px;
         }
 
-        /* Hero Section */
+        /* Hero / Entry Block */
         #home {
-            background: radial-gradient(circle at 80% 20%, rgba(56, 189, 248, 0.05), transparent 40%);
-            text-align: left;
+            background: radial-gradient(circle at 85% 30%, rgba(0, 242, 254, 0.04), transparent 50%);
         }
 
         .hero-subtitle {
+            font-family: var(--font-mono);
             color: var(--accent-glow);
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            letter-spacing: 1px;
         }
 
         .hero-title {
-            font-size: 4rem;
+            font-size: 4.5rem;
             font-weight: 800;
-            line-height: 1.2;
+            line-height: 1.1;
+            letter-spacing: -2px;
             margin-bottom: 1.5rem;
+            background: linear-gradient(to right, #ffffff, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .hero-tagline {
-            font-size: 1.4rem;
+            font-size: 1.25rem;
             color: var(--text-muted);
-            max-width: 600px;
-            margin-bottom: 2.5rem;
+            max-width: 650px;
+            margin-bottom: 3rem;
+            font-weight: 400;
         }
 
         .cta-buttons {
             display: flex;
             flex-wrap: wrap;
-            gap: 1.5rem;
+            gap: 1.2rem;
         }
 
+        /* Modern Cursor Hover Movements (Buttons) */
         .btn {
-            padding: 0.8rem 2rem;
+            padding: 0.85rem 2.2rem;
             border-radius: 6px;
             font-weight: 600;
+            font-size: 0.95rem;
             text-decoration: none;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             cursor: pointer;
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.6rem;
         }
 
         .btn-primary {
@@ -155,18 +178,20 @@
         }
 
         .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(56, 189, 248, 0.2);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0, 242, 254, 0.25);
         }
 
         .btn-secondary {
             border: 1px solid var(--border-color);
             color: var(--text-main);
+            background-color: rgba(255, 255, 255, 0.02);
         }
 
         .btn-secondary:hover {
             background-color: rgba(255, 255, 255, 0.05);
             border-color: var(--accent-glow);
+            transform: translateY(-4px);
         }
 
         .btn-apex {
@@ -175,284 +200,314 @@
         }
 
         .btn-apex:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(168, 85, 247, 0.2);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(189, 0, 255, 0.25);
         }
 
-        /* Project Showcase Section */
+        /* Project Structural Showcase Containers */
         .project-showcase {
             display: flex;
             flex-direction: column;
-            gap: 2.5rem;
+            gap: 3rem;
             background-color: var(--bg-secondary);
             border: 1px solid var(--border-color);
-            padding: 2.5rem;
-            border-radius: 12px;
-            margin-bottom: 3rem;
+            padding: 3.5rem;
+            border-radius: 16px;
+            margin-bottom: 4rem;
+            transition: border-color 0.3s ease;
         }
 
         .project-header h3 {
-            font-size: 1.8rem;
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
             color: var(--accent-glow);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.6rem;
         }
 
-        .project-header.apex-header h3 {
-            color: var(--accent-apex);
-        }
-
-        .project-header.finance-header h3 {
-            color: var(--accent-finance);
-        }
+        .project-header.apex-header h3 { color: var(--accent-apex); }
+        .project-header.finance-header h3 { color: var(--accent-finance); }
+        .project-header.scm-header h3 { color: var(--accent-scm); }
 
         .project-header p {
             color: var(--text-muted);
-            font-size: 1.1rem;
+            font-size: 1.05rem;
         }
 
+        .project-header p strong {
+            font-family: var(--font-mono);
+            font-weight: 500;
+            color: var(--text-main);
+            font-size: 0.9rem;
+        }
+
+        /* Modern Visual Frames */
         .project-visual {
             width: 100%;
-            border-radius: 8px;
+            border-radius: 12px;
             overflow: hidden;
             border: 1px solid var(--border-color);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+            background-color: var(--bg-primary);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.4s ease;
         }
+
+        /* Scale and crisp border shift on image card hover */
+        .project-showcase:hover .project-visual {
+            transform: scale(1.015);
+        }
+        .project-showcase:hover { border-color: rgba(255, 255, 255, 0.1); }
 
         .project-visual img {
             width: 100%;
             height: auto;
             display: block;
+            opacity: 0.9;
+            transition: opacity 0.3s;
         }
+        .project-showcase:hover .project-visual img { opacity: 1; }
 
+        /* Unified Sub-Grid Framework */
         .project-modules-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 1.5rem;
             margin-top: 1rem;
         }
 
+        /* Cursor Hover Movement on Grid Cards */
         .erp-module-card {
             background-color: var(--bg-card);
-            padding: 1.5rem;
-            border-radius: 8px;
-            border-top: 3px solid var(--accent-glow);
-            transition: transform 0.2s;
-        }
-
-        .erp-module-card.apex-card {
-            border-top-color: var(--accent-apex);
-        }
-
-        .erp-module-card.finance-card {
-            border-top-color: var(--accent-finance);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s ease, box-shadow 0.3s ease;
         }
 
         .erp-module-card:hover {
-            transform: scale(1.02);
+            transform: translateY(-6px);
+            border-color: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
         }
 
         .erp-module-card h4 {
-            font-size: 1.1rem;
+            font-size: 1.15rem;
+            font-weight: 600;
             color: var(--text-main);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.75rem;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.6rem;
         }
 
         .erp-module-card h4 i {
             color: var(--accent-glow);
-            font-size: 0.95rem;
+            font-size: 1.1rem;
         }
-
-        .erp-module-card.apex-card h4 i {
-            color: var(--accent-apex);
-        }
-
-        .erp-module-card.finance-card h4 i {
-            color: var(--accent-finance);
-        }
+        .erp-module-card.apex-card h4 i { color: var(--accent-apex); }
+        .erp-module-card.finance-card h4 i { color: var(--accent-finance); }
+        .erp-module-card.scm-card h4 i { color: var(--accent-scm); }
 
         .erp-module-card p {
             color: var(--text-muted);
-            font-size: 0.9rem;
-            line-height: 1.4;
+            font-size: 0.95rem;
+            line-height: 1.5;
         }
 
-        /* Skills Grid */
+        /* Technical Competency Grid */
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 1.5rem;
         }
 
         .skill-card {
             background-color: var(--bg-secondary);
             border: 1px solid var(--border-color);
-            padding: 2rem;
-            border-radius: 8px;
-            transition: transform 0.3s, border-color 0.3s;
+            padding: 2.5rem 2rem;
+            border-radius: 14px;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s ease;
         }
 
         .skill-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-8px);
             border-color: var(--accent-glow);
         }
 
         .skill-card i {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             color: var(--accent-glow);
             margin-bottom: 1.5rem;
         }
 
         .skill-card h3 {
-            margin-bottom: 1rem;
+            margin-bottom: 0.8rem;
             font-size: 1.3rem;
+            font-weight: 600;
+            letter-spacing: -0.3px;
         }
 
         .skill-card p {
             color: var(--text-muted);
             font-size: 0.95rem;
+            line-height: 1.5;
         }
 
-        /* Experience Timeline */
+        /* Clean Functional Timeline */
         .timeline {
             position: relative;
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
         }
 
         .timeline::after {
             content: '';
             position: absolute;
-            width: 2px;
+            width: 1px;
             background-color: var(--border-color);
             top: 0;
             bottom: 0;
             left: 50%;
-            margin-left: -1px;
         }
 
         .timeline-container {
-            padding: 10px 40px;
+            padding: 15px 50px;
             position: relative;
-            background-color: inherit;
             width: 50%;
         }
 
         .timeline-container::after {
             content: '';
             position: absolute;
-            width: 16px;
-            height: 16px;
-            right: -8px;
+            width: 10px;
+            height: 10px;
+            right: -5px;
             background-color: var(--bg-primary);
-            border: 4px solid var(--accent-glow);
-            top: 15px;
+            border: 2px solid var(--accent-glow);
+            top: 26px;
             border-radius: 50%;
             z-index: 1;
+            transition: background-color 0.25s;
+        }
+
+        .timeline-container:hover::after {
+            background-color: var(--accent-glow);
         }
 
         .left { left: 0; }
         .right { left: 50%; }
-
-        .right::after { left: -8px; }
+        .right::after { left: -5px; }
 
         .content {
-            padding: 2rem;
+            padding: 2.5rem;
             background-color: var(--bg-secondary);
-            position: relative;
-            border-radius: 8px;
+            border-radius: 14px;
             border: 1px solid var(--border-color);
+            transition: border-color 0.3s;
         }
+        .content:hover { border-color: rgba(255, 255, 255, 0.1); }
 
         .content h3 {
-            color: var(--accent-glow);
+            font-size: 1.35rem;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+            color: var(--text-main);
             margin-bottom: 0.2rem;
         }
 
         .company {
-            font-weight: 600;
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
+            font-weight: 500;
+            font-size: 1.05rem;
+            color: var(--accent-glow);
+            margin-bottom: 0.4rem;
         }
 
         .date {
-            font-size: 0.9rem;
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
             color: var(--text-muted);
-            margin-bottom: 1rem;
-        }
-
-        .content ul {
-            list-style-type: none;
+            margin-bottom: 1.5rem;
         }
 
         .content ul li {
             position: relative;
-            padding-left: 1.2rem;
-            margin-bottom: 0.5rem;
+            padding-left: 1.4rem;
+            margin-bottom: 0.6rem;
             font-size: 0.95rem;
             color: var(--text-muted);
+            list-style: none;
         }
 
         .content ul li::before {
-            content: "▹";
+            content: "→";
             position: absolute;
             left: 0;
             color: var(--accent-glow);
         }
 
-        /* Contact Details */
+        /* Formatted Direct Contact Matrix */
         .contact-info {
-            display: flex;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 2rem;
-            justify-content: space-between;
-            max-width: 800px;
+            max-width: 900px;
+            width: 100%;
             margin: 0 auto;
             background-color: var(--bg-secondary);
             padding: 3rem;
-            border-radius: 8px;
+            border-radius: 16px;
             border: 1px solid var(--border-color);
         }
 
         .info-item {
             display: flex;
-            align-items: center;
-            gap: 1rem;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.75rem;
         }
 
         .info-item i {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             color: var(--accent-glow);
+        }
+
+        .info-item div strong {
+            display: block;
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 0.2rem;
         }
 
         .info-item div p {
             color: var(--text-muted);
+            font-size: 0.95rem;
         }
 
         footer {
             text-align: center;
-            padding: 2rem;
-            background-color: var(--bg-secondary);
+            padding: 3rem 2rem;
+            background-color: var(--bg-primary);
             border-top: 1px solid var(--border-color);
             color: var(--text-muted);
             font-size: 0.9rem;
+            font-family: var(--font-mono);
         }
 
-        /* Responsive Design */
-        @media screen and (max-width: 768px) {
-            .nav-links { display: none; }
-            .hero-title { font-size: 2.8rem; }
-            .timeline::after { left: 31px; }
-            .timeline-container { width: 100%; padding-left: 70px; padding-right: 25px; }
-            .timeline-container::after { left: 23px; }
+        /* Precision Responsive Reflows */
+        @media screen and (max-width: 968px) {
+            nav { padding: 1.2rem 6%; }
+            section { padding: 7rem 6% 5rem 6%; }
+            .hero-title { font-size: 3.2rem; }
+            .project-showcase { padding: 2rem; }
+            .timeline::after { left: 20px; }
+            .timeline-container { width: 100%; padding-left: 45px; padding-right: 10px; }
+            .timeline-container::after { left: 15px; top: 28px; }
             .right { left: 0%; }
         }
     </style>
 </head>
 <body>
 
+    <!-- Top Navigation Bar -->
     <nav>
         <div class="logo">CODEWITH<span>ALI</span></div>
         <ul class="nav-links">
@@ -464,6 +519,7 @@
         </ul>
     </nav>
 
+    <!-- Main Entry Hero Section -->
     <section id="home">
         <div class="hero-subtitle">Oracle Forms, PL/SQL & APEX Developer</div>
         <div class="hero-title">Ali Abbas Qureshi</div>
@@ -476,23 +532,54 @@
         </div>
     </section>
 
+    <!-- Detailed Showcase Layout -->
     <section id="projects">
         <h2 class="section-title">Featured Applications & Enterprise Systems</h2>
 
-        <div class="project-showcase" style="border-color: var(--accent-finance);">
+        <!-- NEW PROJECT: SUPPLY CHAIN & INVENTORY MANAGEMENT ERP -->
+        <div class="project-showcase" style="border-color: rgba(255, 159, 67, 0.15);">
+            <div class="project-header scm-header">
+                <h3>End-to-End Supply Chain & Multi-Store Inventory Control System</h3>
+                <p><strong>Environment:</strong> Oracle Developer Suite & PL/SQL Engine</p>
+                <p style="margin-top: 1rem; font-size: 1rem; max-width: 850px; color: var(--text-muted);">
+                    Designed and engineered a complete transaction lifecycle engine running seamlessly from initial Purchase Order (PO) generations down to ultimate Delivery Orders (DO). This high-integrity platform handles complex auditing chains, physical stock validation matrices, multi-tiered store authorization workflows, and commercial financial aging analysis.
+                </p>
+            </div>
+
+            <div class="project-visual" style="border-color: rgba(255, 159, 67, 0.25);">
+                <img src="PO_TRANS.jpeg" alt="Oracle Supply Chain Management and Purchase Transaction Lifecycle Matrix Dashboard">
+            </div>
+
+            <div class="project-modules-grid">
+                <div class="erp-module-card scm-card">
+                    <h4><i class="fa-solid fa-right-left"></i> Complete PO-to-DO Lifecycle</h4>
+                    <p>Binds the technical progression of Purchase Orders, physical Inspection stages, Good Receive Notes (GRN), Delivery Orders, and structured Return flows natively under absolute transactional safety.</p>
+                </div>
+                <div class="erp-module-card scm-card">
+                    <h4><i class="fa-solid fa-shield-halved"></i> 5-Store Authorized Control</h4>
+                    <p>Implements a strict security layer governing 5 isolated material store units, processing discrete authorization thresholds, inventory balance tracking, and issue-to-return controls.</p>
+                </div>
+                <div class="erp-module-card scm-card">
+                    <h4><i class="fa-solid fa-chart-pie"></i> Financial Intelligence & Aging</h4>
+                    <p>Compiles deep data pipelines calculating instant Supplier Outstandings, chronological payment Aging Reports, and granular stock inventory levels for real-time audit readiness.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- PROJECT 2: GENERAL LEDGER FINANCIAL SYSTEM -->
+        <div class="project-showcase" style="border-color: rgba(0, 255, 135, 0.15);">
             <div class="project-header finance-header">
                 <h3>Fully Integrated General Ledger (GL) Financial System</h3>
                 <p><strong>Environment:</strong> Oracle Forms & Reports Architecture</p>
-                <p style="margin-top: 0.5rem; font-size: 0.95rem; max-width: 800px;">
+                <p style="margin-top: 1rem; font-size: 1rem; max-width: 850px; color: var(--text-muted);">
                     Engineered a complete, high-fidelity financial ledger engine deployed and cross-integrated for both <strong>KAM International</strong> and <strong>MEKOTEX (Pvt) Ltd</strong>. This core system establishes deep data synchronization mapping all transactional business lifecycles seamlessly—spanning from multi-tier Chart of Accounts definitions directly into double-entry ledger audits.
                 </p>
             </div>
 
-            <div class="project-visual" style="border-color: var(--accent-finance);">
+            <div class="project-visual" style="border-color: rgba(0, 255, 135, 0.25);">
                 <img src="GL.jpeg" alt="Oracle General Ledger Master Financial System Operational Run Screen Screenshot">
             </div>
 
-            <h4 style="font-size: 1.2rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; margin-top: 1rem; color: var(--accent-finance);">Core Architecture & Financial Modules:</h4>
             <div class="project-modules-grid">
                 <div class="erp-module-card finance-card">
                     <h4><i class="fa-solid fa-folder-tree"></i> Multi-Level Chart of Accounts</h4>
@@ -509,25 +596,25 @@
             </div>
         </div>
 
-        <div class="project-showcase" style="border-color: var(--accent-apex);">
+        <!-- PROJECT 3: ORACLE APEX APPLICATION -->
+        <div class="project-showcase" style="border-color: rgba(189, 0, 255, 0.15);">
             <div class="project-header apex-header">
                 <h3>NOVEL 2.0 — Smart ERP Dashboard</h3>
                 <p><strong>Environment:</strong> Oracle APEX (Cloud Low-Code Framework)</p>
-                <p style="margin-top: 0.5rem; font-size: 0.95rem; max-width: 800px;">
+                <p style="margin-top: 1rem; font-size: 1rem; max-width: 850px; color: var(--text-muted);">
                     Leveraging my monthly deep-dive transition into modern Oracle APEX tools, I engineered my first comprehensive web-responsive Cloud Inventory tracking platform. NOVEL 2.0 implements interactive metrics and analytics directly bound to custom relational data schemes.
                 </p>
-                <div style="margin-top: 1rem;">
+                <div style="margin-top: 1.2rem;">
                     <a href="https://oracleapex.com/ords/r/aliabbasqureshi786/novel-2-0/login" target="_blank" class="btn btn-apex">
                         <i class="fa-solid fa-external-link"></i> Launch Live Application Login
                     </a>
                 </div>
             </div>
 
-            <div class="project-visual" style="border-color: var(--accent-apex);">
+            <div class="project-visual" style="border-color: rgba(189, 0, 255, 0.25);">
                 <img src="APEX_DASHBOARD.PNG" alt="NOVEL 2.0 Oracle APEX Application Home Screen Analytics Screenshot">
             </div>
 
-            <h4 style="font-size: 1.2rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; margin-top: 1rem; color: var(--accent-apex);">Core Web Modules Implemented:</h4>
             <div class="project-modules-grid">
                 <div class="erp-module-card apex-card">
                     <h4><i class="fa-solid fa-truck-field"></i> Store Suppliers & Items</h4>
@@ -544,11 +631,12 @@
             </div>
         </div>
         
+        <!-- PROJECT 4: LEGACY ENTERPRISE ERP -->
         <div class="project-showcase">
             <div class="project-header">
                 <h3>Full-Scale Custom Textile ERP System</h3>
                 <p><strong>Client / Target:</strong> A. ESSAK AND SONS TEXTILE WEAVING</p>
-                <p style="margin-top: 0.5rem; font-size: 0.95rem; max-width: 800px;">
+                <p style="margin-top: 1rem; font-size: 1rem; max-width: 850px; color: var(--text-muted);">
                     Engineered a fully unified, interconnected ERP architecture handling operations end-to-end. Designed runtime forms and structured secure underlying PL/SQL relational components to maintain transactional data streams across all core company divisions.
                 </p>
             </div>
@@ -556,101 +644,88 @@
             <div class="project-visual">
                 <img src="PROJECT_ESSAK.jpeg" alt="A. Essak and Sons ERP Master UI Run Screen Screenshot">
             </div>
-
-            <h4 style="font-size: 1.3rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; margin-top: 1rem;">Interconnected ERP Modules Breakdown</h4>
             
             <div class="project-modules-grid">
-                
                 <div class="erp-module-card">
-                    <h4><i class="fa-solid fa-file-invoice"></i> 1. Order Management System</h4>
+                    <h4><i class="fa-solid fa-file-invoice"></i> Order Management</h4>
                     <p>Handles commercial sales workflow, tracks customer purchase parameters, and feeds requirements directly into downstream mill production timelines.</p>
                 </div>
-
                 <div class="erp-module-card">
-                    <h4><i class="fa-solid fa-arrows-spin"></i> 2. Warping and Sizing</h4>
+                    <h4><i class="fa-solid fa-arrows-spin"></i> Warping & Sizing</h4>
                     <p>Monitors initial beam-preparation processes, yarn preparation stages, and calculates exact technical sizing elements required before looming.</p>
                 </div>
-
                 <div class="erp-module-card">
-                    <h4><i class="fa-solid fa-industry"></i> 3. Loom Production</h4>
+                    <h4><i class="fa-solid fa-industry"></i> Loom Production</h4>
                     <p>Tracks active loom operational states, manages raw weaving plant outputs, and measures actual efficiencies against mill forecasts.</p>
                 </div>
-
                 <div class="erp-module-card">
-                    <h4><i class="fa-solid fa-flask"></i> 4. Processing</h4>
+                    <h4><i class="fa-solid fa-flask"></i> Processing Desk</h4>
                     <p>Tracks fabric chemical treatments, dyeing specifications, and finishing stages to guarantee industrial quality metrics are met consistently.</p>
                 </div>
-
                 <div class="erp-module-card">
-                    <h4><i class="fa-solid fa-boxes-stacked"></i> 5. Fabric Inventory</h4>
+                    <h4><i class="fa-solid fa-boxes-stacked"></i> Fabric Inventory</h4>
                     <p>Maintains high-fidelity stock statuses of woven and greige goods, mapping warehouse locations to optimize logistical movement.</p>
                 </div>
-
                 <div class="erp-module-card">
-                    <h4><i class="fa-solid fa-scroll"></i> 6. Yarn Inventory</h4>
+                    <h4><i class="fa-solid fa-scroll"></i> Yarn Inventory</h4>
                     <p>Real-time ledger tracking of raw yarn arrivals, material lots, counts, and allocations to active production orders.</p>
                 </div>
-
                 <div class="erp-module-card">
-                    <h4><i class="fa-solid fa-scissors"></i> 7. Accessories Inventory</h4>
+                    <h4><i class="fa-solid fa-scissors"></i> Accessories Logs</h4>
                     <p>Manages secondary trimmings, packagings, and label stocks with threshold alert controls to prevent production bottlenecks.</p>
                 </div>
-
                 <div class="erp-module-card">
-                    <h4><i class="fa-solid fa-shirt"></i> 8. Stitching</h4>
+                    <h4><i class="fa-solid fa-shirt"></i> Stitching Tracking</h4>
                     <p>Manages tailoring, piecework operational flows, and individual unit completions along the final apparel production line.</p>
                 </div>
-
                 <div class="erp-module-card">
-                    <h4><i class="fa-solid fa-warehouse"></i> 9. General Inventory</h4>
+                    <h4><i class="fa-solid fa-warehouse"></i> General Supplies</h4>
                     <p>Maintains spare mill mechanics, tooling assets, consumables, and general hardware logs necessary to keep the facilities running smoothly.</p>
                 </div>
-
                 <div class="erp-module-card">
-                    <h4><i class="fa-solid fa-money-check-dollar"></i> 10. Payroll</h4>
+                    <h4><i class="fa-solid fa-money-check-dollar"></i> Automated Payroll</h4>
                     <p>Automates staff compensation rules, tallies shift metrics, structures tax deductions, and generates localized pay-slips seamlessly.</p>
                 </div>
-
                 <div class="erp-module-card">
-                    <h4><i class="fa-solid fa-calculator"></i> 11. Accounts</h4>
+                    <h4><i class="fa-solid fa-calculator"></i> Corporate Accounts</h4>
                     <p>Central double-entry accounting ledger system syncing accounts receivable, payables, and general balance sheets automatically.</p>
                 </div>
-
                 <div class="erp-module-card">
-                    <h4><i class="fa-solid fa-user-shield"></i> 12. Admin</h4>
+                    <h4><i class="fa-solid fa-user-shield"></i> Administration</h4>
                     <p>Security control desk handling user profiles, role-level form permissions, network IP parameters, and global system configurations.</p>
                 </div>
-
             </div>
         </div>
     </section>
 
+    <!-- Technical Competence -->
     <section id="skills">
         <h2 class="section-title">Technical Expertise</h2>
         <div class="skills-grid">
             <div class="skill-card">
                 <i class="fa-solid fa-code"></i>
-                <h3>Oracle APEX Development</h3>
-                <p>Rapid cloud prototyping, web responsive UI architecture, interactive interactive reporting generation, and low-code modern web deployment.</p>
+                <h3>Oracle APEX</h3>
+                <p>Rapid cloud prototyping, web responsive UI architecture, interactive reporting generation, and low-code modern web deployment.</p>
             </div>
             <div class="skill-card">
                 <i class="fa-solid fa-database"></i>
-                <h3>Database Development</h3>
-                <p>Advanced Oracle Database (11g) design, optimization, and complex object creation (Tables, Views, Stored Procedures, Functions, and Packages).</p>
+                <h3>Database Design</h3>
+                <p>Advanced Oracle Database design, optimization, and complex object creation (Tables, Views, Stored Procedures, Functions, and Packages).</p>
             </div>
             <div class="skill-card">
                 <i class="fa-solid fa-desktop"></i>
-                <h3>Oracle Forms & Reports</h3>
-                <p>Expertise working with legacy and modern iterations (6i, 10g, 11g) to construct responsive, logical user interfaces and mission-critical enterprise sheets.</p>
+                <h3>Forms & Reports</h3>
+                <p>Expertise working with iterations to construct responsive, logical user interfaces and mission-critical enterprise sheets.</p>
             </div>
             <div class="skill-card">
                 <i class="fa-solid fa-gears"></i>
-                <h3>Automation & Pipeline</h3>
+                <h3>Process Automation</h3>
                 <p>Utilizing Oracle Scheduler (Job Automation) and database triggers to streamline processes and cut manual operational overhead down effectively.</p>
             </div>
         </div>
     </section>
 
+    <!-- Refined Experience Timeline -->
     <section id="experience">
         <h2 class="section-title">Professional Journey</h2>
         <div class="timeline">
@@ -696,6 +771,7 @@
         </div>
     </section>
 
+    <!-- Clean Layout Contact Matrix -->
     <section id="contact">
         <h2 class="section-title">Get In Touch</h2>
         <div class="contact-info">
@@ -724,7 +800,7 @@
     </section>
 
     <footer>
-        <p>&copy; 2026 codewithali. All Rights Reserved. | BSSE Candidate - Virtual University</p>
+        <p>[ 2026 // CODEWITHALI ] — BSSE Candidate (Virtual University)</p>
     </footer>
 
 </body>
