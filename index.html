@@ -49,7 +49,7 @@
             font-size: 0.95rem;
             overflow-x: hidden;
             letter-spacing: -0.01em;
-        } dream
+        }
 
         /* Custom Dual-Ring Tracking Pointer Elements */
         .cursor-dot {
@@ -92,16 +92,21 @@
             padding: 1.5rem 10%;
         }
 
+        /* Exact Match Styling from image_d5aa00.png adapted for Uppercase */
         .logo {
-            font-family: var(--font-display);
-            font-size: 1.25rem;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-            color: var(--text-pure);
+            font-family: var(--font-display); 
+            font-size: 1.6rem;                
+            font-weight: 800;                 
+            letter-spacing: -0.05em;          
+            color: var(--text-pure);          
+            text-transform: uppercase;        
+            display: inline-flex;
+            align-items: center;
+            white-space: nowrap;
         }
 
-        .logo span {
-            color: var(--accent-red);
+        .logo .brand-red {
+            color: var(--accent-red);         
         }
 
         .nav-links {
@@ -767,7 +772,8 @@
 
     <!-- Master Global Navigation Hub -->
     <nav>
-        <div class="logo">&lt;&gt;By<span>Ali</span></div>
+        <!-- Exact Alignment match with image_d5aa00.png but completely formatted in Uppercase -->
+        <div class="logo">&lt;&gt;<span class="brand-red">BY</span>ALI QURESHI</div>
         <ul class="nav-links">
             <li><a href="#skills">Skills</a></li>
             <li><a href="#projects">Projects</a></li>
@@ -782,7 +788,6 @@
         <div class="hero-left">
             <div class="badge-status">Available for opportunities</div>
             
-            <!-- Updated Hero Title Matrix showing complete application stack exactly as requested -->
             <h1 class="hero-title-wide">Oracle Forms & Reports</h1>
             <h1 class="hero-title-colored">& PL SQL & APEX</h1>
             <h1 class="hero-title-outline">Developer</h1>
