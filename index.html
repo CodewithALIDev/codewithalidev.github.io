@@ -332,7 +332,7 @@
             color: var(--text-muted);
         }
 
-        /* Profile Snapshot Base Structure */
+        /* Profile Snapshot Floating Translation Engine */
         .profile-container {
             background: linear-gradient(145deg, var(--bg-surface), #0f1026);
             border: 1px solid var(--border-line);
@@ -341,6 +341,13 @@
             display: flex;
             flex-direction: column;
             gap: 2rem;
+            animation: smoothFloatMotion 6s ease-in-out infinite; /* Continuous Parallax Up & Down floating */
+        }
+
+        @keyframes smoothFloatMotion {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
+            100% { transform: translateY(0px); }
         }
 
         .profile-header-card { display: flex; align-items: center; gap: 1.25rem; }
@@ -664,6 +671,7 @@
             .contact-card-v2 { padding: 2.5rem 1.5rem; }
             .form-row-dual { grid-template-columns: 1fr; gap: 1.25rem; }
             .cursor-dot, .cursor-outline { display: none; }
+            .profile-container { animation: none; } /* Disable float loops on smaller viewports to protect focus loops */
         }
     </style>
 </head>
@@ -689,12 +697,12 @@
         <div class="hero-left">
             <div class="badge-status">Available for opportunities</div>
             
-            <h1 class="hero-title-wide">Oracle Forms & Reports</h1>
-            <h1 class="hero-title-colored">& PL SQL & APEX</h1>
+            <h1 class="hero-title-wide">Oracle Forms</h1>
+            <h1 class="hero-title-colored">& Reports & PL SQL & APEX</h1>
             <h1 class="hero-title-outline">Developer</h1>
             
             <p class="hero-tagline">
-                I build high-performance industrial software architectures, automated warehouse logistics lifecycles, and completely integrated multi-tier financial ledger networks. Engineered for zero-latency execution directly over critical database backends in Karachi. [cite: 2, 4, 5]
+                I build high-performance industrial software architectures, automated warehouse logistics lifecycles, and completely integrated multi-tier financial ledger networks. Engineered for zero-latency execution directly over critical database backends in Karachi[cite: 2, 4, 5].
             </p>
             <div class="cta-group">
                 <a href="#projects" class="btn btn-primary"><i class="fa-solid fa-folder-open"></i> View Projects</a>
@@ -707,7 +715,7 @@
                 <div class="profile-avatar">AQ</div>
                 <div class="profile-info">
                     <h3>Ali Abbas Qureshi</h3>
-                    <p>Principal Systems Engineer • Karachi, PK [cite: 1]</p>
+                    <p>Principal Systems Engineer • Karachi, PK [cite: 1, 2]</p>
                 </div>
             </div>
 
@@ -718,7 +726,7 @@
                 </div>
                 <div class="stat-mini-box">
                     <h4>12+</h4>
-                    <p>Production Modules</p>
+                    <p>Production Modules [cite: 21, 34, 42]</p>
                 </div>
                 <div class="stat-mini-box">
                     <h4>5</h4>
@@ -726,7 +734,7 @@
                 </div>
                 <div class="stat-mini-box">
                     <h4>100%</h4>
-                    <p>Data Integrity</p>
+                    <p>Data Integrity [cite: 6]</p>
                 </div>
             </div>
 
@@ -734,7 +742,7 @@
                 <span class="mini-tag" style="color: #ff3322; border-color: rgba(255,51,34,0.2);">Oracle Forms [cite: 4]</span>
                 <span class="mini-tag">PL/SQL [cite: 4]</span>
                 <span class="mini-tag">Oracle DB [cite: 8]</span>
-                <span class="mini-tag" style="color: #ff9f43; border-color: rgba(255,159,67,0.2);">SCM Engines</span>
+                <span class="mini-tag" style="color: #ff9f43; border-color: rgba(255,159,67,0.2);">SCM Engines [cite: 5]</span>
                 <span class="mini-tag" style="color: #00ff87; border-color: rgba(0,255,135,0.2);">General Ledger [cite: 23]</span>
                 <span class="mini-tag">Oracle APEX</span>
             </div>
@@ -743,16 +751,16 @@
 
     <section id="expertise" style="background: radial-gradient(circle at 100% 0%, rgba(255, 51, 34, 0.02), transparent 40%);">
         <div class="section-header">
-            <span class="section-subtitle">Expertise Portfolio [cite: 3]</span>
+            <span class="section-subtitle">Expertise Portfolio</span>
             <h2 class="section-title" style="font-size: 5rem; letter-spacing: -0.04em;">What I bring<br>to the table</h2>
-            <p class="section-desc">Over 4 years of hands-on experience developing database frameworks, engineering customized ERP solutions, and deploying industrial-grade infrastructure modules. [cite: 4, 5]</p>
+            <p class="section-desc">Over 4 years of hands-on experience developing database frameworks, engineering customized ERP solutions, and deploying industrial-grade infrastructure modules[cite: 4, 5].</p>
         </div>
 
         <div class="expertise-grid-screenshot-layout">
             <div class="expertise-screenshot-card">
                 <div class="expertise-icon-wrapper"><i class="fa-solid fa-layer-group"></i></div>
                 <h3>Oracle Forms & Reports</h3>
-                <p>Advanced development, configuration, and structural installation across runtime versions 6i, 10g, and 11g. Designing interactive FMB canvases, report designs, and alert alerts. [cite: 9]</p>
+                <p>Advanced development, configuration, and structural installation across runtime versions 6i, 10g, and 11g[cite: 9]. Designing interactive FMB canvases, report designs, and alert alerts[cite: 18].</p>
                 <div class="expertise-tags-row">
                     <span class="expertise-mini-tag">6i / 10g / 11g [cite: 9]</span>
                     <span class="expertise-mini-tag">Installation</span>
@@ -762,8 +770,8 @@
 
             <div class="expertise-screenshot-card">
                 <div class="expertise-icon-wrapper"><i class="fa-solid fa-database"></i></div>
-                <h3>Database Engineering [cite: 6]</h3>
-                <p>Constructing core database schema infrastructure. Master-level composition of optimized Packages, Stored Procedures, Functions, Views, and automated Oracle Scheduler Jobs. [cite: 10, 11]</p>
+                <h3>Database Engineering</h3>
+                <p>Constructing core database schema infrastructure[cite: 6]. Master-level composition of optimized Packages, Stored Procedures, Functions, Views, and automated Oracle Scheduler Jobs[cite: 10, 11].</p>
                 <div class="expertise-tags-row">
                     <span class="expertise-mini-tag">PL/SQL Blocks [cite: 4]</span>
                     <span class="expertise-mini-tag">Scheduler Jobs [cite: 11]</span>
@@ -773,8 +781,8 @@
 
             <div class="expertise-screenshot-card">
                 <div class="expertise-icon-wrapper"><i class="fa-solid fa-industry"></i></div>
-                <h3>Industrial SCM & ERP [cite: 5]</h3>
-                <p>Deep domain knowledge in Textile Manufacturing workflow systems. Seamless tracking implementations spanning from raw Yarn to Processing, Gate Pass logs, and physical movement. [cite: 5, 20, 27]</p>
+                <h3>Industrial SCM & ERP</h3>
+                <p>Deep domain knowledge in Textile Manufacturing workflow systems[cite: 5]. Seamless tracking implementations spanning from raw Yarn to Processing, Gate Pass logs, and physical movement[cite: 25, 27].</p>
                 <div class="expertise-tags-row">
                     <span class="expertise-mini-tag">Fabric & Yarn SCM [cite: 25]</span>
                     <span class="expertise-mini-tag">Gate Pass Logs [cite: 27]</span>
@@ -784,12 +792,12 @@
 
             <div class="expertise-screenshot-card">
                 <div class="expertise-icon-wrapper"><i class="fa-solid fa-calculator"></i></div>
-                <h3>Financial Ledgers [cite: 23]</h3>
-                <p>Deploying critical core corporate Accounts Management frameworks, double-entry financial accounting journal nodes, multi-tier voucher lines, and central Chart schemas. [cite: 23, 44]</p>
+                <h3>Financial Ledgers</h3>
+                <p>Deploying critical core corporate Accounts Management frameworks, double-entry financial accounting journal nodes, multi-tier voucher lines, and central Chart schemas[cite: 23].</p>
                 <div class="expertise-tags-row">
                     <span class="expertise-mini-tag">Accounts ERP [cite: 23]</span>
                     <span class="expertise-mini-tag">Voucher Arrays [cite: 23]</span>
-                    <span class="expertise-mini-tag">Bug Fixing [cite: 6]</span>
+                    <span class="expertise-mini-tag">Bug Fixing [cite: 13]</span>
                 </div>
             </div>
         </div>
@@ -809,18 +817,18 @@
                     <img src="GL.jpeg" alt="Oracle General Ledger Master Financial System Screenshot">
                 </div>
                 <div class="project-step-content">
-                    <h3>1-GENERAL LEDGER & FINANCIAL ENGINE [cite: 23]</h3>
-                    <span class="project-step-system-tag">Enterprise Ledger Core Architecture [cite: 23]</span>
+                    <h3>1-GENERAL LEDGER & FINANCIAL ENGINE</h3>
+                    <span class="project-step-system-tag">Enterprise Ledger Core Architecture</span>
                     <p class="project-step-desc">
-                        A double-entry accounting matrix running completely inside a single Oracle Forms runtime canvas. It manages financial data flow across your entire structural system. [cite: 18, 23]
+                        A double-entry accounting matrix running completely inside a single Oracle Forms runtime canvas[cite: 18, 23]. It manages financial data flow across your entire structural system[cite: 23].
                     </p>
                     <div class="project-technical-breakdown-box">
                         <h4>System Capabilities & Modules Deployed</h4>
                         <ul class="project-step-list">
-                            <li><strong>1-Form Vouchers:</strong> Handles Journal Vouchers (JV), Bank Receipts (BR), Bank Payments (BP), Cash Receipts (CR), and Cash Payments (CP). [cite: 23]</li>
-                            <li><strong>Banking Pipelines:</strong> Post-Dated Transactions (PD Checks) monitoring state variables and real-time RTGS clearance tracking. [cite: 23]</li>
-                            <li><strong>Analytical Reports:</strong> Dynamic General Ledger Reports (Detailed + Summary formats) and Trial Balance Sheets (Detailed + Summary). [cite: 18, 23]</li>
-                            <li><strong>Chart of Accounts:</strong> Powered by a Centralized Chart of Accounts Setup structure enforcing strict relational integrity codes. [cite: 23]</li>
+                            <li><strong>1-Form Vouchers:</strong> Handles Journal Vouchers (JV), Bank Receipts (BR), Bank Payments (BP), Cash Receipts (CR), and Cash Payments (CP)[cite: 23].</li>
+                            <li><strong>Banking Pipelines:</strong> Post-Dated Transactions (PD Checks) monitoring state variables and real-time RTGS clearance tracking[cite: 23].</li>
+                            <li><strong>Analytical Reports:</strong> Dynamic General Ledger Reports (Detailed + Summary formats) and Trial Balance Sheets (Detailed + Summary)[cite: 18, 23].</li>
+                            <li><strong>Chart of Accounts:</strong> Powered by a Centralized Chart of Accounts Setup structure enforcing strict relational integrity codes[cite: 23].</li>
                         </ul>
                     </div>
                 </div>
@@ -831,18 +839,18 @@
                     <img src="PO_TRANS.jpeg" alt="Oracle Supply Chain Management Framework Screenshot">
                 </div>
                 <div class="project-step-content">
-                    <h3>Multi-Store SCM & Inventory Management Matrix [cite: 22]</h3>
-                    <span class="project-step-system-tag">Supply Chain Logistical Core Protocol [cite: 24]</span>
+                    <h3>Multi-Store SCM & Inventory Management Matrix</h3>
+                    <span class="project-step-system-tag">Supply Chain Logistical Core Protocol</span>
                     <p class="project-step-desc">
-                        An automated tracking matrix controlling material allocation, incoming quality checkpoints, and cross-warehouse structural transfers. [cite: 22, 27]
+                        An automated tracking matrix controlling material allocation, incoming quality checkpoints, and cross-warehouse structural transfers[cite: 22, 24].
                     </p>
                     <div class="project-technical-breakdown-box">
                         <h4>System Capabilities & Modules Deployed</h4>
                         <ul class="project-step-list">
-                            <li><strong>Procurement Flows:</strong> Manages initial Purchase Orders (PO), Delivery Orders (DO), and dynamic vendor performance monitoring logs. [cite: 24]</li>
-                            <li><strong>Inventory Routines:</strong> Goods Received Notes (GRN Engine), automatic vendor returns, and physical item transfers. [cite: 22, 24]</li>
-                            <li><strong>Multi-Store Sync:</strong> Live balancing algorithms tracking stocks instantly across 5 independent warehouse channels. [cite: 22]</li>
-                            <li><strong>Automated Thresholds:</strong> Triggers reorder logic when stock dips past safety parameters. [cite: 22]</li>
+                            <li><strong>Procurement Flows:</strong> Manages initial Purchase Orders (PO), Delivery Orders (DO), and dynamic vendor performance monitoring logs[cite: 24].</li>
+                            <li><strong>Inventory Routines:</strong> Goods Received Notes (GRN Engine), automatic vendor returns, and physical item transfers[cite: 22].</li>
+                            <li><strong>Multi-Store Sync:</strong> Live balancing algorithms tracking stocks instantly across 5 independent warehouse channels[cite: 22].</li>
+                            <li><strong>Automated Thresholds:</strong> Triggers reorder logic when stock dips past safety parameters[cite: 22].</li>
                         </ul>
                     </div>
                 </div>
@@ -863,7 +871,7 @@
                         <ul class="project-step-list">
                             <li><strong>Supplier Portals:</strong> Secure interface cards showing historical vendor fulfillment details and lead-time analytics.</li>
                             <li><strong>Acquisition Indents:</strong> Automated internal indent generation forms featuring multi-level verification rules.</li>
-                            <li><strong>Data Portability:</strong> Native hooks exporting live financial logs directly to Excel sheets and secure print servers. [cite: 13]</li>
+                            <li><strong>Data Portability:</strong> Native hooks exporting live financial logs directly to Excel sheets and secure print servers[cite: 13].</li>
                             <li><strong>Security Protocols:</strong> Row-level data access filters keeping client transactions private.</li>
                         </ul>
                     </div>
@@ -881,7 +889,7 @@
         <div class="section-header">
             <span class="section-subtitle">Portfolio</span>
             <h2 class="section-title">Featured Projects</h2>
-            <p class="section-desc">Production modules deployed across regional distribution centers and integrated client architectures. [cite: 20]</p>
+            <p class="section-desc">Production modules deployed across regional distribution centers and integrated client architectures[cite: 5].</p>
         </div>
 
         <div class="projects-grid-layout">
@@ -890,8 +898,8 @@
                     <img src="GL.jpeg" alt="General Ledger Master Financial System">
                 </div>
                 <div class="project-card-body">
-                    <h3>1-General Ledger Engine [cite: 23]</h3>
-                    <p>High-performance double-entry core financial ledger featuring a dynamic 1-Form Voucher system (JV, BR, BP, CR, CP) with Post-Dated Check pipelines, RTGS terminals, and real-time Trial Balance analytical reports. [cite: 23]</p>
+                    <h3>1-General Ledger Engine</h3>
+                    <p>High-performance double-entry core financial ledger featuring a dynamic 1-Form Voucher system (JV, BR, BP, CR, CP) with Post-Dated Check pipelines, RTGS terminals, and real-time Trial Balance analytical reports[cite: 18, 23].</p>
                     <div class="project-card-badges">
                         <span class="badge-pill-tech">Enterprise</span>
                         <span class="badge-pill-tech">Oracle Forms 11g [cite: 9]</span>
@@ -905,12 +913,12 @@
                     <img src="PO_TRANS.jpeg" alt="Oracle Supply Chain Management Framework">
                 </div>
                 <div class="project-card-body">
-                    <h3>Multi-Store SCM & Inventory [cite: 22]</h3>
-                    <p>Zero-latency material lifecycle engine tracking physical items through PO, DO, Quality Inspections, GRN, and Returns. Synchronizes stock data loops accurately across 5 isolated warehouse facilities. [cite: 22, 24]</p>
+                    <h3>Multi-Store SCM & Inventory</h3>
+                    <p>Zero-latency material lifecycle engine tracking physical items through PO, DO, Quality Inspections, GRN, and Returns. Synchronizes stock data loops accurately across 5 isolated warehouse facilities[cite: 22, 24].</p>
                     <div class="project-card-badges">
-                        <span class="badge-pill-tech">SCM Suite [cite: 24]</span>
-                        <span class="badge-pill-tech">PL/SQL Packages [cite: 4]</span>
-                        <span class="badge-pill-tech">Logistics</span>
+                        <span class="badge-pill-tech">SCM Suite [cite: 5]</span>
+                        <span class="badge-pill-tech">PL/SQL Packages [cite: 10]</span>
+                        <span class="badge-pill-tech">Logistics [cite: 22]</span>
                     </div>
                 </div>
             </div>
@@ -935,7 +943,7 @@
     <section id="experience">
         <div class="section-header">
             <span class="section-subtitle">Chronology</span>
-            <h2 class="section-title">Professional Systems Engineering [cite: 14]</h2>
+            <h2 class="section-title">Professional Systems Engineering</h2>
         </div>
         <div class="timeline-stream">
             <div class="timeline-node">
@@ -944,9 +952,9 @@
                     <div class="timeline-org">MEKOTEX PVT. LTD [cite: 15]</div>
                     <span class="timeline-stamp">Feb 2025 - Present [cite: 15]</span>
                     <ul>
-                        <li>Direct core system optimization and logic updates across production environments. [cite: 18, 19]</li>
-                        <li>Debug complex business operations and maintain data tracking channels for textile operations. [cite: 20]</li>
-                        <li>Architected and pushed the central General Ledger system from initial Chart structural layers down into transaction voucher desks. [cite: 18, 23]</li>
+                        <li>Direct core system optimization and logic updates across production environments[cite: 6, 18].</li>
+                        <li>Debug complex business operations and maintain data tracking channels for textile operations[cite: 20].</li>
+                        <li>Architected and pushed the central General Ledger system from initial Chart structural layers down into transaction voucher desks[cite: 19, 23].</li>
                     </ul>
                 </div>
             </div>
@@ -957,8 +965,8 @@
                     <div class="timeline-org">AUTOSYS Computers [cite: 29]</div>
                     <span class="timeline-stamp">Dec 2024 - Jan 2025 [cite: 29]</span>
                     <ul>
-                        <li>Optimized SQL code routines and form blocks to scale up interface query performance. [cite: 4, 32]</li>
-                        <li>Delivered crucial programmatic fixes across production business configurations. [cite: 33]</li>
+                        <li>Optimized SQL code routines and form blocks to scale up interface query performance[cite: 6, 32].</li>
+                        <li>Delivered crucial programmatic fixes across production business configurations[cite: 33].</li>
                     </ul>
                 </div>
             </div>
@@ -969,9 +977,9 @@
                     <div class="timeline-org">KAM INTERNATIONAL [cite: 37]</div>
                     <span class="timeline-stamp">May 2022 - Nov 2024 [cite: 37]</span>
                     <ul>
-                        <li>Mapped production processes, converting operational guidelines into database code levels. [cite: 41]</li>
-                        <li>Managed software ticketing desks and system optimization tasks across multi-site inventories. [cite: 40, 43]</li>
-                        <li>Developed accounting frameworks, implementing Chart of Accounts data hierarchies and voucher desks. [cite: 40, 44]</li>
+                        <li>Mapped production processes, converting operational guidelines into database code levels[cite: 40, 41].</li>
+                        <li>Managed software ticketing desks and system optimization tasks across multi-site inventories[cite: 40, 43].</li>
+                        <li>Developed accounting frameworks, implementing Chart of Accounts data hierarchies and voucher desks[cite: 44].</li>
                     </ul>
                 </div>
             </div>
@@ -985,7 +993,7 @@
         
         <div class="contact-card-v2">
             <h3>Send a message</h3>
-            <p>Open to enterprise projects, full-time engineering roles, and system consulting. Based in Karachi — available for remote work architectures worldwide.</p>
+            <p>Open to enterprise projects, full-time engineering roles, and system consulting. Based in Karachi — available for remote work architectures worldwide[cite: 2].</p>
             
             <form class="contact-form-layout" onsubmit="event.preventDefault();">
                 <div class="form-row-dual">
@@ -1001,10 +1009,10 @@
 
         <div class="contact-capsules-row">
             <a href="mailto:Ali.QureshiMis@Outlook.com" class="connection-capsule capsule-email">
-                <i class="fa-solid fa-envelope"></i> Ali.QureshiMis@Outlook.com
+                <i class="fa-solid fa-envelope"></i> Ali.QureshiMis@Outlook.com [cite: 2]
             </a>
             <a href="tel:+923453602968" class="connection-capsule capsule-phone">
-                <i class="fa-solid fa-phone"></i> +92 345 3602968
+                <i class="fa-solid fa-phone"></i> +92 345 3602968 [cite: 2]
             </a>
             <a href="https://wa.me/923453602968" target="_blank" class="connection-capsule capsule-whatsapp">
                 <i class="fa-brands fa-whatsapp"></i> WhatsApp
