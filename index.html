@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ali Abbas Qureshi | Oracle & PL/SQL Developer Portfolio</title>
-    <!-- FontAwesome for professional icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* Modern Dark Theme Variables */
@@ -14,6 +13,7 @@
             --bg-card: #1f2937;
             --accent-glow: #38bdf8;
             --accent-apex: #a855f7; /* Purple accent for modern APEX tech */
+            --accent-finance: #10b981; /* Green accent for Financial/GL system */
             --text-main: #f3f4f6;
             --text-muted: #9ca3af;
             --border-color: #374151;
@@ -201,6 +201,10 @@
             color: var(--accent-apex);
         }
 
+        .project-header.finance-header h3 {
+            color: var(--accent-finance);
+        }
+
         .project-header p {
             color: var(--text-muted);
             font-size: 1.1rem;
@@ -239,6 +243,10 @@
             border-top-color: var(--accent-apex);
         }
 
+        .erp-module-card.finance-card {
+            border-top-color: var(--accent-finance);
+        }
+
         .erp-module-card:hover {
             transform: scale(1.02);
         }
@@ -259,6 +267,10 @@
 
         .erp-module-card.apex-card h4 i {
             color: var(--accent-apex);
+        }
+
+        .erp-module-card.finance-card h4 i {
+            color: var(--accent-finance);
         }
 
         .erp-module-card p {
@@ -441,7 +453,6 @@
 </head>
 <body>
 
-    <!-- Navigation Bar -->
     <nav>
         <div class="logo">CODEWITH<span>ALI</span></div>
         <ul class="nav-links">
@@ -453,7 +464,6 @@
         </ul>
     </nav>
 
-    <!-- Hero Section -->
     <section id="home">
         <div class="hero-subtitle">Oracle Forms, PL/SQL & APEX Developer</div>
         <div class="hero-title">Ali Abbas Qureshi</div>
@@ -466,11 +476,39 @@
         </div>
     </section>
 
-    <!-- Projects Section -->
     <section id="projects">
         <h2 class="section-title">Featured Applications & Enterprise Systems</h2>
 
-        <!-- PROJECT 1: ORACLE APEX APPLICATION -->
+        <div class="project-showcase" style="border-color: var(--accent-finance);">
+            <div class="project-header finance-header">
+                <h3>Fully Integrated General Ledger (GL) Financial System</h3>
+                <p><strong>Environment:</strong> Oracle Forms & Reports Architecture</p>
+                <p style="margin-top: 0.5rem; font-size: 0.95rem; max-width: 800px;">
+                    Engineered a complete, high-fidelity financial ledger engine deployed and cross-integrated for both <strong>KAM International</strong> and <strong>MEKOTEX (Pvt) Ltd</strong>. This core system establishes deep data synchronization mapping all transactional business lifecycles seamlessly—spanning from multi-tier Chart of Accounts definitions directly into double-entry ledger audits.
+                </p>
+            </div>
+
+            <div class="project-visual" style="border-color: var(--accent-finance);">
+                <img src="GL.jpeg" alt="Oracle General Ledger Master Financial System Operational Run Screen Screenshot">
+            </div>
+
+            <h4 style="font-size: 1.2rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; margin-top: 1rem; color: var(--accent-finance);">Core Architecture & Financial Modules:</h4>
+            <div class="project-modules-grid">
+                <div class="erp-module-card finance-card">
+                    <h4><i class="fa-solid fa-folder-tree"></i> Multi-Level Chart of Accounts</h4>
+                    <p>Hierarchical relational data matrix configuring structural accounts across Control Accounts, Detail Accounts, and explicit 5-tier analytical posting levels.</p>
+                </div>
+                <div class="erp-module-card finance-card">
+                    <h4><i class="fa-solid fa-money-bill-transfer"></i> Voucher & PD Transactions Desk</h4>
+                    <p>Comprehensive transaction entries handling fully automated systems for Cash/Bank Vouchers and Post-Dated (PD) check processing workflows.</p>
+                </div>
+                <div class="erp-module-card finance-card">
+                    <h4><i class="fa-solid fa-scale-balanced"></i> Integrated Ledger Flows (BP, CP, JV)</h4>
+                    <p>Real-time data calculation pipeline unifying Bank Payments (BP), Cash Payments (CP), Bank Receipts (BR), Cash Receipts (CR), and Journal Vouchers (JV) natively.</p>
+                </div>
+            </div>
+        </div>
+
         <div class="project-showcase" style="border-color: var(--accent-apex);">
             <div class="project-header apex-header">
                 <h3>NOVEL 2.0 — Smart ERP Dashboard</h3>
@@ -485,9 +523,8 @@
                 </div>
             </div>
 
-            <!-- Image File Container referencing image_2c69fa.png -->
             <div class="project-visual" style="border-color: var(--accent-apex);">
-                <img src="image_2c69fa.png" alt="NOVEL 2.0 Oracle APEX Application Home Screen Analytics Screenshot">
+                <img src="APEX_DASHBOARD.PNG" alt="NOVEL 2.0 Oracle APEX Application Home Screen Analytics Screenshot">
             </div>
 
             <h4 style="font-size: 1.2rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; margin-top: 1rem; color: var(--accent-apex);">Core Web Modules Implemented:</h4>
@@ -507,7 +544,6 @@
             </div>
         </div>
         
-        <!-- PROJECT 2: LEGACY ENTERPRISE ERP -->
         <div class="project-showcase">
             <div class="project-header">
                 <h3>Full-Scale Custom Textile ERP System</h3>
@@ -517,9 +553,8 @@
                 </p>
             </div>
 
-            <!-- Image File Container referencing WhatsApp Image 2026-05-29 at 1.26.20 AM.jpeg -->
             <div class="project-visual">
-                <img src="WhatsApp Image 2026-05-29 at 1.26.20 AM.jpeg" alt="A. Essak and Sons ERP Master UI Run Screen Screenshot">
+                <img src="PROJECT_ESSAK.jpeg" alt="A. Essak and Sons ERP Master UI Run Screen Screenshot">
             </div>
 
             <h4 style="font-size: 1.3rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; margin-top: 1rem;">Interconnected ERP Modules Breakdown</h4>
@@ -590,7 +625,6 @@
         </div>
     </section>
 
-    <!-- Core Technical Skills -->
     <section id="skills">
         <h2 class="section-title">Technical Expertise</h2>
         <div class="skills-grid">
@@ -617,7 +651,6 @@
         </div>
     </section>
 
-    <!-- Professional Experience Timeline -->
     <section id="experience">
         <h2 class="section-title">Professional Journey</h2>
         <div class="timeline">
@@ -630,6 +663,7 @@
                     <ul>
                         <li>Lead customization and engineering frameworks for Oracle Forms & Reports architecture.</li>
                         <li>Deliver robust business analytics logic and debug intricate live production textile systems.</li>
+                        <li>Designed and deployed an integrated enterprise-wide General Ledger system from structural Chart of Accounts through multi-voucher transaction journals.</li>
                     </ul>
                 </div>
             </div>
@@ -654,6 +688,7 @@
                     <ul>
                         <li>Assisted in requirements mapping, translating workflow parameters into database code layers.</li>
                         <li>Maintained client store modules and managed incoming ticket resolution pipelines.</li>
+                        <li>Engineered structural financial tracking integrations including complete Chart of Accounts hierarchies and cash/bank voucher desks.</li>
                     </ul>
                 </div>
             </div>
@@ -661,7 +696,6 @@
         </div>
     </section>
 
-    <!-- Contact & Education Section -->
     <section id="contact">
         <h2 class="section-title">Get In Touch</h2>
         <div class="contact-info">
@@ -689,7 +723,6 @@
         </div>
     </section>
 
-    <!-- Footer Area -->
     <footer>
         <p>&copy; 2026 codewithali. All Rights Reserved. | BSSE Candidate - Virtual University</p>
     </footer>
