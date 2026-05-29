@@ -5,12 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ali Abbas Qureshi | Enterprise Systems Architect</title>
     
+    <!-- Premium Inline Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23a855f7'/%3E%3Cstop offset='100%25' stop-color='%23ff3322'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='32' cy='32' r='32' fill='url(%23g)'/%3E%3Ctext x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' fill='%23ffffff' font-family='sans-serif' font-weight='800' font-size='22'%3EAQ%3C/text%3E%3C/svg%3E">
     
+    <!-- Premium Display & Interface Fonts: Syne for wide geometric headings, Plus Jakarta Sans for body layers -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     
+    <!-- FontAwesome Core Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
@@ -237,15 +240,15 @@
             display: flex;
             flex-direction: column;
             gap: 0rem;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             width: 100%;
         }
 
         .line-pure, .line-colored, .line-outline {
             font-family: var(--font-display);
-            font-size: 5.2rem;
+            font-size: 4.8rem;
             font-weight: 800;
-            line-height: 0.98;
+            line-height: 1.02;
             letter-spacing: -3px;
             text-transform: uppercase;
             display: block;
@@ -259,6 +262,24 @@
         .line-outline { 
             color: transparent; 
             -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.45); 
+        }
+
+        /* Custom Sub-Stack Tech Row Styling */
+        .hero-sub-stack-row {
+            font-family: var(--font-sans);
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--text-prime);
+            letter-spacing: 0.02em;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .hero-sub-stack-row span {
+            color: var(--accent-red);
+            font-weight: 800;
         }
 
         .hero-tagline {
@@ -697,7 +718,7 @@
             .profile-container { max-width: 100%; justify-self: center; }
         }
 
-        @media screen parks and (max-width: 968px) {
+        @media screen and (max-width: 968px) {
             nav { padding: 1.5rem 2rem; }
             .nav-links { display: none; }
             section { padding: 8rem 2rem 6rem 2rem; }
@@ -715,12 +736,14 @@
 </head>
 <body>
 
+    <!-- Cursor Tracking Nodes -->
     <div class="cursor-dot"></div>
     <div class="cursor-outline"></div>
 
+    <!-- Navigation Header -->
     <nav>
         <div class="logo">
-            <span class="logo-bracket">&lt;&gt;</span>By<span class="logo-name">AliQureshi</span>
+            <span class="logo-bracket">PL/SQL //</span>WITH<span class="logo-name">ALI QURESHI</span>
         </div>
         <ul class="nav-links">
             <li><a href="#expertise">Expertise</a></li>
@@ -731,18 +754,24 @@
         </ul>
     </nav>
 
+    <!-- Master Hero Canvas -->
     <section id="home">
         <div class="hero-left">
             <div class="badge-status">Available for opportunities</div>
             
             <div class="hero-title-container">
                 <span class="line-pure">Oracle</span>
-                <span class="line-colored">Forms &</span>
-                <span class="line-outline">Reports</span>
+                <span class="line-colored">Application &</span>
+                <span class="line-outline">ERP Developer</span>
+            </div>
+
+            <!-- Inline Tech Stack Elements Row -->
+            <div class="hero-sub-stack-row">
+                Oracle Forms <span>•</span> Reports <span>•</span> PL/SQL <span>•</span> Oracle APEX
             </div>
             
             <p class="hero-tagline">
-                I build enterprise systems, robust database solutions, and financial applications. From core General Ledger modules to multi-store Inventory management ERP systems — real code, real business impact, based in Karachi.
+                Building enterprise-grade ERP systems using Oracle Forms, Reports, PL/SQL, and Oracle APEX with real-world experience across Inventory, Finance, Payroll, Textile Manufacturing, and Business Automation systems[cite: 1].
             </p>
             <div class="cta-group">
                 <a href="#projects" class="btn btn-primary"><i class="fa-solid fa-folder-open"></i> View Projects</a>
@@ -750,12 +779,13 @@
             </div>
         </div>
 
+        <!-- Right Side Showcasing Profile Card Structure -->
         <div class="profile-container">
             <div class="profile-header-card">
                 <div class="profile-avatar">AQ</div>
                 <div class="profile-info">
                     <h3>Ali Abbas Qureshi</h3>
-                    <p>Oracle Developer • Karachi, PK</p>
+                    <p>Oracle Developer • Karachi, PK[cite: 1]</p>
                 </div>
             </div>
 
@@ -790,6 +820,7 @@
         </div>
     </section>
 
+    <!-- SECTION 1: EXPERTISE MATRIX -->
     <section id="expertise" style="background: radial-gradient(circle at 100% 0%, rgba(255, 51, 20, 0.02), transparent 40%);">
         <div class="section-header">
             <span class="section-subtitle">Expertise Portfolio</span>
@@ -844,6 +875,7 @@
         </div>
     </section>
 
+    <!-- SECTION 2: PROJECTS WALKTHROUGH -->
     <section id="detailed-projects">
         <div class="section-header">
             <span class="section-subtitle">Deep Dive Log</span>
@@ -852,6 +884,7 @@
         </div>
 
         <div class="step-project-container">
+            <!-- WALKTHROUGH 1: FINANCIAL LEDGER -->
             <div class="step-project-item">
                 <div class="project-walkthrough-image-wrapper">
                     <img src="GL.jpeg" alt="Oracle General Ledger Financial System Canvas Layout">
@@ -874,6 +907,7 @@
                 </div>
             </div>
 
+            <!-- WALKTHROUGH 2: SUPPLY CHAIN -->
             <div class="step-project-item">
                 <div class="project-walkthrough-image-wrapper">
                     <img src="PO_TRANS.jpeg" alt="Oracle Supply Chain Management Framework Canvas Layout">
@@ -896,15 +930,16 @@
                 </div>
             </div>
 
+            <!-- WALKTHROUGH 3: CLOUD APEX NOVEL 2.0 -->
             <div class="step-project-item">
                 <div class="project-walkthrough-image-wrapper">
                     <img src="APEX_DASHBOARD.PNG" alt="NOVEL 2.0 Oracle APEX Cloud Interface Layout">
                 </div>
                 <div class="project-step-content">
                     <h3>NOVEL 2.0 Procurement Cloud Framework</h3>
-                    <span class="project-step-system-tag">Oracle APEX Modern Interface Suite</span>
+                    <span class="project-step-system-tag">Oracle APEX Modern Interface Suite[cite: 1]</span>
                     <p class="project-step-desc">
-                        A web-responsive cloud portal built on the Oracle APEX engine, migrating production data structures into interactive analytical views.
+                        A web-responsive cloud portal built on the Oracle APEX engine, migrating production data structures into interactive analytical views[cite: 1].
                     </p>
                     <div class="project-technical-breakdown-box">
                         <h4>System Capabilities & Modules Deployed</h4>
@@ -924,6 +959,7 @@
         </div>
     </section>
 
+    <!-- SECTION 3: FEATURED PROJECTS (PLACED JUST BEFORE CONTACT SECTION) -->
     <section id="projects" style="background: radial-gradient(circle at 0% 100%, rgba(255, 51, 20, 0.03), transparent 40%);">
         <div class="section-header">
             <span class="section-subtitle">Portfolio</span>
@@ -968,9 +1004,9 @@
                 </div>
                 <div class="project-card-body">
                     <h3>NOVEL 2.0 Smart Cloud Dashboard</h3>
-                    <p>Web-responsive Cloud Procurement dashboard built on the Oracle APEX engine. Dynamically visualizes international supplier arrays, structural organizational dependencies, and acquisition indents.</p>
+                    <p>Web-responsive Cloud Procurement dashboard built on the Oracle APEX engine. Dynamically visualizes international supplier arrays, structural organizational dependencies, and acquisition indents[cite: 1].</p>
                     <div class="project-card-badges">
-                        <span class="badge-pill-tech">Oracle APEX</span>
+                        <span class="badge-pill-tech">Oracle APEX[cite: 1]</span>
                         <span class="badge-pill-tech">Cloud UI</span>
                         <span class="badge-pill-tech">Web App</span>
                     </div>
@@ -979,6 +1015,7 @@
         </div>
     </section>
 
+    <!-- SECTION 4: PROFESSIONAL EXPERIENCE -->
     <section id="experience">
         <div class="section-header">
             <span class="section-subtitle">Chronology</span>
@@ -1025,6 +1062,7 @@
         </div>
     </section>
 
+    <!-- SECTION 5: CONTACT PORTAL -->
     <section id="contact" style="background: radial-gradient(circle at 50% 50%, rgba(255, 51, 20, 0.03), transparent 70%);">
         <div class="section-header" style="text-align: center; margin: 0 auto 4rem auto;">
             <h2 class="section-title" style="font-size: 4.5rem; text-transform: lowercase; letter-spacing: -0.04em; max-width: 100%;">lets build something great together</h2>
@@ -1046,6 +1084,7 @@
             </form>
         </div>
 
+        <!-- Interactive Direct-Link Floating Contacts Container -->
         <div class="contact-capsules-row">
             <a href="mailto:Ali.QureshiMis@Outlook.com" class="connection-capsule capsule-email">
                 <i class="fa-solid fa-envelope"></i> Ali.QureshiMis@Outlook.com
@@ -1062,12 +1101,14 @@
         </div>
     </section>
 
+    <!-- Footer Area -->
     <div class="footer-wrapper">
         <footer>
             <p>[ 2026 // CODEWITHALI ] — BSSE Candidate (Virtual University)</p>
         </footer>
     </div>
 
+    <!-- Fluid Mouse Cursor Tracking Logic -->
     <script>
         const dot = document.querySelector('.cursor-dot');
         const outline = document.querySelector('.cursor-outline');
