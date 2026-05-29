@@ -464,6 +464,44 @@
             font-weight: bold;
         }
 
+        /* Live Application Embedded Interactive Badge Matrix */
+        .live-app-badge-trigger {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-top: 1.25rem;
+            padding: 0.85rem 1.75rem;
+            border-radius: 50px;
+            background: rgba(255, 51, 34, 0.08);
+            border: 1px solid rgba(255, 51, 34, 0.25);
+            color: var(--text-pure);
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 4px 15px rgba(255, 51, 34, 0.05);
+        }
+
+        .live-app-badge-trigger i {
+            font-size: 0.75rem;
+            color: var(--accent-red);
+            transition: transform 0.3s ease;
+        }
+
+        .live-app-badge-trigger:hover {
+            background: var(--text-pure);
+            border-color: var(--text-pure);
+            color: var(--bg-canvas);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .live-app-badge-trigger:hover i {
+            color: var(--accent-red);
+            transform: translateX(3px);
+        }
+
         /* 3-Column Image Project Cards Grid Layout */
         .projects-grid-layout {
             display: grid;
@@ -686,62 +724,62 @@
         </div>
     </section>
 
-    <!-- SECTION 1: WHAT I BRING TO THE TABLE (Exact Grid From image_d53d7c.jpg) -->
+    <!-- SECTION 1: RESUME-SYNCHRONIZED EXPERTISE MATRIX (What I Bring to the Table) -->
     <section id="expertise" style="background: radial-gradient(circle at 100% 0%, rgba(255, 51, 34, 0.02), transparent 40%);">
         <div class="section-header">
-            <span class="section-subtitle">Expertise</span>
+            <span class="section-subtitle">Expertise Portfolio</span>
             <h2 class="section-title" style="font-size: 5rem; letter-spacing: -0.04em;">What I bring<br>to the table</h2>
-            <p class="section-desc">Relational database engineering, multi-tier enterprise logic, supply chain architecture, and modern secure cloud web app transformation.</p>
+            <p class="section-desc">Over 4 years of hands-on experience developing database frameworks, engineering customized ERP solutions, and deploying industrial-grade infrastructure modules.</p>
         </div>
 
         <div class="expertise-grid-screenshot-layout">
             <div class="expertise-screenshot-card">
                 <div class="expertise-icon-wrapper"><i class="fa-solid fa-layer-group"></i></div>
-                <h3>Oracle Forms Core</h3>
-                <p>Architecting multi-tier application frames, complex data-block sync hierarchies, and high-performance screens built on 10g/11g Developer suites.</p>
+                <h3>Oracle Forms & Reports</h3>
+                <p>Advanced development, configuration, and structural installation across runtime versions 6i, 10g, and 11g. Designing interactive FMB canvases, report designs, and alert alerts.</p>
                 <div class="expertise-tags-row">
-                    <span class="expertise-mini-tag">Forms 11g</span>
+                    <span class="expertise-mini-tag">6i / 10g / 11g</span>
+                    <span class="expertise-mini-tag">Installation</span>
                     <span class="expertise-mini-tag">Triggers</span>
-                    <span class="expertise-mini-tag">FMB Canvas</span>
                 </div>
             </div>
 
             <div class="expertise-screenshot-card">
                 <div class="expertise-icon-wrapper"><i class="fa-solid fa-database"></i></div>
-                <h3>Advanced PL/SQL</h3>
-                <p>Writing bulletproof backend logic: stored standalone procedures, complex packages, autonomous transaction scopes, dynamic cursors, and database mutating hooks.</p>
+                <h3>Database Engineering</h3>
+                <p>Constructing core database schema infrastructure. Master-level composition of optimized Packages, Stored Procedures, Functions, Views, and automated Oracle Scheduler Jobs.</p>
                 <div class="expertise-tags-row">
-                    <span class="expertise-mini-tag">Packages</span>
-                    <span class="expertise-mini-tag">Procedures</span>
-                    <span class="expertise-mini-tag">Optimized SQL</span>
+                    <span class="expertise-mini-tag">PL/SQL Blocks</span>
+                    <span class="expertise-mini-tag">Scheduler Jobs</span>
+                    <span class="expertise-mini-tag">Performance Tuning</span>
                 </div>
             </div>
 
             <div class="expertise-screenshot-card">
-                <div class="expertise-icon-wrapper"><i class="fa-solid fa-chart-line"></i></div>
-                <h3>ERP System Flows</h3>
-                <p>Designing accounting structures down to the ledger level (double entry, auto voucher generation pools) and operational supply chains (PO, DO, SCM routines).</p>
+                <div class="expertise-icon-wrapper"><i class="fa-solid fa-industry"></i></div>
+                <h3>Industrial SCM & ERP</h3>
+                <p>Deep domain knowledge in Textile Manufacturing workflow systems. Seamless tracking implementations spanning from raw Yarn to Processing, Gate Pass logs, and physical movement.</p>
                 <div class="expertise-tags-row">
-                    <span class="expertise-mini-tag">General Ledger</span>
-                    <span class="expertise-mini-tag">Vouchers</span>
-                    <span class="expertise-mini-tag">SCM Lifecycles</span>
+                    <span class="expertise-mini-tag">Fabric & Yarn SCM</span>
+                    <span class="expertise-mini-tag">Gate Pass Logs</span>
+                    <span class="expertise-mini-tag">Process Planning</span>
                 </div>
             </div>
 
             <div class="expertise-screenshot-card">
-                <div class="expertise-icon-wrapper"><i class="fa-solid fa-cloud"></i></div>
-                <h3>Cloud Web Apps</h3>
-                <p>Migrating relational backend systems into responsive modern tracking suites, interactive analytics systems, and modular business apps via Oracle APEX.</p>
+                <div class="expertise-icon-wrapper"><i class="fa-solid fa-calculator"></i></div>
+                <h3>Financial Ledgers</h3>
+                <p>Deploying critical core corporate Accounts Management frameworks, double-entry financial accounting journal nodes, multi-tier voucher lines, and central Chart schemas.</p>
                 <div class="expertise-tags-row">
-                    <span class="expertise-mini-tag">APEX Engine</span>
-                    <span class="expertise-mini-tag">Responsive UI</span>
-                    <span class="expertise-mini-tag">REST APIs</span>
+                    <span class="expertise-mini-tag">Accounts ERP</span>
+                    <span class="expertise-mini-tag">Voucher Arrays</span>
+                    <span class="expertise-mini-tag">Bug Fixing</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SECTION 2: PROJECTS WALKTHROUGH WITH DETAILED SPECS & TARGETED PICTURE LINKS -->
+    <!-- SECTION 2: PROJECTS WALKTHROUGH WITH DETAILED SPECS -->
     <section id="detailed-projects">
         <div class="section-header">
             <span class="section-subtitle">Deep Dive Log</span>
@@ -751,13 +789,13 @@
 
         <div class="step-project-container">
             
-            <!-- COHESIVE SYSTEM WALKTHROUGH 1: FINANCIAL LEDGER -->
+            <!-- SYSTEM WALKTHROUGH 1: FINANCIAL LEDGER (Heading Updated) -->
             <div class="step-project-item">
                 <div class="project-walkthrough-image-wrapper">
                     <img src="GL.jpeg" alt="Oracle General Ledger Master Financial System Screenshot">
                 </div>
                 <div class="project-step-content">
-                    <h3>1-Form Unified Voucher & Financial Engine</h3>
+                    <h3>1-GENERAL LEDGER & FINANCIAL ENGINE</h3>
                     <span class="project-step-system-tag">Enterprise Ledger Core Architecture</span>
                     <p class="project-step-desc">
                         A double-entry accounting matrix running completely inside a single Oracle Forms runtime canvas. It manages financial data flow across your entire structural system.
@@ -774,7 +812,7 @@
                 </div>
             </div>
 
-            <!-- COHESIVE SYSTEM WALKTHROUGH 2: SUPPLY CHAIN -->
+            <!-- SYSTEM WALKTHROUGH 2: SUPPLY CHAIN -->
             <div class="step-project-item">
                 <div class="project-walkthrough-image-wrapper">
                     <img src="PO_TRANS.jpeg" alt="Oracle Supply Chain Management Framework Screenshot">
@@ -797,7 +835,7 @@
                 </div>
             </div>
 
-            <!-- COHESIVE SYSTEM WALKTHROUGH 3: CLOUD APEX NOVEL 2.0 -->
+            <!-- SYSTEM WALKTHROUGH 3: CLOUD APEX NOVEL 2.0 (With Launch Badge Embedded) -->
             <div class="step-project-item">
                 <div class="project-walkthrough-image-wrapper">
                     <img src="APEX_DASHBOARD.PNG" alt="NOVEL 2.0 Oracle APEX Cloud Application Screenshot">
@@ -817,6 +855,11 @@
                             <li><strong>Security Protocols:</strong> Row-level data access filters keeping client transactions private.</li>
                         </ul>
                     </div>
+                    
+                    <!-- Dynamic Glowing Action Launch Badge -->
+                    <a href="https://apex.oracle.com" target="_blank" class="live-app-badge-trigger">
+                        <i class="fa-solid fa-bolt"></i> Launch Live Application
+                    </a>
                 </div>
             </div>
 
@@ -837,7 +880,7 @@
                     <img src="GL.jpeg" alt="General Ledger Master Financial System">
                 </div>
                 <div class="project-card-body">
-                    <h3>Unified GL Voucher Engine</h3>
+                    <h3>1-General Ledger Engine</h3>
                     <p>High-performance double-entry core financial ledger featuring a dynamic 1-Form Voucher system (JV, BR, BP, CR, CP) with Post-Dated Check pipelines, RTGS terminals, and real-time Trial Balance analytical reports.</p>
                     <div class="project-card-badges">
                         <span class="badge-pill-tech">Enterprise</span>
@@ -892,9 +935,9 @@
                     <div class="timeline-org">MEKOTEX PVT. LTD</div>
                     <span class="timeline-stamp">Feb 2025 - Present</span>
                     <ul>
-                        <li>Direct core system optimization and logic updates across production environments.</li>
-                        <li>Debug complex business operations and maintain data tracking channels for textile operations.</li>
-                        <li>Architected and pushed the central General Ledger system from initial Chart structural layers down into transaction voucher desks.</li>
+                        <li>Direct core system optimization and logic updates across production environments[cite: 1].</li>
+                        <li>Debug complex business operations and maintain data tracking channels for textile operations[cite: 1].</li>
+                        <li>Architected and pushed the central General Ledger system from initial Chart structural layers down into transaction voucher desks[cite: 1].</li>
                     </ul>
                 </div>
             </div>
@@ -905,8 +948,8 @@
                     <div class="timeline-org">AUTOSYS Computers</div>
                     <span class="timeline-stamp">Dec 2024 - Jan 2025</span>
                     <ul>
-                        <li>Optimized SQL code routines and form blocks to scale up interface query performance.</li>
-                        <li>Delivered crucial programmatic fixes across production business configurations.</li>
+                        <li>Optimized SQL code routines and form blocks to scale up interface query performance[cite: 1].</li>
+                        <li>Delivered crucial programmatic fixes across production business configurations[cite: 1].</li>
                     </ul>
                 </div>
             </div>
@@ -917,9 +960,9 @@
                     <div class="timeline-org">KAM INTERNATIONAL</div>
                     <span class="timeline-stamp">May 2022 - Nov 2024</span>
                     <ul>
-                        <li>Mapped production processes, converting operational guidelines into database code levels.</li>
-                        <li>Managed software ticketing desks and system optimization tasks across multi-site inventories.</li>
-                        <li>Developed accounting frameworks, implementing Chart of Accounts data hierarchies and voucher desks.</li>
+                        <li>Mapped production processes, converting operational guidelines into database code levels[cite: 1].</li>
+                        <li>Managed software ticketing desks and system optimization tasks across multi-site inventories[cite: 1].</li>
+                        <li>Developed accounting frameworks, implementing Chart of Accounts data hierarchies and voucher desks[cite: 1].</li>
                     </ul>
                 </div>
             </div>
@@ -965,7 +1008,7 @@
     </section>
 
     <footer>
-        <p>[ 2026 // CODEWITHALI ] — BSSE Candidate (Virtual University)</p>
+        <p>[ 2026 // CODEWITHALI ] — BSSE Candidate (Virtual University)[cite: 1]</p>
     </footer>
 
     <!-- Dual-Ring Pointer Fluid Acceleration Inertia Script Engine -->
@@ -986,7 +1029,7 @@
             }, { duration: 500, fill: "forwards" });
         });
 
-        const targets = document.querySelectorAll('a, .btn, .project-card-v2, .expertise-screenshot-card, .timeline-box, .input-pill-field, .btn-send-message');
+        const targets = document.querySelectorAll('a, .btn, .project-card-v2, .expertise-screenshot-card, .timeline-box, .input-pill-field, .btn-send-message, .live-app-badge-trigger');
         targets.forEach(t => {
             t.addEventListener('mouseenter', () => {
                 outline.style.width = '55px';
