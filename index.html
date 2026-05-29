@@ -194,9 +194,11 @@
         /* Hero Grid View Frame - Expanded Right-Side Column to Increase Card Width */
         #home {
             display: grid;
-            grid-template-columns: 0.82fr 1.18fr;
+            grid-template-columns: 0.75fr 1.25fr;
             gap: 4.5rem;
             align-items: center;
+            padding-top: 6.5rem;
+            min-height: calc(100vh - 4rem);
         }
 
         .hero-left {
@@ -218,7 +220,7 @@
             font-size: 0.72rem;
             font-weight: 700;
             letter-spacing: 0.1em;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             text-transform: uppercase;
         }
 
@@ -268,7 +270,7 @@
             font-weight: 600;
             color: var(--text-prime);
             letter-spacing: 0.02em;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             display: flex;
             align-items: center;
             gap: 0.5rem;
@@ -283,7 +285,7 @@
             font-size: 1.05rem;
             color: var(--text-muted);
             max-width: 550px;
-            margin-bottom: 3rem;
+            margin-bottom: 2.5rem;
             line-height: 1.65;
         }
 
@@ -316,10 +318,10 @@
             background-color: var(--bg-card);
             border: 1px solid var(--border-line);
             border-radius: 32px;
-            padding: 2.5rem 3rem;
+            padding: 2.25rem 2.5rem;
             display: flex;
             flex-direction: column;
-            gap: 1.75rem;
+            gap: 1.5rem;
             width: 100%;
             box-shadow: 0 40px 80px rgba(0, 0, 0, 0.5);
             justify-self: stretch;
@@ -337,10 +339,10 @@
         .profile-info h3 { font-family: var(--font-sans); font-size: 1.6rem; font-weight: 700; color: var(--text-pure); margin-bottom: 4px; }
         .profile-info p { font-size: 0.9rem; color: #5c5a63; font-weight: 500; }
         
-        .profile-stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
-        .stat-mini-box { background-color: rgba(255, 255, 255, 0.015); border: 1px solid rgba(255, 255, 255, 0.03); border-radius: 18px; padding: 1.5rem; }
-        .stat-mini-box h4 { font-family: var(--font-display); font-size: 2.2rem; font-weight: 700; color: var(--text-pure); margin-bottom: 4px; }
-        .stat-mini-box p { font-size: 0.85rem; color: #615f69; font-weight: 500; }
+        .profile-stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+        .stat-mini-box { background-color: rgba(255, 255, 255, 0.015); border: 1px solid rgba(255, 255, 255, 0.03); border-radius: 18px; padding: 1.25rem 1rem; text-align: center; }
+        .stat-mini-box h4 { font-family: var(--font-display); font-size: 2rem; font-weight: 700; color: var(--text-pure); margin-bottom: 4px; }
+        .stat-mini-box p { font-size: 0.8rem; color: #615f69; font-weight: 500; white-space: nowrap; }
         
         .profile-tags-flex { display: flex; flex-wrap: wrap; gap: 0.6rem; }
         .mini-tag { background-color: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.07); padding: 0.55rem 1.15rem; border-radius: 50px; font-size: 0.8rem; font-weight: 500; color: #929199; }
@@ -508,14 +510,14 @@
             padding-left: 0.75rem;
         }
 
-        .project-step-list {
+        .project-step-style {
             list-style: none;
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 1.2rem;
         }
 
-        .project-step-list li {
+        .project-step-style li {
             position: relative;
             padding-left: 1.5rem;
             font-size: 0.88rem;
@@ -523,13 +525,13 @@
             line-height: 1.5;
         }
 
-        .project-step-list li strong {
+        .project-step-style li strong {
             color: var(--text-prime);
             display: block;
             margin-bottom: 0.15rem;
         }
 
-        .project-step-list li::before {
+        .project-step-style li::before {
             content: "→";
             position: absolute;
             left: 0;
@@ -707,7 +709,8 @@
 
         /* High-Fidelity Responsive Adapters */
         @media screen and (max-width: 1200px) {
-            #home { grid-template-columns: 1fr; gap: 4rem; }
+            #home { grid-template-columns: 1fr; gap: 3rem; padding-top: 8rem; }
+            .profile-stats-grid { grid-template-columns: repeat(2, 1fr); }
             .line-pure, .line-colored, .line-outline { font-size: 3.5rem; white-space: normal; }
             .expertise-grid-screenshot-layout { grid-template-columns: repeat(2, 1fr); }
             .step-project-item { grid-template-columns: 1fr; gap: 2.5rem; }
@@ -722,7 +725,7 @@
             .line-pure, .line-colored, .line-outline { font-size: 2.8rem; letter-spacing: -1px; }
             .section-title { font-size: 3rem; }
             .expertise-grid-screenshot-layout { grid-template-columns: 1fr; }
-            .project-step-list { grid-template-columns: 1fr; }
+            .project-step-style { grid-template-columns: 1fr; }
             .projects-grid-layout { grid-template-columns: 1fr; }
             .contact-card-v2 { padding: 2.5rem 1.5rem; }
             .form-row-dual { grid-template-columns: 1fr; gap: 1.25rem; }
@@ -784,19 +787,19 @@
             <div class="profile-stats-grid">
                 <div class="stat-mini-box">
                     <h4>4+</h4>
-                    <p>Years experience</p>
+                    <p>Years exp</p>
                 </div>
                 <div class="stat-mini-box">
                     <h4>12+</h4>
-                    <p>Production Modules</p>
+                    <p>Prod Modules</p>
                 </div>
                 <div class="stat-mini-box">
                     <h4>5</h4>
-                    <p>Enterprise Systems</p>
+                    <p>Systems</p>
                 </div>
                 <div class="stat-mini-box">
                     <h4>100%</h4>
-                    <p>Data Integrity</p>
+                    <p>Integrity</p>
                 </div>
             </div>
 
@@ -886,7 +889,7 @@
                     </p>
                     <div class="project-technical-breakdown-box">
                         <h4>System Capabilities & Modules Deployed</h4>
-                        <ul class="project-step-list">
+                        <ul class="project-step-style">
                             <li><strong>Form Vouchers:</strong> Handles Journal Vouchers (JV), Bank Receipts (BR), Bank Payments (BP), Cash Receipts (CR), and Cash Payments (CP).</li>
                             <li><strong>Banking Pipelines:</strong> Post-Dated Transactions (PD Checks) monitoring state variables and real-time RTGS clearance tracking.</li>
                             <li><strong>Analytical Reports:</strong> Dynamic General Ledger Reports (Detailed + Summary formats) and Trial Balance Sheets (Detailed + Summary).</li>
@@ -908,7 +911,7 @@
                     </p>
                     <div class="project-technical-breakdown-box">
                         <h4>System Capabilities & Modules Deployed</h4>
-                        <ul class="project-step-list">
+                        <ul class="project-step-style">
                             <li><strong>Procurement Flows:</strong> Manages initial Purchase Orders (PO), Delivery Orders (DO), and vendor performance logs.</li>
                             <li><strong>Inventory Routines:</strong> Goods Received Notes (GRN Engine), automatic vendor returns, and physical item transfers.</li>
                             <li><strong>Multi-Store Sync:</strong> Live balancing algorithms tracking stocks instantly across 5 independent warehouse channels.</li>
@@ -930,7 +933,7 @@
                     </p>
                     <div class="project-technical-breakdown-box">
                         <h4>System Capabilities & Modules Deployed</h4>
-                        <ul class="project-step-list">
+                        <ul class="project-step-style">
                             <li><strong>Supplier Portals:</strong> Secure interface cards showing historical vendor fulfillment details and lead-time analytics.</li>
                             <li><strong>Acquisition Indents:</strong> Automated internal indent generation forms featuring multi-level verification rules.</li>
                             <li><strong>Data Portability:</strong> Native hooks exporting live financial logs directly to Excel sheets and secure print servers.</li>
