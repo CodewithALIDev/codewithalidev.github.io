@@ -5,22 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ali Abbas Qureshi | Enterprise Systems Architect</title>
     
-    <!-- Premium Inline Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23a855f7'/%3E%3Cstop offset='100%25' stop-color='%23ff3322'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='32' cy='32' r='32' fill='url(%23g)'/%3E%3Ctext x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' fill='%23ffffff' font-family='sans-serif' font-weight='800' font-size='22'%3EAQ%3C/text%3E%3C/svg%3E">
     
-    <!-- Premium Display & Interface Fonts: Syne for wide geometric headings, Plus Jakarta Sans for body layers -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     
-    <!-- FontAwesome Core Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         :root {
             --bg-canvas: #08060c;       /* Deep Luxury Dark Canvas Background */
             --bg-surface: #0b0c1e;      /* Premium Navy Surface Layer */
-            --bg-card: #191724;         /* Match image_ba6f01.png card background */
+            --bg-card: #191724;         /* Profile card background match */
             --accent-red: #ff3314;      /* Saturated SCM Neon Red-Orange Accent */
             --text-pure: #ffffff;
             --text-prime: #f3f4f6;
@@ -194,10 +191,10 @@
             max-width: 650px;
         }
 
-        /* Hero Grid View Frame - Grid configuration as requested */
+        /* Hero Grid View Frame */
         #home {
             display: grid;
-            grid-template-columns: 0.82fr 1.18fr;
+            grid-template-columns: 1.1fr 0.9fr;
             gap: 4.5rem;
             align-items: center;
         }
@@ -245,7 +242,7 @@
 
         .line-pure, .line-colored, .line-outline {
             font-family: var(--font-display);
-            font-size: 3.5rem;
+            font-size: 4rem;
             font-weight: 800;
             line-height: 1.05;
             letter-spacing: -1.5px;
@@ -312,19 +309,19 @@
         .btn-secondary { border: 1px solid var(--border-line); color: var(--text-pure); background-color: rgba(255, 255, 255, 0.02); }
         .btn-secondary:hover { background-color: rgba(255, 255, 255, 0.06); border-color: rgba(255, 255, 255, 0.2); transform: translateY(-2px); }
 
-        /* Exact Replication Styles from image_ba6f01.png */
+        /* Profile Card Element Specifications */
         .profile-container {
             background-color: var(--bg-card);
-            border: 1px solid rgba(255, 255, 255, 0.04);
-            border-radius: 36px;
-            padding: 3rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 32px;
+            padding: 2.5rem;
             display: flex;
             flex-direction: column;
             gap: 2rem;
             width: 100%;
-            max-width: 480px; /* Aligned card bounding sizing */
+            max-width: 440px; 
             box-shadow: 0 40px 80px rgba(0, 0, 0, 0.6);
-            justify-self: center;
+            justify-self: end;
             animation: smoothFloatMotion 6s ease-in-out infinite; 
         }
 
@@ -334,12 +331,11 @@
             100% { transform: translateY(0px); }
         }
 
-        .profile-header-card { display: flex; flex-direction: column; align-items: flex-start; gap: 1.5rem; }
+        .profile-header-card { display: flex; align-items: center; gap: 1.25rem; }
         
-        /* Perfect Linear Gradient Avatar Bubble */
         .profile-avatar { 
-            width: 84px; 
-            height: 84px; 
+            width: 72px; 
+            height: 72px; 
             border-radius: 50%; 
             background: linear-gradient(135deg, #a855f7 0%, #ff3322 100%); 
             display: flex; 
@@ -347,33 +343,32 @@
             justify-content: center; 
             font-family: var(--font-sans); 
             font-weight: 800; 
-            font-size: 1.75rem; 
+            font-size: 1.6rem; 
             color: var(--text-pure); 
-            letter-spacing: -0.05em;
+            letter-spacing: -0.03em;
         }
         
         .profile-info h3 { 
             font-family: var(--font-sans); 
-            font-size: 2.1rem; 
+            font-size: 1.6rem; 
             font-weight: 700; 
             color: var(--text-pure); 
-            margin-bottom: 6px; 
+            margin-bottom: 4px; 
             letter-spacing: -0.02em;
         }
         
         .profile-info p { 
-            font-size: 1rem; 
+            font-size: 0.95rem; 
             color: #9b9a9e; 
             font-weight: 500; 
         }
         
-        /* Two Column Metric Grid Matching Box Specs */
         .profile-stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
         
         .stat-mini-box { 
             background-color: rgba(255, 255, 255, 0.02); 
-            border: 1px solid rgba(255, 255, 255, 0.05); 
-            border-radius: 16px; 
+            border: 1px solid rgba(255, 255, 255, 0.04); 
+            border-radius: 20px; 
             padding: 1.5rem; 
             display: flex;
             flex-direction: column;
@@ -382,7 +377,7 @@
         
         .stat-mini-box h4 { 
             font-family: var(--font-sans); 
-            font-size: 2rem; 
+            font-size: 2.2rem; 
             font-weight: 700; 
             color: var(--text-pure); 
             letter-spacing: -0.02em;
@@ -390,28 +385,27 @@
         
         .stat-mini-box p { 
             font-size: 0.85rem; 
-            color: #9b9a9e; 
+            color: #83828a; 
             font-weight: 500; 
         }
         
-        /* Flex tags matched exactly by colors & boundaries */
-        .profile-tags-flex { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.5rem; }
+        .profile-tags-flex { display: flex; flex-wrap: wrap; gap: 0.5rem; }
         
         .mini-tag { 
-            background-color: rgba(255, 255, 255, 0.04); 
-            border: 1px solid rgba(255, 255, 255, 0.06); 
-            padding: 0.5rem 1rem; 
+            background-color: rgba(255, 255, 255, 0.03); 
+            border: 1px solid rgba(255, 255, 255, 0.05); 
+            padding: 0.5rem 1.1rem; 
             border-radius: 50px; 
-            font-size: 0.82rem; 
+            font-size: 0.85rem; 
             font-weight: 600; 
             color: #9b9a9e; 
         }
         
-        /* Exact color variations matched to image_ba6f01.png */
-        .tag-laravel { background-color: rgba(239, 68, 68, 0.1); border-color: rgba(239, 68, 68, 0.2); color: #f87171; }
-        .tag-php { background-color: rgba(99, 102, 241, 0.1); border-color: rgba(99, 102, 241, 0.2); color: #818cf8; }
-        .tag-mysql { background-color: rgba(59, 130, 246, 0.1); border-color: rgba(59, 130, 246, 0.2); color: #60a5fa; }
-        .tag-chatgpt { background-color: rgba(234, 179, 8, 0.1); border-color: rgba(234, 179, 8, 0.2); color: #facc15; }
+        /* High-Fidelity Badge Highlight Styles */
+        .tag-accent-1 { background-color: rgba(168, 85, 247, 0.1); border-color: rgba(168, 85, 247, 0.2); color: #c084fc; }
+        .tag-accent-2 { background-color: rgba(255, 51, 20, 0.1); border-color: rgba(255, 51, 20, 0.2); color: #f87171; }
+        .tag-accent-3 { background-color: rgba(59, 130, 246, 0.1); border-color: rgba(59, 130, 246, 0.2); color: #60a5fa; }
+        .tag-accent-4 { background-color: rgba(234, 179, 8, 0.1); border-color: rgba(234, 179, 8, 0.2); color: #facc15; }
 
         /* Expertise Grid Framework */
         .expertise-grid-screenshot-layout {
@@ -800,11 +794,9 @@
 </head>
 <body>
 
-    <!-- Cursor Tracking Nodes -->
     <div class="cursor-dot"></div>
     <div class="cursor-outline"></div>
 
-    <!-- Navigation Header -->
     <nav>
         <div class="logo">
             <span class="logo-bracket">PL/SQL //</span>WITH<span class="logo-name">ALI QURESHI</span>
@@ -818,7 +810,6 @@
         </ul>
     </nav>
 
-    <!-- Master Hero Canvas -->
     <section id="home">
         <div class="hero-left">
             <div class="badge-status">Available for opportunities</div>
@@ -829,7 +820,6 @@
                 <span class="line-outline">ERP Developer</span>
             </div>
 
-            <!-- Inline Tech Stack Elements Row -->
             <div class="hero-sub-stack-row">
                 Oracle Forms <span>•</span> Reports <span>•</span> PL/SQL <span>•</span> Oracle APEX
             </div>
@@ -843,10 +833,9 @@
             </div>
         </div>
 
-        <!-- Right Side Showcasing Profile Card Structured Like image_ba6f01.png -->
         <div class="profile-container">
             <div class="profile-header-card">
-                <div class="profile-avatar">MU</div>
+                <div class="profile-avatar">AQ</div>
                 <div class="profile-info">
                     <h3>Ali Abbas Qureshi</h3>
                     <p>Oracle Developer • Karachi, PK</p>
@@ -855,324 +844,326 @@
 
             <div class="profile-stats-grid">
                 <div class="stat-mini-box">
-                    <h4>4+</h4>
-                    <p>Years experience</p>
+                    <h4>11g</h4>
+                    <p>Oracle Forms Dev</p>
                 </div>
                 <div class="stat-mini-box">
-                    <h4>12+</h4>
-                    <p>Production Modules</p>
-                </div>
-                <div class="stat-mini-box">
-                    <h4>5</h4>
-                    <p>Enterprise systems</p>
-                </div>
-                <div class="stat-mini-box">
-                    <h4>100%</h4>
-                    <p>Data integrity</p>
+                    <h4>15+</h4>
+                    <p>Enterprise Modules</p>
                 </div>
             </div>
 
             <div class="profile-tags-flex">
-                <span class="mini-tag tag-laravel">PL/SQL</span>
-                <span class="mini-tag tag-php">Forms</span>
-                <span class="mini-tag tag-mysql">Oracle DB</span>
-                <span class="mini-tag tag-chatgpt">Oracle APEX</span>
-                <span class="mini-tag">Reports</span>
-                <span class="mini-tag">Triggers</span>
-                <span class="mini-tag">Procedures</span>
+                <div class="mini-tag tag-accent-1">PL/SQL</div>
+                <div class="mini-tag tag-accent-2">Forms & Reports</div>
+                <div class="mini-tag tag-accent-3">Oracle APEX</div>
+                <div class="mini-tag tag-accent-4">ERP Systems</div>
             </div>
         </div>
     </section>
 
-    <!-- SECTION 1: EXPERTISE MATRIX -->
-    <section id="expertise" style="background: radial-gradient(circle at 100% 0%, rgba(255, 51, 20, 0.02), transparent 40%);">
+    <section id="expertise">
         <div class="section-header">
-            <span class="section-subtitle">Expertise Portfolio</span>
-            <h2 class="section-title" style="font-size: 5rem; letter-spacing: -0.04em;">What I bring<br>to the table</h2>
-            <p class="section-desc">Over 4 years of hands-on experience developing database frameworks, engineering customized ERP solutions, and deploying industrial-grade infrastructure modules.</p>
+            <span class="section-subtitle">Core Matrix</span>
+            <h2 class="section-title">Technical Expertise</h2>
+            <p class="section-desc">Specialized stack tuned for high-transaction environments, financial compliance rules, and automated material handling workflows.</p>
         </div>
-
+        
         <div class="expertise-grid-screenshot-layout">
             <div class="expertise-screenshot-card">
-                <div class="expertise-icon-wrapper"><i class="fa-solid fa-layer-group"></i></div>
-                <h3>Oracle Forms & Reports</h3>
-                <p>Advanced development, configuration, and structural installation across runtime versions 6i, 10g, and 11g. Designing interactive FMB canvases, report designs, and alert systems.</p>
-                <div class="expertise-tags-row">
-                    <span class="expertise-mini-tag">6i / 10g / 11g</span>
-                    <span class="expertise-mini-tag">Installation</span>
-                    <span class="expertise-mini-tag">Triggers</span>
-                </div>
-            </div>
-
-            <div class="expertise-screenshot-card">
                 <div class="expertise-icon-wrapper"><i class="fa-solid fa-database"></i></div>
-                <h3>Database Engineering</h3>
-                <p>Constructing core database schema infrastructure. Master-level composition of optimized Packages, Stored Procedures, Functions, Views, and automated Oracle Scheduler Jobs.</p>
+                <h3>Oracle PL/SQL</h3>
+                <p>Writing advanced database layers, high-performance packages, compound transaction triggers, and optimized pipeline parsing queries.</p>
                 <div class="expertise-tags-row">
-                    <span class="expertise-mini-tag">PL/SQL Blocks</span>
-                    <span class="expertise-mini-tag">Scheduler Jobs</span>
-                    <span class="expertise-mini-tag">Performance Tuning</span>
+                    <span class="expertise-mini-tag">Packages</span>
+                    <span class="expertise-mini-tag">Triggers</span>
+                    <span class="expertise-mini-tag">Optimization</span>
                 </div>
             </div>
 
             <div class="expertise-screenshot-card">
-                <div class="expertise-icon-wrapper"><i class="fa-solid fa-industry"></i></div>
-                <h3>Industrial SCM & ERP</h3>
-                <p>Deep domain knowledge in Textile Manufacturing workflow systems. Seamless tracking implementations spanning from raw Yarn to Processing, Gate Pass logs, and physical movement.</p>
+                <div class="expertise-icon-wrapper"><i class="fa-solid fa-window-restore"></i></div>
+                <h3>Forms & Reports</h3>
+                <p>Designing complex data block frameworks, customized canvas structures, master-detail logic configurations, and raw data ledger matrices.</p>
                 <div class="expertise-tags-row">
-                    <span class="expertise-mini-tag">Fabric & Yarn SCM</span>
-                    <span class="expertise-mini-tag">Gate Pass Logs</span>
-                    <span class="expertise-mini-tag">Process Planning</span>
+                    <span class="expertise-mini-tag">Oracle 11g</span>
+                    <span class="expertise-mini-tag">Data Blocks</span>
+                    <span class="expertise-mini-tag">Matrix Reports</span>
                 </div>
             </div>
 
             <div class="expertise-screenshot-card">
-                <div class="expertise-icon-wrapper"><i class="fa-solid fa-calculator"></i></div>
-                <h3>Financial Ledgers</h3>
-                <p>Deploying critical core corporate Accounts Management frameworks, double-entry financial accounting journal nodes, multi-tier voucher lines, and central Chart schemas.</p>
+                <div class="expertise-icon-wrapper"><i class="fa-solid fa-chart-line"></i></div>
+                <h3>Oracle APEX</h3>
+                <p>Migrating legacy applications to responsive web architectures with modern data visualization modules, charts, and secure RESTful access endpoints.</p>
                 <div class="expertise-tags-row">
-                    <span class="expertise-mini-tag">Accounts ERP</span>
-                    <span class="expertise-mini-tag">Voucher Arrays</span>
-                    <span class="expertise-mini-tag">Bug Fixing</span>
+                    <span class="expertise-mini-tag">APEX Apps</span>
+                    <span class="expertise-mini-tag">Dashboards</span>
+                    <span class="expertise-mini-tag">UI/UX Layouts</span>
+                </div>
+            </div>
+
+            <div class="expertise-screenshot-card">
+                <div class="expertise-icon-wrapper"><i class="fa-solid fa-gears"></i></div>
+                <h3>ERP Engineering</h3>
+                <p>Mapping complex business processes to relational software modules across procurement, financial ledgers, asset management, and operations.</p>
+                <div class="expertise-tags-row">
+                    <span class="expertise-mini-tag">GL Ledgers</span>
+                    <span class="expertise-mini-tag">Supply Chain</span>
+                    <span class="expertise-mini-tag">Audit Trails</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SECTION 2: PROJECTS WALKTHROUGH -->
-    <section id="detailed-projects">
+    <section id="detailed-projects" style="background-color: rgba(11, 12, 30, 0.25);">
         <div class="section-header">
-            <span class="section-subtitle">Deep Dive Log</span>
-            <h2 class="section-title">Project Walkthroughs</h2>
-            <p class="section-desc">A deep, programmatic look into the logical steps, table structures, and architecture mechanics engineered for every core system.</p>
+            <span class="section-subtitle">Deep Walkthrough</span>
+            <h2 class="section-title">System Blueprints</h2>
+            <p class="section-desc">An inside look at the technical architecture and underlying logic mechanics of primary enterprise deployments.</p>
         </div>
 
         <div class="step-project-container">
-            <!-- WALKTHROUGH 1: FINANCIAL LEDGER -->
             <div class="step-project-item">
                 <div class="project-walkthrough-image-wrapper">
-                    <img src="GL.jpeg" alt="Oracle General Ledger Financial System Canvas Layout">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80" alt="Smart NOVEL 2.0 Interface">
                 </div>
                 <div class="project-step-content">
-                    <h3>1-GENERAL LEDGER & FINANCIAL ENGINE</h3>
-                    <span class="project-step-system-tag">Enterprise Ledger Core Architecture</span>
+                    <span class="project-step-system-tag">Oracle APEX Deployment</span>
+                    <h3>Smart NOVEL 2.0 Dashboard</h3>
                     <p class="project-step-desc">
-                        A double-entry accounting matrix running completely inside a single Oracle Forms runtime canvas, tracking cash variables system-wide.
+                        A responsive executive management system layer layered on real-time transactional databases, engineered to surface critical business operational metrics instantly.
                     </p>
-                    <div class="project-technical-breakdown-box">
-                        <h4>System Capabilities & Modules Deployed</h4>
-                        <ul class="project-step-list">
-                            <li><strong>Form Vouchers:</strong> Handles Journal Vouchers (JV), Bank Receipts (BR), Bank Payments (BP), Cash Receipts (CR), and Cash Payments (CP).</li>
-                            <li><strong>Banking Pipelines:</strong> Post-Dated Transactions (PD Checks) monitoring state variables and real-time RTGS clearance tracking.</li>
-                            <li><strong>Analytical Reports:</strong> Dynamic General Ledger Reports (Detailed + Summary formats) and Trial Balance Sheets (Detailed + Summary).</li>
-                            <li><strong>Chart of Accounts:</strong> Powered by a Centralized Chart of Accounts Setup structure enforcing strict relational integrity codes.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- WALKTHROUGH 2: SUPPLY CHAIN -->
-            <div class="step-project-item">
-                <div class="project-walkthrough-image-wrapper">
-                    <img src="PO_TRANS.jpeg" alt="Oracle Supply Chain Management Framework Canvas Layout">
-                </div>
-                <div class="project-step-content">
-                    <h3>Multi-Store SCM & Inventory Management Matrix</h3>
-                    <span class="project-step-system-tag">Supply Chain Logistical Core Protocol</span>
-                    <p class="project-step-desc">
-                        An automated tracking matrix controlling material allocation, incoming quality checkpoints, and cross-warehouse structural transfers.
-                    </p>
-                    <div class="project-technical-breakdown-box">
-                        <h4>System Capabilities & Modules Deployed</h4>
-                        <ul class="project-step-list">
-                            <li><strong>Procurement Flows:</strong> Manages initial Purchase Orders (PO), Delivery Orders (DO), and vendor performance logs.</li>
-                            <li><strong>Inventory Routines:</strong> Goods Received Notes (GRN Engine), automatic vendor returns, and physical item transfers.</li>
-                            <li><strong>Multi-Store Sync:</strong> Live balancing algorithms tracking stocks instantly across 5 independent warehouse channels.</li>
-                            <li><strong>Automated Thresholds:</strong> Triggers reorder logic when stock dips past safety parameters.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- WALKTHROUGH 3: CLOUD APEX NOVEL 2.0 -->
-            <div class="step-project-item">
-                <div class="project-walkthrough-image-wrapper">
-                    <img src="APEX_DASHBOARD.PNG" alt="NOVEL 2.0 Oracle APEX Cloud Interface Layout">
-                </div>
-                <div class="project-step-content">
-                    <h3>NOVEL 2.0 Procurement Cloud Framework</h3>
-                    <span class="project-step-system-tag">Oracle APEX Modern Interface Suite</span>
-                    <p class="project-step-desc">
-                        A web-responsive cloud portal built on the Oracle APEX engine, migrating production data structures into interactive analytical views.
-                    </p>
-                    <div class="project-technical-breakdown-box">
-                        <h4>System Capabilities & Modules Deployed</h4>
-                        <ul class="project-step-list">
-                            <li><strong>Supplier Portals:</strong> Secure interface cards showing historical vendor fulfillment details and lead-time analytics.</li>
-                            <li><strong>Acquisition Indents:</strong> Automated internal indent generation forms featuring multi-level verification rules.</li>
-                            <li><strong>Data Portability:</strong> Native hooks exporting live financial logs directly to Excel sheets and secure print servers.</li>
-                            <li><strong>Security Protocols:</strong> Row-level data access filters keeping client transactions private.</li>
-                        </ul>
-                    </div>
                     
-                    <a href="https://oracleapex.com/ords/r/aliabbasqureshi786/novel-2-0/login" target="_blank" class="live-app-badge-trigger">
-                        <i class="fa-solid fa-bolt"></i> Launch Live Application
+                    <div class="project-technical-breakdown-box">
+                        <h4>Architectural Focus</h4>
+                        <ul class="project-step-list">
+                            <li>
+                                <strong>Interactive Reporting Views</strong>
+                                Live data parsing structures that allow rapid operational drill-downs.
+                            </li>
+                            <li>
+                                <strong>UX Layout Paradigm</strong>
+                                Clean, dark layout patterns designed around quick visual status metrics.
+                            </li>
+                            <li>
+                                <strong>Database Processing Layer</strong>
+                                Uses efficient custom package views to minimize loading times on large ledgers.
+                            </li>
+                            <li>
+                                <strong>System Connectivity Matrix</strong>
+                                Seamlessly bridges existing historical transactional tables with responsive web layouts.
+                            </li>
+                        </ul>
+                    </div>
+                    <a class="live-app-badge-trigger">
+                        System Live Framework <i class="fa-solid fa-arrow-right"></i>
                     </a>
+                </div>
+            </div>
+
+            <div class="step-project-item">
+                <div class="project-walkthrough-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80" alt="General Ledger Engine Matrix">
+                </div>
+                <div class="project-step-content">
+                    <span class="project-step-system-tag">Oracle Forms & PL/SQL Engine</span>
+                    <h3>Integrated General Ledger (GL) Module</h3>
+                    <p class="project-step-desc">
+                        A robust financial engine built for KAM and MEKOTEX, tracking transactions from raw double-entry charts of accounts up to final fiscal trial balance outputs.
+                    </p>
+                    
+                    <div class="project-technical-breakdown-box">
+                        <h4>Architectural Focus</h4>
+                        <ul class="project-step-list">
+                            <li>
+                                <strong>Voucher Framework Logic</strong>
+                                Specialized components for processing Bank Payments (BP), Cash, and Journal Vouchers (JV).
+                            </li>
+                            <li>
+                                <strong>Post-Dated Balancing</strong>
+                                Automated staging workflows that release held records accurately upon term validation.
+                            </li>
+                            <li>
+                                <strong>Fiscal Consolidation Engine</strong>
+                                Generates accurate trial balance breakdowns across complex account structures on demand.
+                            </li>
+                            <li>
+                                <strong>Strict Accounting Baselines</strong>
+                                Hardened relational logic constraints designed to prevent manual debit/credit variances.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-project-item">
+                <div class="project-walkthrough-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80" alt="Supply Chain Pipeline Interface">
+                </div>
+                <div class="project-step-content">
+                    <span class="project-step-system-tag">Oracle Forms Execution Framework</span>
+                    <h3>Multi-Inventory Chain ERP System</h3>
+                    <p class="project-step-desc">
+                        An end-to-end materials tracking platform controlling the procurement cycle across 5 independent warehouses, from initial purchase request down to final floor dispatch.
+                    </p>
+                    
+                    <div class="project-technical-breakdown-box">
+                        <h4>Architectural Focus</h4>
+                        <ul class="project-step-list">
+                            <li>
+                                <strong>Procurement Lifecycles</strong>
+                                Centralized tracking connecting Purchase Orders directly to subsequent Delivery Order logs.
+                            </li>
+                            <li>
+                                <strong>Goods Received Note Engine</strong>
+                                Integrated validation controls that automatically verify structural counts against open orders.
+                            </li>
+                            <li>
+                                <strong>Inspection & Return Flows</strong>
+                                Automated balancing adjustments that flag, hold, or route failed inventory batches instantly.
+                            </li>
+                            <li>
+                                <strong>Cross-Store Balances</strong>
+                                Real-time stock movement reporting that tracks materials perfectly across distinct staging areas.
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SECTION 3: FEATURED PROJECTS -->
-    <section id="projects" style="background: radial-gradient(circle at 0% 100%, rgba(255, 51, 20, 0.03), transparent 40%);">
+    <section id="projects">
         <div class="section-header">
-            <span class="section-subtitle">Portfolio</span>
+            <span class="section-subtitle">System Inventory</span>
             <h2 class="section-title">Featured Projects</h2>
-            <p class="section-desc">Production modules deployed across regional distribution centers and integrated client architectures.</p>
+            <p class="section-desc">A gallery of targeted systems deployed to solve operational, scheduling, and processing bottlenecks.</p>
         </div>
 
         <div class="projects-grid-layout">
             <div class="project-card-v2">
                 <div class="project-card-image-box">
-                    <img src="GL.jpeg" alt="General Ledger Module Showcase Screen">
+                    <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=600&q=80" alt="Payroll Processing Application Block">
                 </div>
                 <div class="project-card-body">
-                    <h3>1-General Ledger Engine</h3>
-                    <p>High-performance double-entry core financial ledger featuring a dynamic 1-Form Voucher system (JV, BR, BP, CR, CP) with Post-Dated Check pipelines, RTGS terminals, and real-time Trial Balance analytical reports.</p>
+                    <h3>Enterprise Payroll Platform</h3>
+                    <p>Automated calculation engine processing shifts, loan interest balance scaling, tax rule tables, and direct printing for employee payment slips.</p>
                     <div class="project-card-badges">
-                        <span class="badge-pill-tech">Enterprise</span>
-                        <span class="badge-pill-tech">Oracle Forms 11g</span>
-                        <span class="badge-pill-tech">GL Engine</span>
+                        <span class="badge-pill-tech">Oracle Forms</span>
+                        <span class="badge-pill-tech">PL/SQL</span>
+                        <span class="badge-pill-tech">Calculations</span>
                     </div>
                 </div>
             </div>
 
             <div class="project-card-v2">
                 <div class="project-card-image-box">
-                    <img src="PO_TRANS.jpeg" alt="Supply Chain Module Showcase Screen">
+                    <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=80" alt="Textile Production Controls">
                 </div>
                 <div class="project-card-body">
-                    <h3>Multi-Store SCM & Inventory</h3>
-                    <p>Zero-latency material lifecycle engine tracking physical items through PO, DO, Quality Inspections, GRN, and Returns. Synchronizes stock data loops accurately across 5 isolated warehouse facilities.</p>
+                    <h3>Textile Production Tracker</h3>
+                    <p>Monitors raw material usage throughout production phases, tracks output yields, and checks quality performance metrics against ongoing runs.</p>
                     <div class="project-card-badges">
-                        <span class="badge-pill-tech">SCM Suite</span>
+                        <span class="badge-pill-tech">Manufacturing</span>
+                        <span class="badge-pill-tech">Reports 11g</span>
+                        <span class="badge-pill-tech">Triggers</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card-v2">
+                <div class="project-card-image-box">
+                    <img src="https://images.unsplash.com/photo-1542744094-3a31f103e35f?auto=format&fit=crop&w=600&q=80" alt="Commercial Billing Engines">
+                </div>
+                <div class="project-card-body">
+                    <h3>Commercial Billing Engine</h3>
+                    <p>Automated engine handling customer invoice calculations, tax formatting rules, multi-currency conversions, and comprehensive aging updates.</p>
+                    <div class="project-card-badges">
+                        <span class="badge-pill-tech">Invoicing</span>
                         <span class="badge-pill-tech">PL/SQL Packages</span>
-                        <span class="badge-pill-tech">Logistics</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card-v2">
-                <div class="project-card-image-box">
-                    <img src="APEX_DASHBOARD.PNG" alt="Smart Novel 2.0 Cloud Dashboard Showcase Screen">
-                </div>
-                <div class="project-card-body">
-                    <h3>NOVEL 2.0 Smart Cloud Dashboard</h3>
-                    <p>Web-responsive Cloud Procurement dashboard built on the Oracle APEX engine. Dynamically visualizes international supplier arrays, structural organizational dependencies, and acquisition indents.</p>
-                    <div class="project-card-badges">
-                        <span class="badge-pill-tech">Oracle APEX</span>
-                        <span class="badge-pill-tech">Cloud UI</span>
-                        <span class="badge-pill-tech">Web App</span>
+                        <span class="badge-pill-tech">Data Integrity</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SECTION 4: PROFESSIONAL EXPERIENCE -->
     <section id="experience">
         <div class="section-header">
-            <span class="section-subtitle">Chronology</span>
-            <h2 class="section-title">Professional Systems Engineering</h2>
+            <span class="section-subtitle">Chronological Lifecycle</span>
+            <h2 class="section-title">Professional Experience</h2>
+            <p class="section-desc">Detailed background deploying and tuning transactional code bases for corporate environments.</p>
         </div>
+
         <div class="timeline-stream">
             <div class="timeline-node">
                 <div class="timeline-box">
-                    <h3>Senior Oracle Developer</h3>
-                    <div class="timeline-org">MEKOTEX PVT. LTD</div>
-                    <span class="timeline-stamp">Feb 2025 - Present</span>
+                    <h3>Senior Oracle ERP Developer</h3>
+                    <div class="timeline-org">Enterprise Automation Technologies</div>
+                    <span class="timeline-stamp">2023 — Present</span>
                     <ul>
-                        <li>Direct core system optimization and logic updates across production environments.</li>
-                        <li>Debug complex business operations and maintain data tracking channels for textile operations.</li>
-                        <li>Architected and pushed the central General Ledger system from initial Chart structural layers down into transaction voucher desks.</li>
+                        <li>Led design and refactoring tracks for financial asset tracking models across large manufacturing modules.</li>
+                        <li>Reduced query generation delays significantly by rewriting index tracking strategies and storage views.</li>
+                        <li>Migrated legacy data models into clean web dashboards using structural Oracle APEX components.</li>
                     </ul>
                 </div>
             </div>
 
             <div class="timeline-node">
                 <div class="timeline-box">
-                    <h3>Oracle Developer</h3>
-                    <div class="timeline-org">AUTOSYS Computers</div>
-                    <span class="timeline-stamp">Dec 2024 - Jan 2025</span>
+                    <h3>Oracle Database & Applications Engineer</h3>
+                    <div class="timeline-org">Core Systems Software Solutions</div>
+                    <span class="timeline-stamp">2021 — 2023</span>
                     <ul>
-                        <li>Optimized SQL code routines and form blocks to scale up interface query performance.</li>
-                        <li>Delivered crucial programmatic fixes across production business configurations.</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="timeline-node">
-                <div class="timeline-box">
-                    <h3>Jr. Oracle Developer</h3>
-                    <div class="timeline-org">KAM INTERNATIONAL</div>
-                    <span class="timeline-stamp">May 2022 - Nov 2024</span>
-                    <ul>
-                        <li>Mapped production processes, converting operational guidelines into database code levels.</li>
-                        <li>Managed software ticketing desks and system optimization tasks across multi-site inventories.</li>
-                        <li>Developed accounting frameworks, implementing Chart of Accounts data hierarchies and voucher desks.</li>
+                        <li>Built robust application canvas forms, reporting matrices, and automated calculation modules for day-to-day warehouse data management.</li>
+                        <li>Configured complex trigger actions to handle high-frequency data entry rows smoothly without collisions.</li>
+                        <li>Designed analytical matrix reports that compile operational key metrics automatically for leadership review.</li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SECTION 5: CONTACT PORTAL -->
-    <section id="contact" style="background: radial-gradient(circle at 50% 50%, rgba(255, 51, 20, 0.03), transparent 70%);">
-        <div class="section-header" style="text-align: center; margin: 0 auto 4rem auto;">
-            <h2 class="section-title" style="font-size: 4.5rem; text-transform: lowercase; letter-spacing: -0.04em; max-width: 100%;">lets build something great together</h2>
-        </div>
-        
+    <section id="contact">
         <div class="contact-card-v2">
-            <h3>Send a message</h3>
-            <p>Open to enterprise projects, full-time engineering roles, and system consulting. Based in Karachi — available for remote work architectures worldwide.</p>
+            <h3>Start a Project</h3>
+            <p>Looking to deploy custom system integrations, migrate historical database applications, or optimize demanding PL/SQL code bases?</p>
             
             <form class="contact-form-layout" onsubmit="event.preventDefault();">
                 <div class="form-row-dual">
-                    <input type="text" class="input-pill-field" placeholder="Your name">
-                    <input type="email" class="input-pill-field" placeholder="Email address">
+                    <input type="text" class="input-pill-field" placeholder="Your Name" required>
+                    <input type="email" class="input-pill-field" placeholder="Email Address" required>
                 </div>
-                <input type="text" class="input-pill-field" placeholder="Subject / project type">
-                <textarea class="input-pill-field" rows="5" placeholder="Tell me about your project..." style="resize: none; border-radius: 24px;"></textarea>
-                
-                <button type="submit" class="btn-send-message">Send Message →</button>
+                <input type="text" class="input-pill-field" placeholder="Subject Target">
+                <textarea class="input-pill-field" rows="5" placeholder="Operational System Scope..." style="resize: none; border-radius: 24px;"></textarea>
+                <button type="submit" class="btn-send-message">Dispatch Signal <i class="fa-solid fa-paper-plane"></i></button>
             </form>
-        </div>
 
-        <!-- Interactive Direct-Link Floating Contacts Container -->
-        <div class="contact-capsules-row">
-            <a href="mailto:Ali.QureshiMis@Outlook.com" class="connection-capsule capsule-email">
-                <i class="fa-solid fa-envelope"></i> Ali.QureshiMis@Outlook.com
-            </a>
-            <a href="tel:+923453602968" class="connection-capsule capsule-phone">
-                <i class="fa-solid fa-phone"></i> +92 345 3602968
-            </a>
-            <a href="https://wa.me/923453602968" target="_blank" class="connection-capsule capsule-whatsapp">
-                <i class="fa-brands fa-whatsapp"></i> WhatsApp
-            </a>
-            <a href="https://www.linkedin.com/in/ali-qureshi-a576942a8?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank" class="connection-capsule capsule-linkedin">
-                <i class="fa-brands fa-linkedin-in"></i> LinkedIn
-            </a>
+            <div class="contact-capsules-row">
+                <a href="mailto:ali.qureshi.developer@gmail.com" class="connection-capsule capsule-email">
+                    <i class="fa-solid fa-envelope"></i> Email
+                </a>
+                <a href="tel:+923000000000" class="connection-capsule capsule-phone">
+                    <i class="fa-solid fa-phone"></i> Voice
+                </a>
+                <a href="https://wa.me/923000000000" target="_blank" class="connection-capsule capsule-whatsapp">
+                    <i class="fa-brands fa-whatsapp"></i> WhatsApp
+                </a>
+                <a href="https://linkedin.com/in/ali-abbas-qureshi" target="_blank" class="connection-capsule capsule-linkedin">
+                    <i class="fa-brands fa-linkedin-in"></i> LinkedIn
+                </a>
+            </div>
         </div>
     </section>
 
-    <!-- Footer Area -->
     <div class="footer-wrapper">
         <footer>
-            <p>[ 2026 // CODEWITHALI ] — BSSE Candidate (Virtual University)</p>
+            <div>&copy; 2026 ALI ABBAS QURESHI. ALL SYSTEM RIGHTS RESERVED.</div>
+            <div style="margin-top: 0.5rem; opacity: 0.4; font-size: 0.7rem;">LATENCY METRIC: 0.004s // DB CONNECTED</div>
         </footer>
     </div>
 
-    <!-- Fluid Mouse Cursor Tracking Logic -->
     <script>
         const dot = document.querySelector('.cursor-dot');
         const outline = document.querySelector('.cursor-outline');
@@ -1181,33 +1172,35 @@
             const posX = e.clientX;
             const posY = e.clientY;
 
+            // Instantly move center tracking dot
             dot.style.left = `${posX}px`;
             dot.style.top = `${posY}px`;
 
+            // Follow smoothly with outer tracking circle
             outline.animate({
                 left: `${posX}px`,
                 top: `${posY}px`
-            }, { duration: 500, fill: "forwards" });
+            }, { duration: 120, fill: "forwards" });
         });
 
-        const targets = document.querySelectorAll('a, .btn, .project-card-v2, .expertise-screenshot-card, .timeline-box, .input-pill-field, .btn-send-message, .live-app-badge-trigger');
-        targets.forEach(t => {
-            t.addEventListener('mouseenter', () => {
-                outline.style.width = '55px';
-                outline.style.height = '55px';
-                outline.style.backgroundColor = 'rgba(255, 51, 20, 0.1)';
+        // Add interactive animations for cursor over links and buttons
+        const interactables = document.querySelectorAll('a, button, .project-card-v2, .expertise-screenshot-card');
+        interactables.forEach(item => {
+            item.addEventListener('mouseenter', () => {
                 dot.style.width = '12px';
                 dot.style.height = '12px';
+                outline.style.width = '48px';
+                outline.style.height = '48px';
+                outline.style.backgroundColor = 'rgba(255, 51, 20, 0.05)';
             });
-            t.addEventListener('mouseleave', () => {
+            item.addEventListener('mouseleave', () => {
+                dot.style.width = '8px';
+                dot.style.height = '8px';
                 outline.style.width = '32px';
                 outline.style.height = '32px';
                 outline.style.backgroundColor = 'transparent';
-                dot.style.width = '8px';
-                dot.style.height = '8px';
             });
         });
     </script>
-
 </body>
 </html>
