@@ -5,29 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ali Abbas Qureshi | Enterprise Systems Architect</title>
     
-    <!-- Premium Inline Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23a855f7'/%3E%3Cstop offset='100%25' stop-color='%23ff3322'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='32' cy='32' r='32' fill='url(%23g)'/%3E%3Ctext x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' fill='%23ffffff' font-family='sans-serif' font-weight='800' font-size='22'%3EAQ%3C/text%3E%3C/svg%3E">
     
-    <!-- Premium Display & Interface Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     
-    <!-- FontAwesome Core Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         :root {
-            --bg-canvas: #070814;       /* Deep Navy Canvas Background */
+            --bg-canvas: #08060c;       /* Deep Luxury Dark Canvas Background */
             --bg-surface: #0b0c1e;      /* Premium Navy Surface Layer */
-            --bg-card: #12142b;         
-            --accent-red: #ff3322;      
-            --accent-glow: #00f2fe;     
+            --bg-card: #120f1a;         /* High-Fidelity Card Contrast Depth */
+            --accent-red: #ff3314;      /* Saturated SCM Neon Red-Orange Accent */
             --text-pure: #ffffff;
             --text-prime: #f3f4f6;
-            --text-muted: #9ca3af;
-            --text-dark: #4b5563;
-            --border-line: #1c1d3a;
+            --text-muted: #83828a;
+            --text-dark: #5c5a63;
+            --border-line: rgba(255, 255, 255, 0.06);
             --font-display: 'Syne', sans-serif;
             --font-sans: 'Plus Jakarta Sans', sans-serif;
             --font-mono: 'JetBrains Mono', monospace;
@@ -48,6 +44,20 @@
             font-size: 0.95rem;
             overflow-x: hidden;
             letter-spacing: -0.01em;
+            position: relative;
+        }
+
+        /* Ambient Glow Gradients */
+        body::before {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            top: -200px;
+            right: -100px;
+            background: radial-gradient(circle, rgba(255, 51, 20, 0.08) 0%, rgba(0,0,0,0) 70%);
+            z-index: -1;
+            pointer-events: none;
         }
 
         /* Custom Dual-Ring Tracking Pointer Elements */
@@ -75,7 +85,7 @@
             transition: transform 0.08s ease-out, width 0.2s, height 0.2s, background-color 0.2s;
         }
 
-        /* Fixed Navigation Framework with Exact Width Restriction */
+        /* Fixed Navigation Framework */
         nav {
             position: fixed;
             top: 0;
@@ -83,10 +93,10 @@
             transform: translateX(-50%);
             width: 100%;
             max-width: 1440px;
-            background-color: rgba(7, 8, 20, 0.8);
+            background-color: rgba(8, 6, 12, 0.85);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border-line);
+            border-bottom: var(--border-line);
             z-index: 1000;
             display: flex;
             justify-content: space-between;
@@ -107,13 +117,15 @@
             gap: 0.5rem;
         }
 
-        .logo i {
+        .logo-bracket {
             color: var(--accent-red);
-            font-size: 1.25rem;
+            margin-right: 2px;
         }
 
-        .logo .brand-red {
-            color: var(--accent-red);         
+        .logo-name {
+            font-family: var(--font-sans);
+            font-weight: 700;
+            color: var(--text-pure);
         }
 
         .nav-links {
@@ -137,7 +149,7 @@
             color: var(--text-pure);
         }
 
-        /* Layout Grid System Alignment Matrix - Proportional Centering Engine */
+        /* Layout Grid System Alignment Matrix */
         section {
             max-width: 1440px;
             margin: 0 auto;
@@ -179,13 +191,12 @@
             max-width: 650px;
         }
 
-        /* Hero Split Screen View Grid Frame - Re-proportioned for Width Layout balance */
+        /* Hero Split Screen View Grid Frame */
         #home {
             display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
-            gap: 3.5rem;
+            grid-template-columns: 1.22fr 0.78fr;
+            gap: 5rem;
             align-items: center;
-            background: radial-gradient(circle at 0% 0%, rgba(255, 51, 34, 0.04), transparent 50%);
         }
 
         .hero-left {
@@ -199,16 +210,16 @@
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            border: 1px solid rgba(255, 51, 34, 0.2);
-            background-color: rgba(255, 51, 34, 0.05);
+            border: 1px solid rgba(255, 51, 20, 0.2);
+            background-color: rgba(255, 51, 20, 0.05);
             color: var(--accent-red);
-            padding: 0.4rem 1rem;
+            padding: 0.45rem 1rem;
             border-radius: 50px;
-            font-size: 0.7rem;
-            font-family: var(--font-mono);
-            text-transform: uppercase;
+            font-size: 0.72rem;
+            font-weight: 700;
             letter-spacing: 0.1em;
             margin-bottom: 2rem;
+            text-transform: uppercase;
         }
 
         .badge-status::before {
@@ -218,64 +229,106 @@
             background-color: var(--accent-red);
             border-radius: 50%;
             display: inline-block;
+            box-shadow: 0 0 10px var(--accent-red);
         }
 
-        /* Standardized Form Typography Breakdowns */
+        /* 3-Row Precise Typographical Layout Engine */
         .hero-title-container {
             display: flex;
             flex-direction: column;
-            gap: 0.1rem;
-            margin-bottom: 2.5rem;
+            gap: 0rem;
+            margin-bottom: 2rem;
             width: 100%;
         }
 
         .line-pure, .line-colored, .line-outline {
             font-family: var(--font-display);
-            font-size: 4.25rem;
+            font-size: 5.2rem;
             font-weight: 800;
-            line-height: 1.1;
-            letter-spacing: -0.02em;
+            line-height: 0.98;
+            letter-spacing: -3px;
             text-transform: uppercase;
             display: block;
             white-space: nowrap;
         }
         .line-pure { color: var(--text-pure); }
-        .line-colored { color: var(--accent-red); }
-        .line-outline { color: transparent; -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3); }
+        .line-colored { 
+            color: var(--accent-red); 
+            text-shadow: 0 0 40px rgba(255, 51, 20, 0.2);
+        }
+        .line-outline { 
+            color: transparent; 
+            -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.45); 
+        }
 
         .hero-tagline {
             font-size: 1.05rem;
             color: var(--text-muted);
-            max-width: 620px;
+            max-width: 550px;
             margin-bottom: 3rem;
-            line-height: 1.6;
+            line-height: 1.65;
         }
 
         .cta-group {
             display: flex;
             flex-wrap: wrap;
-            gap: 1.2rem;
+            gap: 1rem;
         }
 
         .btn {
-            padding: 0.9rem 2.2rem;
+            padding: 0.95rem 2.2rem;
             border-radius: 50px;
             font-weight: 600;
-            font-size: 0.85rem;
+            font-size: 0.95rem;
             text-decoration: none;
-            transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+            transition: all 0.25s ease;
             cursor: pointer;
             display: inline-flex;
             align-items: center;
             gap: 0.75rem;
         }
 
-        .btn-primary { background-color: var(--accent-red); color: var(--text-pure); border: 1px solid var(--accent-red); }
-        .btn-primary:hover { background-color: transparent; box-shadow: 0 10px 25px rgba(255, 51, 34, 0.25); }
-        .btn-secondary { border: 1px solid var(--border-line); color: var(--text-prime); background-color: rgba(255, 255, 255, 0.02); }
-        .btn-secondary:hover { background-color: rgba(255, 255, 255, 0.05); border-color: var(--text-muted); }
+        .btn-primary { background-color: var(--accent-red); color: var(--text-pure); }
+        .btn-primary:hover { background-color: #e2280d; transform: translateY(-2px); box-shadow: 0 10px 24px rgba(255, 51, 20, 0.25); }
+        .btn-secondary { border: 1px solid var(--border-line); color: var(--text-pure); background-color: rgba(255, 255, 255, 0.02); }
+        .btn-secondary:hover { background-color: rgba(255, 255, 255, 0.06); border-color: rgba(255, 255, 255, 0.2); transform: translateY(-2px); }
 
-        /* Screenshot card layout matrix */
+        /* Re-engineered Profile Container Matrix (Fat & Shorter Proportions) */
+        .profile-container {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-line);
+            border-radius: 32px;
+            padding: 2.25rem 2.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            width: 100%;
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.5);
+            justify-self: end;
+            animation: smoothFloatMotion 6s ease-in-out infinite; 
+        }
+
+        @keyframes smoothFloatMotion {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .profile-header-card { display: flex; align-items: center; gap: 1.25rem; }
+        .profile-avatar { width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #7928ca, var(--accent-red)); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-weight: 800; font-size: 1.25rem; color: var(--text-pure); }
+        .profile-info h3 { font-family: var(--font-sans); font-size: 1.45rem; font-weight: 600; color: var(--text-pure); margin-bottom: 3px; }
+        .profile-info p { font-size: 0.85rem; color: #5c5a63; font-weight: 500; }
+        
+        .profile-stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+        .stat-mini-box { background-color: rgba(255, 255, 255, 0.015); border: 1px solid rgba(255, 255, 255, 0.03); border-radius: 18px; padding: 1.25rem; }
+        .stat-mini-box h4 { font-family: var(--font-display); font-size: 1.95rem; font-weight: 700; color: var(--text-pure); margin-bottom: 4px; }
+        .stat-mini-box p { font-size: 0.8rem; color: #615f69; font-weight: 500; }
+        
+        .profile-tags-flex { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+        .mini-tag { background-color: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.07); padding: 0.5rem 1rem; border-radius: 50px; font-size: 0.78rem; font-weight: 500; color: #929199; }
+        .tag-highlight { border-color: rgba(255, 51, 20, 0.25); color: var(--accent-red); background-color: rgba(255, 51, 20, 0.02); }
+
+        /* Expertise Grid Framework */
         .expertise-grid-screenshot-layout {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -285,7 +338,7 @@
         }
 
         .expertise-screenshot-card {
-            background-color: rgba(11, 12, 30, 0.4);
+            background-color: rgba(18, 15, 26, 0.4);
             border: 1px solid var(--border-line);
             border-radius: 24px;
             padding: 2.5rem 2rem;
@@ -297,7 +350,7 @@
 
         .expertise-screenshot-card:hover {
             transform: translateY(-6px);
-            border-color: rgba(255, 51, 34, 0.3);
+            border-color: rgba(255, 51, 20, 0.3);
         }
 
         .expertise-icon-wrapper {
@@ -347,39 +400,7 @@
             color: var(--text-muted);
         }
 
-        /* Profile Container - Modified for Increased Width and Decreased Height */
-        .profile-container {
-            background: linear-gradient(145deg, var(--bg-surface), #0f1026);
-            border: 1px solid var(--border-line);
-            border-radius: 24px;
-            padding: 2.25rem 2.5rem;
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-            width: 100%;
-            max-width: 520px;
-            justify-self: end;
-            animation: smoothFloatMotion 6s ease-in-out infinite; 
-        }
-
-        @keyframes smoothFloatMotion {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-12px); }
-            100% { transform: translateY(0px); }
-        }
-
-        .profile-header-card { display: flex; align-items: center; gap: 1.25rem; }
-        .profile-avatar { width: 64px; height: 64px; border-radius: 50%; background: linear-gradient(135deg, #a855f7, #ff3322); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-weight: 800; font-size: 1.25rem; color: var(--text-pure); }
-        .profile-info h3 { font-family: var(--font-display); font-size: 1.35rem; font-weight: 700; color: var(--text-pure); }
-        .profile-info p { font-size: 0.85rem; color: var(--text-muted); }
-        .profile-stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-        .stat-mini-box { background-color: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-line); border-radius: 12px; padding: 1rem 1.25rem; }
-        .stat-mini-box h4 { font-family: var(--font-display); font-size: 1.5rem; font-weight: 800; color: var(--text-pure); margin-bottom: 0.25rem; }
-        .stat-mini-box p { font-size: 0.75rem; color: var(--text-muted); }
-        .profile-tags-flex { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-        .mini-tag { background-color: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-line); padding: 0.4rem 0.8rem; border-radius: 50px; font-size: 0.70rem; font-weight: 500; color: var(--text-muted); }
-
-        /* Integrated Walkthrough Card Matrix Grid System */
+        /* Walkthrough Grid Framework */
         .step-project-container {
             display: flex;
             flex-direction: column;
@@ -406,7 +427,7 @@
             border-radius: 24px;
             overflow: hidden;
             border: 1px solid var(--border-line);
-            background-color: var(--bg-surface);
+            background-color: var(--bg-card);
             aspect-ratio: 16 / 11;
         }
 
@@ -450,7 +471,7 @@
         }
 
         .project-technical-breakdown-box {
-            background-color: var(--bg-surface);
+            background-color: rgba(18, 15, 26, 0.6);
             border: 1px solid var(--border-line);
             border-radius: 20px;
             padding: 2.25rem;
@@ -499,7 +520,6 @@
             font-weight: bold;
         }
 
-        /* Live Application Embedded Interactive Badge Matrix */
         .live-app-badge-trigger {
             display: inline-flex;
             align-items: center;
@@ -507,15 +527,14 @@
             margin-top: 1.25rem;
             padding: 0.85rem 1.75rem;
             border-radius: 50px;
-            background: rgba(255, 51, 34, 0.08);
-            border: 1px solid rgba(255, 51, 34, 0.25);
+            background: rgba(255, 51, 20, 0.08);
+            border: 1px solid rgba(255, 51, 20, 0.25);
             color: var(--text-pure);
             font-weight: 600;
             font-size: 0.85rem;
             text-decoration: none;
             cursor: pointer;
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            box-shadow: 0 4px 15px rgba(255, 51, 34, 0.05);
         }
 
         .live-app-badge-trigger i {
@@ -533,7 +552,6 @@
         }
 
         .live-app-badge-trigger:hover i {
-            color: var(--accent-red);
             transform: translateX(3px);
         }
 
@@ -546,7 +564,7 @@
         }
 
         .project-card-v2 {
-            background-color: rgba(11, 12, 30, 0.6);
+            background-color: rgba(18, 15, 26, 0.6);
             border: 1px solid var(--border-line);
             border-radius: 28px;
             overflow: hidden;
@@ -557,7 +575,7 @@
 
         .project-card-v2:hover {
             transform: translateY(-8px);
-            border-color: rgba(255, 51, 34, 0.4);
+            border-color: rgba(255, 51, 20, 0.4);
         }
 
         .project-card-image-box {
@@ -581,7 +599,7 @@
         .project-card-body h3 { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; color: var(--text-pure); margin-bottom: 0.75rem; line-height: 1.2; }
         .project-card-body p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; margin-bottom: 2rem; flex-grow: 1; }
         .project-card-badges { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: auto; }
-        .badge-pill-tech { background-color: rgba(255, 51, 34, 0.06); border: 1px solid rgba(255, 51, 34, 0.15); color: var(--accent-red); font-family: var(--font-mono); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.4rem 0.9rem; border-radius: 50px; font-weight: 600; }
+        .badge-pill-tech { background-color: rgba(255, 51, 20, 0.06); border: 1px solid rgba(255, 51, 20, 0.15); color: var(--accent-red); font-family: var(--font-mono); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.4rem 0.9rem; border-radius: 50px; font-weight: 600; }
 
         /* Chronological Timeline Layout */
         .timeline-stream { position: relative; max-width: 800px; margin: 0 auto; width: 100%; }
@@ -589,8 +607,8 @@
         .timeline-node { position: relative; padding-left: 80px; margin-bottom: 4rem; }
         .timeline-node::after { content: ''; position: absolute; width: 8px; height: 8px; left: 26px; top: 32px; background-color: var(--bg-canvas); border: 2px solid var(--accent-red); border-radius: 50%; z-index: 2; transition: background-color 0.3s ease; }
         .timeline-node:hover::after { background-color: var(--accent-red); }
-        .timeline-box { background-color: var(--bg-surface); border: 1px solid var(--border-line); padding: 2.5rem; border-radius: 12px; transition: border-color 0.3s ease; }
-        .timeline-box:hover { border-color: rgba(255, 255, 255, 0.05); }
+        .timeline-box { background-color: var(--bg-card); border: 1px solid var(--border-line); padding: 2.5rem; border-radius: 12px; transition: border-color 0.3s ease; }
+        .timeline-box:hover { border-color: rgba(255, 255, 255, 0.1); }
         .timeline-box h3 { font-family: var(--font-display); font-size: 1.35rem; font-weight: 700; color: var(--text-pure); margin-bottom: 0.25rem; }
         .timeline-org { font-weight: 500; font-size: 1rem; color: var(--accent-red); margin-bottom: 0.5rem; }
         .timeline-stamp { font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-dark); margin-bottom: 1.5rem; display: block; }
@@ -598,9 +616,9 @@
         .timeline-box ul li { position: relative; padding-left: 1.25rem; margin-bottom: 0.75rem; font-size: 0.9rem; color: var(--text-muted); }
         .timeline-box ul li::before { content: "•"; position: absolute; left: 0; color: var(--accent-red); }
 
-        /* Premium Contact Section Framework */
+        /* Contact Section Canvas Framework */
         .contact-card-v2 {
-            background-color: rgba(11, 12, 30, 0.6);
+            background-color: rgba(18, 15, 26, 0.6);
             border: 1px solid var(--border-line);
             border-radius: 36px;
             max-width: 760px;
@@ -631,7 +649,7 @@
         .form-row-dual { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
         .input-pill-field { width: 100%; background-color: rgba(7, 8, 20, 0.5); border: 1px solid var(--border-line); border-radius: 18px; padding: 1.1rem 1.5rem; color: var(--text-pure); font-size: 0.9rem; outline: none; transition: border-color 0.3s ease, box-shadow 0.3s ease; }
         .input-pill-field::placeholder { color: var(--text-dark); }
-        .input-pill-field:focus { border-color: rgba(255, 51, 34, 0.4); box-shadow: 0 0 15px rgba(255, 51, 34, 0.1); }
+        .input-pill-field:focus { border-color: rgba(255, 51, 20, 0.4); box-shadow: 0 0 15px rgba(255, 51, 20, 0.1); }
         
         .btn-send-message {
             background-color: var(--accent-red);
@@ -648,12 +666,12 @@
             align-items: center;
             gap: 0.5rem;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 8px 20px rgba(255, 51, 34, 0.2);
+            box-shadow: 0 8px 20px rgba(255, 51, 20, 0.2);
         }
 
-        .btn-send-message:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(255, 51, 34, 0.4); }
+        .btn-send-message:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(255, 51, 20, 0.4); }
         .contact-capsules-row { display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem; margin-top: 3.5rem; width: 100%; }
-        .connection-capsule { display: inline-flex; align-items: center; gap: 0.75rem; background-color: rgba(11, 12, 30, 0.4); border: 1px solid var(--border-line); padding: 0.75rem 1.75rem; border-radius: 50px; color: var(--text-muted); text-decoration: none; font-size: 0.85rem; font-weight: 500; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
+        .connection-capsule { display: inline-flex; align-items: center; gap: 0.75rem; background-color: rgba(18, 15, 26, 0.4); border: 1px solid var(--border-line); padding: 0.75rem 1.75rem; border-radius: 50px; color: var(--text-muted); text-decoration: none; font-size: 0.85rem; font-weight: 500; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
         .connection-capsule i { font-size: 1rem; transition: transform 0.3s ease; }
         .connection-capsule:hover { color: var(--text-pure); border-color: rgba(255, 255, 255, 0.15); background-color: rgba(20, 22, 44, 0.8); transform: translateY(-3px); }
         .capsule-email:hover i { color: #ea4335; }
@@ -669,20 +687,21 @@
         
         footer { text-align: center; padding: 4rem 2rem; color: var(--text-dark); font-size: 0.8rem; font-family: var(--font-mono); letter-spacing: 0.05em; }
 
-        /* High-Fidelity Responsive Layout Adapters */
+        /* High-Fidelity Responsive Adapters */
         @media screen and (max-width: 1200px) {
             #home { grid-template-columns: 1fr; gap: 4rem; }
-            .line-pure, .line-colored, .line-outline { font-size: 3.5rem; white-space: normal; }
+            .line-pure, .line-colored, .line-outline { font-size: 4rem; white-space: normal; }
             .expertise-grid-screenshot-layout { grid-template-columns: repeat(2, 1fr); }
             .step-project-item { grid-template-columns: 1fr; gap: 2.5rem; }
             .projects-grid-layout { grid-template-columns: repeat(2, 1fr); }
             .profile-container { max-width: 100%; justify-self: center; }
         }
 
-        @media screen and (max-width: 968px) {
+        @media screen parks and (max-width: 968px) {
             nav { padding: 1.5rem 2rem; }
+            .nav-links { display: none; }
             section { padding: 8rem 2rem 6rem 2rem; }
-            .line-pure, .line-colored, .line-outline { font-size: 2.5rem; }
+            .line-pure, .line-colored, .line-outline { font-size: 3rem; letter-spacing: -1.5px; }
             .section-title { font-size: 3rem; }
             .expertise-grid-screenshot-layout { grid-template-columns: 1fr; }
             .project-step-list { grid-template-columns: 1fr; }
@@ -700,9 +719,8 @@
     <div class="cursor-outline"></div>
 
     <nav>
-        <!-- Professional PL/SQL Developer Logo Matrix -->
         <div class="logo">
-            <i class="fa-solid fa-database"></i> PL/SQL // <span class="brand-red">WITH</span> ALI QURESHI
+            <span class="logo-bracket">&lt;&gt;</span>By<span class="logo-name">AliQureshi</span>
         </div>
         <ul class="nav-links">
             <li><a href="#expertise">Expertise</a></li>
@@ -713,20 +731,18 @@
         </ul>
     </nav>
 
-    <!-- Master Split Screen Hero Canvas -->
     <section id="home">
         <div class="hero-left">
             <div class="badge-status">Available for opportunities</div>
             
-            <!-- Standard Typography Block Enforcing Independent Rows Safely -->
             <div class="hero-title-container">
-                <span class="line-pure">Oracle Forms</span>
-                <span class="line-colored">& Reports & PL SQL & APEX</span>
-                <span class="line-outline">Developer</span>
+                <span class="line-pure">Oracle</span>
+                <span class="line-colored">Forms &</span>
+                <span class="line-outline">Reports</span>
             </div>
             
             <p class="hero-tagline">
-                I build high-performance industrial software architectures, automated warehouse logistics lifecycles, and completely integrated multi-tier financial ledger networks. Engineered for zero-latency execution directly over critical database backends in Karachi.[cite: 1]
+                I build enterprise systems, robust database solutions, and financial applications. From core General Ledger modules to multi-store Inventory management ERP systems — real code, real business impact, based in Karachi.
             </p>
             <div class="cta-group">
                 <a href="#projects" class="btn btn-primary"><i class="fa-solid fa-folder-open"></i> View Projects</a>
@@ -734,13 +750,12 @@
             </div>
         </div>
 
-        <!-- Re-engineered Profile Container Component -->
         <div class="profile-container">
             <div class="profile-header-card">
                 <div class="profile-avatar">AQ</div>
                 <div class="profile-info">
                     <h3>Ali Abbas Qureshi</h3>
-                    <p>Principal Systems Engineer • Karachi, PK[cite: 1]</p>
+                    <p>Oracle Developer • Karachi, PK</p>
                 </div>
             </div>
 
@@ -764,18 +779,18 @@
             </div>
 
             <div class="profile-tags-flex">
-                <span class="mini-tag" style="color: #ff3322; border-color: rgba(255,51,34,0.2);">Oracle Forms</span>
-                <span class="mini-tag">PL/SQL</span>
-                <span class="mini-tag">Oracle DB</span>
-                <span class="mini-tag" style="color: #ff9f43; border-color: rgba(255,159,67,0.2);">SCM Engines</span>
-                <span class="mini-tag" style="color: #00ff87; border-color: rgba(0,255,135,0.2);">General Ledger</span>
-                <span class="mini-tag">Oracle APEX</span>
+                <span class="mini-tag tag-highlight">PL/SQL</span>
+                <span class="mini-tag">Oracle Forms</span>
+                <span class="mini-tag">Reports</span>
+                <span class="mini-tag">Oracle DB 11g</span>
+                <span class="mini-tag">ERP Customization</span>
+                <span class="mini-tag">Triggers</span>
+                <span class="mini-tag">Procedures</span>
             </div>
         </div>
     </section>
 
-    <!-- SECTION 1: RESUME-SYNCHRONIZED EXPERTISE MATRIX -->
-    <section id="expertise" style="background: radial-gradient(circle at 100% 0%, rgba(255, 51, 34, 0.02), transparent 40%);">
+    <section id="expertise" style="background: radial-gradient(circle at 100% 0%, rgba(255, 51, 20, 0.02), transparent 40%);">
         <div class="section-header">
             <span class="section-subtitle">Expertise Portfolio</span>
             <h2 class="section-title" style="font-size: 5rem; letter-spacing: -0.04em;">What I bring<br>to the table</h2>
@@ -786,7 +801,7 @@
             <div class="expertise-screenshot-card">
                 <div class="expertise-icon-wrapper"><i class="fa-solid fa-layer-group"></i></div>
                 <h3>Oracle Forms & Reports</h3>
-                <p>Advanced development, configuration, and structural installation across runtime versions 6i, 10g, and 11g. Designing interactive FMB canvases, report designs, and alert alerts.</p>
+                <p>Advanced development, configuration, and structural installation across runtime versions 6i, 10g, and 11g. Designing interactive FMB canvases, report designs, and alert systems.</p>
                 <div class="expertise-tags-row">
                     <span class="expertise-mini-tag">6i / 10g / 11g</span>
                     <span class="expertise-mini-tag">Installation</span>
@@ -829,7 +844,6 @@
         </div>
     </section>
 
-    <!-- SECTION 2: PROJECTS WALKTHROUGH WITH DETAILED SPECS -->
     <section id="detailed-projects">
         <div class="section-header">
             <span class="section-subtitle">Deep Dive Log</span>
@@ -838,22 +852,20 @@
         </div>
 
         <div class="step-project-container">
-            
-            <!-- SYSTEM WALKTHROUGH 1: FINANCIAL LEDGER -->
             <div class="step-project-item">
                 <div class="project-walkthrough-image-wrapper">
-                    <img src="GL.jpeg" alt="Oracle General Ledger Master Financial System Screenshot">
+                    <img src="GL.jpeg" alt="Oracle General Ledger Financial System Canvas Layout">
                 </div>
                 <div class="project-step-content">
                     <h3>1-GENERAL LEDGER & FINANCIAL ENGINE</h3>
                     <span class="project-step-system-tag">Enterprise Ledger Core Architecture</span>
                     <p class="project-step-desc">
-                        A double-entry accounting matrix running completely inside a single Oracle Forms runtime canvas. It manages financial data flow across your entire structural system.
+                        A double-entry accounting matrix running completely inside a single Oracle Forms runtime canvas, tracking cash variables system-wide.
                     </p>
                     <div class="project-technical-breakdown-box">
                         <h4>System Capabilities & Modules Deployed</h4>
                         <ul class="project-step-list">
-                            <li><strong>1-Form Vouchers:</strong> Handles Journal Vouchers (JV), Bank Receipts (BR), Bank Payments (BP), Cash Receipts (CR), and Cash Payments (CP).</li>
+                            <li><strong>Form Vouchers:</strong> Handles Journal Vouchers (JV), Bank Receipts (BR), Bank Payments (BP), Cash Receipts (CR), and Cash Payments (CP).</li>
                             <li><strong>Banking Pipelines:</strong> Post-Dated Transactions (PD Checks) monitoring state variables and real-time RTGS clearance tracking.</li>
                             <li><strong>Analytical Reports:</strong> Dynamic General Ledger Reports (Detailed + Summary formats) and Trial Balance Sheets (Detailed + Summary).</li>
                             <li><strong>Chart of Accounts:</strong> Powered by a Centralized Chart of Accounts Setup structure enforcing strict relational integrity codes.</li>
@@ -862,10 +874,9 @@
                 </div>
             </div>
 
-            <!-- SYSTEM WALKTHROUGH 2: SUPPLY CHAIN -->
             <div class="step-project-item">
                 <div class="project-walkthrough-image-wrapper">
-                    <img src="PO_TRANS.jpeg" alt="Oracle Supply Chain Management Framework Screenshot">
+                    <img src="PO_TRANS.jpeg" alt="Oracle Supply Chain Management Framework Canvas Layout">
                 </div>
                 <div class="project-step-content">
                     <h3>Multi-Store SCM & Inventory Management Matrix</h3>
@@ -885,10 +896,9 @@
                 </div>
             </div>
 
-            <!-- SYSTEM WALKTHROUGH 3: CLOUD APEX NOVEL 2.0 -->
             <div class="step-project-item">
                 <div class="project-walkthrough-image-wrapper">
-                    <img src="APEX_DASHBOARD.PNG" alt="NOVEL 2.0 Oracle APEX Cloud Application Screenshot">
+                    <img src="APEX_DASHBOARD.PNG" alt="NOVEL 2.0 Oracle APEX Cloud Interface Layout">
                 </div>
                 <div class="project-step-content">
                     <h3>NOVEL 2.0 Procurement Cloud Framework</h3>
@@ -911,12 +921,10 @@
                     </a>
                 </div>
             </div>
-
         </div>
     </section>
 
-    <!-- SECTION 3: FEATURED PROJECTS -->
-    <section id="projects" style="background: radial-gradient(circle at 0% 100%, rgba(255, 51, 34, 0.03), transparent 40%);">
+    <section id="projects" style="background: radial-gradient(circle at 0% 100%, rgba(255, 51, 20, 0.03), transparent 40%);">
         <div class="section-header">
             <span class="section-subtitle">Portfolio</span>
             <h2 class="section-title">Featured Projects</h2>
@@ -926,7 +934,7 @@
         <div class="projects-grid-layout">
             <div class="project-card-v2">
                 <div class="project-card-image-box">
-                    <img src="GL.jpeg" alt="General Ledger Master Financial System">
+                    <img src="GL.jpeg" alt="General Ledger Module Showcase Screen">
                 </div>
                 <div class="project-card-body">
                     <h3>1-General Ledger Engine</h3>
@@ -941,7 +949,7 @@
 
             <div class="project-card-v2">
                 <div class="project-card-image-box">
-                    <img src="PO_TRANS.jpeg" alt="Oracle Supply Chain Management Framework">
+                    <img src="PO_TRANS.jpeg" alt="Supply Chain Module Showcase Screen">
                 </div>
                 <div class="project-card-body">
                     <h3>Multi-Store SCM & Inventory</h3>
@@ -956,7 +964,7 @@
 
             <div class="project-card-v2">
                 <div class="project-card-image-box">
-                    <img src="APEX_DASHBOARD.PNG" alt="NOVEL 2.0 Oracle APEX Cloud Application">
+                    <img src="APEX_DASHBOARD.PNG" alt="Smart Novel 2.0 Cloud Dashboard Showcase Screen">
                 </div>
                 <div class="project-card-body">
                     <h3>NOVEL 2.0 Smart Cloud Dashboard</h3>
@@ -971,7 +979,6 @@
         </div>
     </section>
 
-    <!-- SECTION 4: PROFESSIONAL EXPERIENCE -->
     <section id="experience">
         <div class="section-header">
             <span class="section-subtitle">Chronology</span>
@@ -1018,8 +1025,7 @@
         </div>
     </section>
 
-    <!-- SECTION 5: CONTACT ARCHITECTURE -->
-    <section id="contact" style="background: radial-gradient(circle at 50% 50%, rgba(255, 51, 34, 0.03), transparent 70%);">
+    <section id="contact" style="background: radial-gradient(circle at 50% 50%, rgba(255, 51, 20, 0.03), transparent 70%);">
         <div class="section-header" style="text-align: center; margin: 0 auto 4rem auto;">
             <h2 class="section-title" style="font-size: 4.5rem; text-transform: lowercase; letter-spacing: -0.04em; max-width: 100%;">lets build something great together</h2>
         </div>
@@ -1062,7 +1068,6 @@
         </footer>
     </div>
 
-    <!-- Dual-Ring Pointer Fluid Acceleration Inertia Script Engine -->
     <script>
         const dot = document.querySelector('.cursor-dot');
         const outline = document.querySelector('.cursor-outline');
@@ -1085,7 +1090,7 @@
             t.addEventListener('mouseenter', () => {
                 outline.style.width = '55px';
                 outline.style.height = '55px';
-                outline.style.backgroundColor = 'rgba(255, 51, 34, 0.1)';
+                outline.style.backgroundColor = 'rgba(255, 51, 20, 0.1)';
                 dot.style.width = '12px';
                 dot.style.height = '12px';
             });
