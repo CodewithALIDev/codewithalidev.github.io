@@ -9,7 +9,7 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght=700;800&family=Plus+Jakarta+Sans:wght=300;400;500;600;700&family=JetBrains+Mono:wght=400;500&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -191,7 +191,7 @@
             max-width: 650px;
         }
 
-        /* Hero Grid View Frame - Expanded Right-Side Column to Increase Card Width */
+        /* Hero Grid View Frame */
         #home {
             display: grid;
             grid-template-columns: 0.75fr 1.25fr;
@@ -234,7 +234,6 @@
             box-shadow: 0 0 10px var(--accent-red);
         }
 
-        /* Title container aligned clean with left grid rules */
         .hero-title-container {
             display: flex;
             flex-direction: column;
@@ -263,7 +262,6 @@
             -webkit-text-stroke: 1.2px rgba(255, 255, 255, 0.45); 
         }
 
-        /* Custom Sub-Stack Tech Row Styling */
         .hero-sub-stack-row {
             font-family: var(--font-sans);
             font-size: 1.05rem;
@@ -313,7 +311,7 @@
         .btn-secondary { border: 1px solid var(--border-line); color: var(--text-pure); background-color: rgba(255, 255, 255, 0.02); }
         .btn-secondary:hover { background-color: rgba(255, 255, 255, 0.06); border-color: rgba(255, 255, 255, 0.2); transform: translateY(-2px); }
 
-        /* Expanded Profile Card Proportions - Automatically grows with the broader grid column */
+        /* Profile Card Proportions */
         .profile-container {
             background-color: var(--bg-card);
             border: 1px solid var(--border-line);
@@ -575,10 +573,10 @@
             transform: translateX(3px);
         }
 
-        /* 3-Column Image Project Cards Grid Layout */
+        /* Responsive Grid Layout for 4 Items (2x2 on Desktop, 1 Col on Mobile) */
         .projects-grid-layout {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(2, 1fr);
             gap: 2rem;
             width: 100%;
         }
@@ -600,7 +598,7 @@
 
         .project-card-image-box {
             width: 100%;
-            aspect-ratio: 16 / 10;
+            aspect-ratio: 16 / 9;
             overflow: hidden;
             background-color: #04050d;
             border-bottom: 1px solid var(--border-line);
@@ -626,6 +624,7 @@
         .timeline-stream::after { content: ''; position: absolute; width: 1px; background-color: var(--border-line); top: 0; bottom: 0; left: 30px; }
         .timeline-node { position: relative; padding-left: 80px; margin-bottom: 4rem; }
         .timeline-node::after { content: ''; position: absolute; width: 8px; height: 8px; left: 26px; top: 32px; background-color: var(--bg-canvas); border: 2px solid var(--accent-red); border-radius: 50%; z-index: 2; transition: background-color 0.3s ease; }
+        .timeline-node:hover::after { background-color: var(--accent-red); }
         .timeline-node:hover::after { background-color: var(--accent-red); }
         .timeline-box { background-color: var(--bg-card); border: 1px solid var(--border-line); padding: 2.5rem; border-radius: 12px; transition: border-color 0.3s ease; }
         .timeline-box:hover { border-color: rgba(255, 255, 255, 0.1); }
@@ -714,7 +713,7 @@
             .line-pure, .line-colored, .line-outline { font-size: 3.5rem; white-space: normal; }
             .expertise-grid-screenshot-layout { grid-template-columns: repeat(2, 1fr); }
             .step-project-item { grid-template-columns: 1fr; gap: 2.5rem; }
-            .projects-grid-layout { grid-template-columns: repeat(2, 1fr); }
+            .projects-grid-layout { grid-template-columns: 1fr; }
             .profile-container { max-width: 100%; justify-self: center; }
         }
 
@@ -726,7 +725,6 @@
             .section-title { font-size: 3rem; }
             .expertise-grid-screenshot-layout { grid-template-columns: 1fr; }
             .project-step-style { grid-template-columns: 1fr; }
-            .projects-grid-layout { grid-template-columns: 1fr; }
             .contact-card-v2 { padding: 2.5rem 1.5rem; }
             .form-row-dual { grid-template-columns: 1fr; gap: 1.25rem; }
             .cursor-dot, .cursor-outline { display: none; }
@@ -877,6 +875,31 @@
         </div>
 
         <div class="step-project-container">
+            <!-- NEW A.ESSAK & SONS COMPLETE ERP WALKTHROUGH -->
+            <div class="step-project-item">
+                <div class="project-walkthrough-image-wrapper">
+                    <img src="PROJECT_ESSAK.JPEG" alt="A.Essak & Sons Textile Complete ERP Suite Ecosystem">
+                </div>
+                <div class="project-step-content">
+                    <h3>A.ESSAK & SONS TEXTILE COMPLETE ERP SUITE</h3>
+                    <span class="project-step-system-tag">Multi-Tenant Industrial Manufacturing System</span>
+                    <p class="project-step-desc">
+                        A massive, end-to-end industrial architecture serving 4 companies concurrently, managing 4 completely decoupled inventory systems and manufacturing environments with rigorous validation checkpoints.
+                    </p>
+                    <div class="project-technical-breakdown-box">
+                        <h4>System Capabilities & Modules Deployed</h4>
+                        <ul class="project-step-style">
+                            <li><strong>Production Channels:</strong> Features a robust Order Management System, Warping & Sizing lines, dynamic Loom Production tracking, and Processing workflows.</li>
+                            <li><strong>Tri-Inventory Setup:</strong> Dedicated data modules controlling specialized loops for Fabric Inventory, Yarn Inventory, and Accessories Inventory.</li>
+                            <li><strong>Financial & Payroll Nodes:</strong> Complete double-entry Accounts matrices and Payroll calculation architectures with automatic wage distribution loops.</li>
+                            <li><strong>Stitching & Admin Panel:</strong> Downstream Stitching management trackers tied into a master Admin control center containing automated verification rules.</li>
+                            <li><strong>Advanced Reporting:</strong> Generates automated physical Stock Reports, structural Balance logs, Ledger Reports, Trial Reports, and detailed Payroll metrics.</li>
+                            <li><strong>Multi-Tenant Base:</strong> Built directly on a schema isolating transactional data flawlessly across 4 independent corporate structures.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
             <div class="step-project-item">
                 <div class="project-walkthrough-image-wrapper">
                     <img src="GL.jpeg" alt="Oracle General Ledger Financial System Canvas Layout">
@@ -957,6 +980,22 @@
         </div>
 
         <div class="projects-grid-layout">
+            <!-- NEW A.ESSAK & SONS FEATURED CARD -->
+            <div class="project-card-v2">
+                <div class="project-card-image-box">
+                    <img src="PROJECT_ESSAK.JPEG" alt="A.Essak & Sons Textile ERP Suite Presentation Card">
+                </div>
+                <div class="project-card-body">
+                    <h3>A.Essak & Sons Textile ERP</h3>
+                    <p>All-inclusive industrial enterprise suite serving 4 multi-tenant companies with isolated database channels. Drives everything from Order Entry, Warping, Loom Production, Processing, Stitching, and Admin, down directly into Tri-Inventory structures (Yarn, Fabric, Accessories), Payroll, Ledger matrices, and Trial outputs.</p>
+                    <div class="project-card-badges">
+                        <span class="badge-pill-tech">Industrial ERP</span>
+                        <span class="badge-pill-tech">Multi-Tenant</span>
+                        <span class="badge-pill-tech">PL/SQL Core</span>
+                    </div>
+                </div>
+            </div>
+
             <div class="project-card-v2">
                 <div class="project-card-image-box">
                     <img src="GL.jpeg" alt="General Ledger Module Showcase Screen">
