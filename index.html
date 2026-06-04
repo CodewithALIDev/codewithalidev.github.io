@@ -347,13 +347,15 @@
         .tag-highlight { border-color: rgba(255, 51, 20, 0.25); color: var(--accent-red); background-color: rgba(255, 51, 20, 0.02); }
 
         /* Expertise Grid Framework */
-        .expertise-grid-screenshot-layout {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1.5rem;
-            width: 100%;
-            margin-top: 2rem;
-        }
+<div class="expertise-screenshot-card">
+    <div class="expertise-icon-wrapper"><i class="fa-solid fa-database"></i></div>
+    <h3>Database Architecture</h3>
+    <p>Designing robust Oracle 11g schemas with high-performance indexing and complex query optimization.</p>
+    <div class="expertise-tags-row">
+        <span class="expertise-mini-tag">PL/SQL</span>
+        <span class="expertise-mini-tag">Performance</span>
+    </div>
+</div>
 
         .expertise-screenshot-card {
             background-color: rgba(18, 15, 26, 0.4);
