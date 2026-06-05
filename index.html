@@ -15,11 +15,21 @@
     
     <style>
 
-        .projects-grid-layout {
+  .projects-grid-layout {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    /* This forces exactly 3 columns on desktops */
+    grid-template-columns: repeat(3, 1fr);
     gap: 24px;
     padding: 20px;
+    width: 100%;
+}
+
+/* Optional: make it responsive */
+@media (max-width: 1024px) {
+    .projects-grid-layout { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+    .projects-grid-layout { grid-template-columns: 1fr; }
 }
 
 .project-card-v2 {
@@ -1098,61 +1108,7 @@
     </div>
 </div>
 
-
-    <section id="projects">
-    <div class="section-header">
-        <span class="section-subtitle">Work Portfolio</span>
-        <h2 class="section-title">Featured Projects</h2>
-        <p class="section-desc">A selection of enterprise-grade systems and intelligent tools designed to drive operational efficiency.</p>
-    </div>
-
-    <div class="projects-grid-layout" style="grid-template-columns: repeat(3, 1fr);">
-        
-        <div class="project-card-v2">
-            <div class="project-card-image-box">
-                <img src="PO_TRANS.jpeg" alt="Financial Management">
-            </div>
-            <div class="project-card-body">
-                <h3>Financial Management</h3>
-                <p>Enterprise-grade multi-tier financial architecture featuring automated checker-to-manager approval workflows and full ledger control.</p>
-                <div class="project-card-badges">
-                    <span class="badge-pill-tech">Oracle Forms</span>
-                    <span class="badge-pill-tech">PL/SQL</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="project-card-v2">
-            <div class="project-card-image-box">
-                <img src="APEX_DASHBOARD.PNG" alt="NOVEL 2.0 Dashboard">
-            </div>
-            <div class="project-card-body">
-                <h3>NOVEL 2.0 Dashboard</h3>
-                <p>High-performance Procurement & Inventory suite developed on Oracle APEX, featuring native PWA capabilities for mobile installation.</p>
-                <div class="project-card-badges">
-                    <span class="badge-pill-tech">Oracle APEX</span>
-                    <span class="badge-pill-tech">PWA</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="project-card-v2">
-            <div class="project-card-image-box">
-                <img src="placeholder.jpg" alt="Future Project">
-            </div>
-            <div class="project-card-body">
-                <h3>Reporting Suite</h3>
-                <p>Real-time enterprise reporting platform integrating complex manufacturing data with intuitive visualization dashboards.</p>
-                <div class="project-card-badges">
-                    <span class="badge-pill-tech">Reports</span>
-                    <span class="badge-pill-tech">Automation</span>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-    <section id="projects">
+<section id="projects">
     <div class="section-header">
         <span class="section-subtitle">Work Portfolio</span>
         <h2 class="section-title">Featured Projects</h2>
@@ -1192,7 +1148,7 @@
                     <span class="badge-pill-tech">PL/SQL</span>
                 </div>
                 <h3>Governance & Approval Workflow</h3>
-                <p>Robust, two-stage approval system (Checker & Management) ensuring strict financial integrity before general ledger reflection.</p>
+                <p>Robust, two-stage approval system (Checker & Management) ensuring strict financial integrity before ledger reflection.</p>
             </div>
         </div>
 
@@ -1204,7 +1160,7 @@
                     <span class="badge-pill-tech">PL/SQL</span>
                 </div>
                 <h3>Warehouse & Inventory Suite</h3>
-                <p>Complete procurement and stock management system covering multiple stores, inventory control, and movement transactions.</p>
+                <p>Complete procurement and stock management system covering multiple stores, inventory control, and movement.</p>
             </div>
         </div>
 
