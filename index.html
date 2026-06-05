@@ -14,7 +14,26 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
+.btn-card-launch {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 18px;
+    background-color: #ff4500;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    transition: background 0.3s ease, transform 0.2s ease;
+    border: none;
+    text-align: center;
+}
 
+.btn-card-launch:hover {
+    background-color: #e63e00;
+    transform: translateY(-2px);
+}
   .projects-grid-layout {
     display: grid;
     /* This forces exactly 3 columns on desktops */
@@ -1183,22 +1202,27 @@
                 <p>Primary gateway for warehouse staff integrating critical supply chain functions into a single, intuitive interface.</p>
             </div>
         </div>
-
-        <div class="project-card-v2">
-            <div class="project-card-image-box"><img src="APEX_DASHBOARD.PNG" alt="Novel 2.0"></div>
-            <div class="project-card-body">
-                <div class="project-card-badges">
-                    <span class="badge-pill-tech">ORACLE APEX</span>
-                    <span class="badge-pill-tech">MOBILE APP</span>
-                    <span class="badge-pill-tech">WEB</span>
-                    <span class="badge-pill-tech">PWA</span>
-                </div>
-                <h3>NOVEL 2.0 Dashboard</h3>
-                <p>High-performance Procurement & Inventory suite with native PWA capabilities for seamless mobile installation.</p>
-            </div>
-        </div>
+<div class="project-card-v2">
+    <div class="project-card-image-box">
+        <img src="APEX_DASHBOARD.PNG" alt="Novel 2.0">
     </div>
-</section>
+    <div class="project-card-body">
+        <div class="project-card-badges">
+            <span class="badge-pill-tech">ORACLE APEX</span>
+            <span class="badge-pill-tech">MOBILE APP</span>
+            <span class="badge-pill-tech">WEB</span>
+            <span class="badge-pill-tech">PWA</span>
+        </div>
+        <h3>NOVEL 2.0 Dashboard</h3>
+        <p>High-performance Procurement & Inventory suite with native PWA capabilities for seamless mobile installation.</p>
+        
+        <a href="https://oracleapex.com/ords/r/aliabbasqureshi786/novel-2-0/login" 
+           target="_blank" 
+           class="btn-card-launch">
+           Launch Live App <i class="fas fa-arrow-right" style="margin-left: 8px;"></i>
+        </a>
+    </div>
+</div>
     
     
     <section id="experience">
