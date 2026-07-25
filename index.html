@@ -15,6 +15,27 @@
     
     <style>
 
+        :root {
+    --bg-canvas: #08060c; /* Deep rich background */
+    --card-bg: #0f0d17;  /* The exact rich dark purple-tinted card color from your screenshot */
+}
+
+body {
+    background-color: var(--bg-canvas) !important;
+    color: var(--text-prime);
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Apply this exact background color to all your card containers, profiles, and sections */
+.profile-container, 
+.contact-card-v2, 
+.expertise-screenshot-card,
+.stat-mini-box {
+    background-color: var(--card-bg) !important;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
         .expertise-grid-screenshot-layout {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
