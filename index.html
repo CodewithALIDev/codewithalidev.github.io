@@ -178,27 +178,28 @@
         }
 
         body {
-            background-color: var(--bg-canvas);
-            color: var(--text-prime);
-            line-height: 1.6;
-            font-size: 0.95rem;
-            overflow-x: hidden;
-            letter-spacing: -0.01em;
-            position: relative;
-        }
+    background-color: #050408; /* A very deep, rich dark base instead of pure flat black */
+    color: var(--text-prime);
+    line-height: 1.6;
+    font-size: 0.95rem;
+    overflow-x: hidden;
+    letter-spacing: -0.01em;
+    position: relative;
+}
 
-        /* Ambient Glow Gradients */
-        body::before {
-            content: '';
-            position: absolute;
-            width: 600px;
-            height: 600px;
-            top: -200px;
-            right: -100px;
-            background: radial-gradient(circle, rgba(255, 51, 20, 0.08) 0%, rgba(0,0,0,0) 70%);
-            z-index: -1;
-            pointer-events: none;
-        }
+/* Ambient Top-Right Glow Gradient */
+body::before {
+    content: '';
+    position: absolute;
+    width: 900px;
+    height: 900px;
+    top: -250px;
+    right: -150px;
+    /* This creates the smooth purple-to-dark fade seen in the reference */
+    background: radial-gradient(circle, rgba(74, 20, 140, 0.22) 0%, rgba(20, 10, 35, 0.1) 40%, rgba(5, 4, 8, 0) 70%);
+    z-index: -1;
+    pointer-events: none;
+}
 
         /* Custom Dual-Ring Tracking Pointer Elements */
         .cursor-dot {
