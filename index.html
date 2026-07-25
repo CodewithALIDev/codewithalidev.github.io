@@ -1116,58 +1116,82 @@
         </span>
 
         <p class="project-step-desc">
-            Developed a comprehensive <strong>Post Dated Cheque (PDC) with SRN Transaction</strong> module within the Accounts & Financial Management System. The solution enables finance teams to generate supplier payments directly against pending <strong>Store Receiving Notes (SRNs)</strong>, while automatically managing cheque details, voucher entries, payment allocation, outstanding balances, and General Ledger integration. The module streamlines supplier settlement with complete financial traceability and enterprise-grade approval controls.
+            Developed a comprehensive <strong>Post Dated Cheque (PDC) with SRN Transaction</strong> module within the Accounts & Financial Management System. The solution enables finance teams to generate supplier payments directly against pending <strong>Store Receiving Notes (SRNs)</strong>,<strong>Purchase Orders (PO's)</strong>,<strong>Service Purchase Orders (SPO's)</strong> while automatically managing cheque details, voucher entries, payment allocation, outstanding balances, and General Ledger integration. The module streamlines supplier settlement with complete financial traceability and enterprise-grade approval controls.
         </p>
 
-        <div class="project-technical-breakdown-box">
+       <div class="project-technical-breakdown-box">
 
-            <h4>Key Features & Business Capabilities</h4>
+    <h4>Enterprise Features & Business Workflow</h4>
 
-            <ul class="project-step-style">
+    <ul class="project-step-style">
 
-                <li>
-                    <strong>SRN-Based Payment Allocation</strong>
-                    Select and settle multiple supplier SRNs within a single PDC transaction.
-                </li>
+        <li>
+            <strong>Smart Payment Reference Popup</strong>
+            A dedicated popup window opens from the Payment Reference button, providing an intelligent interface for selecting supplier transactions before voucher generation.
+        </li>
 
-                <li>
-                    <strong>Partial Payment Processing</strong>
-                    Supports partial settlements while automatically maintaining remaining outstanding balances.
-                </li>
+        <li>
+            <strong>Advanced Search & Filtering</strong>
+            Users can filter transactions using From Date, To Date, SRN Number, Purchase Order (PO), Service Purchase Order (SPO), Supplier, and GL Code to quickly locate pending payments.
+        </li>
 
-                <li>
-                    <strong>Automatic Voucher Generation</strong>
-                    Creates complete accounting entries and posts transactions into the General Ledger.
-                </li>
+        <li>
+            <strong>GL Code Driven Data Retrieval</strong>
+            The system automatically displays only the outstanding supplier transactions linked to the selected General Ledger account, ensuring accurate financial processing.
+        </li>
 
-                <li>
-                    <strong>Cheque Management</strong>
-                    Records cheque number, cheque date, bank details, and payment references.
-                </li>
+        <li>
+            <strong>Dynamic Payment Type Selection</strong>
+            Supports multiple payment modes including:
+            <br>• Bill Payment (SRN)
+            <br>• Advance Payment (Purchase Order)
+            <br>• Service Payment (Service Purchase Order)
+            <br>The displayed records change dynamically based on the selected transaction type.
+        </li>
 
-                <li>
-                    <strong>Supplier Ledger Integration</strong>
-                    Automatically updates supplier outstanding balances after payment processing.
-                </li>
+        <li>
+            <strong>Bulk Multi-Selection Processing</strong>
+            Users can select any combination of pending SRNs, Purchase Orders, or Service Purchase Orders using checkboxes, allowing multiple supplier invoices to be settled through a single cheque transaction.
+        </li>
 
-                <li>
-                    <strong>Approval Workflow</strong>
-                    Integrated Checker, Management Approval, and Bank Status verification before final posting.
-                </li>
+        <li>
+            <strong>Toggle Select / Deselect All</strong>
+            One-click Toggle functionality instantly selects or deselects every displayed transaction, significantly reducing processing time for bulk supplier payments.
+        </li>
 
-                <li>
-                    <strong>Real-Time Balance Tracking</strong>
-                    Displays SRN amount, paid amount, current amount, and remaining balance for every transaction.
-                </li>
+        <li>
+            <strong>Real-Time Financial Calculations</strong>
+            The popup continuously calculates SRN Amount, Paid Amount, Current Amount, Remaining Balance, and automatically updates the voucher Grand Total as records are selected or modified.
+        </li>
 
-                <li>
-                    <strong>Oracle Forms & PL/SQL Automation</strong>
-                    Built using Oracle Forms, PL/SQL procedures, triggers, and Oracle Database for secure enterprise financial processing.
-                </li>
+        <li>
+            <strong>Partial Payment Facility</strong>
+            Finance users can enter a custom payment amount in the Current Amount field, enabling partial settlements while automatically carrying forward the remaining balance for future payments.
+        </li>
 
-            </ul>
+        <li>
+            <strong>Automatic Outstanding Balance Validation</strong>
+            Fully paid transactions are automatically excluded, while only outstanding balances remain available for payment, preventing duplicate settlements.
+        </li>
 
-        </div>
+        <li>
+            <strong>Integrated Voucher Generation</strong>
+            After confirmation, the selected transactions are automatically transferred into the Post Dated Cheque voucher, generating the corresponding accounting entries and supplier ledger postings.
+        </li>
+
+        <li>
+            <strong>Supplier Ledger & GL Integration</strong>
+            Every payment updates the supplier ledger, General Ledger accounts, cheque information, and financial balances in real time, maintaining complete accounting integrity.
+        </li>
+
+        <li>
+            <strong>Enterprise Oracle Forms Architecture</strong>
+            Developed using Oracle Forms 11g, PL/SQL Procedures, Packages, Database Triggers, and Oracle Database with optimized SQL for high-volume enterprise financial transactions.
+        </li>
+
+    </ul>
+
+</div>
 
     </div>
 
