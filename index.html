@@ -177,8 +177,12 @@
             scroll-behavior: smooth;
         }
 
-        body {
-    background-color: #050408 !important; /* A very deep, rich dark base instead of pure flat black */
+        /* Force the background on body and all main wrapper containers */
+body, html, main, .content-wrapper {
+    background-color: #050408 !important;
+}
+
+body {
     color: var(--text-prime);
     line-height: 1.6;
     font-size: 0.95rem;
@@ -189,16 +193,15 @@
 
 /* Ambient Top-Right Glow Gradient */
 body::before {
-    content: '';
-    position: absolute;
-    width: 900px;
-    height: 900px;
-    top: -250px;
-    right: -150px;
-    /* This creates the smooth purple-to-dark fade seen in the reference */
-    background: radial-gradient(circle, rgba(74, 20, 140, 0.22) 0%, rgba(20, 10, 35, 0.1) 40%, rgba(5, 4, 8, 0) 70%);
-    z-index: -1;
-    pointer-events: none;
+    content: '' !important;
+    position: absolute !important;
+    width: 900px !important;
+    height: 900px !important;
+    top: -250px !important;
+    right: -150px !important;
+    background: radial-gradient(circle, rgba(74, 20, 140, 0.22) 0%, rgba(20, 10, 35, 0.1) 40%, rgba(5, 4, 8, 0) 70%) !important;
+    z-index: 999 !important; /* Temporarily set high to verify visibility */
+    pointer-events: none !important;
 }
 
         /* Custom Dual-Ring Tracking Pointer Elements */
