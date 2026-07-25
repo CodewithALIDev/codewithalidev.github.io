@@ -15,14 +15,35 @@
     
     <style>
 
-     html, body, main, .content-wrapper {
-    background-color: #0f0d17 !important;
-}
+  :root{
+    /* Backgrounds */
+    --bg-primary: #050408;
+    --bg-secondary: #0E0B16;
+    --bg-card: #141021;
+    --bg-card-hover: #1A132A;
 
-body {
-    color: var(--text-prime);
-    position: relative;
-    overflow-x: hidden;
+    /* Gradient */
+    --bg-gradient: linear-gradient(
+        135deg,
+        #0E0B16 0%,
+        #161026 45%,
+        #120B1D 100%
+    );
+
+    /* Borders */
+    --border-color: #2A1E3A;
+
+    /* Text */
+    --text-primary: #FFFFFF;
+    --text-secondary: #B4B4BE;
+    --text-muted: #7E7E89;
+
+    /* Accent */
+    --primary: #FF4D4D;
+    --primary-hover: #FF6363;
+
+    /* Shadow */
+    --shadow: 0 15px 40px rgba(0,0,0,.45);
 }
 
 /* Apply this exact background color to all your card containers, profiles, and sections */
