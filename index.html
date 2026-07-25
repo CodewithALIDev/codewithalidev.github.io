@@ -193,15 +193,16 @@ body {
 
 /* Ambient Top-Right Glow Gradient */
 body::before {
-    content: '' !important;
-    position: absolute !important;
-    width: 900px !important;
-    height: 900px !important;
-    top: -250px !important;
-    right: -150px !important;
-    background: radial-gradient(circle, rgba(74, 20, 140, 0.22) 0%, rgba(20, 10, 35, 0.1) 40%, rgba(5, 4, 8, 0) 70%) !important;
-    z-index: 999 !important; /* Temporarily set high to verify visibility */
-    pointer-events: none !important;
+    content: '';
+    position: absolute;
+    width: 1200px;
+    height: 1200px;
+    top: -200px;
+    right: -100px;
+    /* Increased opacities so the purple glow stands out much more */
+    background: radial-gradient(circle, rgba(111, 45, 168, 0.35) 0%, rgba(255, 51, 20, 0.12) 40%, rgba(5, 4, 8, 0) 70%);
+    z-index: -1;
+    pointer-events: none;
 }
 
         /* Custom Dual-Ring Tracking Pointer Elements */
