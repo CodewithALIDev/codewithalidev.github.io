@@ -117,23 +117,34 @@ body::before {
     background-color: #e63e00;
     transform: translateY(-2px);
 }
-  .projects-grid-layout {
+ .projects-grid-layout {
     display: grid;
-    /* This forces exactly 3 columns on desktops */
     grid-template-columns: repeat(3, 1fr);
     gap: 24px;
     padding: 20px;
     width: 100%;
     align-items: start;
-      
 }
 
-/* Optional: make it responsive */
-@media (max-width: 1024px) {
-    .projects-grid-layout { grid-template-columns: repeat(2, 1fr); }
+/* Laptop */
+@media screen and (max-width: 1200px) {
+    .projects-grid-layout {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
-@media (max-width: 600px) {
-    .projects-grid-layout { grid-template-columns: 1fr; }
+
+/* Tablet */
+@media screen and (max-width: 992px) {
+    .projects-grid-layout {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Mobile */
+@media screen and (max-width: 768px) {
+    .projects-grid-layout {
+        grid-template-columns: 1fr;
+    }
 }
 
 .project-card-v2 {
