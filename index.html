@@ -14,32 +14,31 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-  :root {
-    --bg-canvas: #08060c; /* Deep rich background */
-    --card-bg: #0f0d17;  /* The exact rich dark purple-tinted card color from your screenshot */
+  /* Force the background on body and all main wrapper containers */
+body, html, main, .content-wrapper {
+    background-color: #050408 !important;
 }
 
 body {
-    background-color: var(--bg-canvas) !important;
     color: var(--text-prime);
-    position: relative;
+    line-height: 1.6;
+    font-size: 0.95rem;
     overflow-x: hidden;
+    letter-spacing: -0.01em;
+    position: relative;
 }
 
-/* Apply this exact background color to all your card containers, profiles, and sections */
-.profile-container, 
-.contact-card-v2, 
-.expertise-screenshot-card,
-.stat-mini-box {
-    background-color: var(--card-bg) !important;
-    border: 1px solid rgba(255, 255, 255, 0.06);
-}
-
-        .expertise-grid-screenshot-layout {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1.5rem;
-    width: 100%;
+/* Ambient Top-Right Glow Gradient */
+body::before {
+    content: '' !important;
+    position: absolute !important;
+    width: 900px !important;
+    height: 900px !important;
+    top: -250px !important;
+    right: -150px !important;
+    background: radial-gradient(circle, rgba(74, 20, 140, 0.22) 0%, rgba(20, 10, 35, 0.1) 40%, rgba(5, 4, 8, 0) 70%) !important;
+    z-index: 999 !important; /* Temporarily set high to verify visibility */
+    pointer-events: none !important;
 }
 
 .expertise-screenshot-card {
