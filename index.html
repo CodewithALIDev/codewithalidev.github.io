@@ -14,15 +14,18 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-   html, body, main, .content-wrapper {
-    background-color: #120a3b !important;
+  :root {
+    --bg-canvas: #08060c; /* Deep rich background */
+    --card-bg: #0f0d17;  /* The exact rich dark purple-tinted card color from your screenshot */
 }
 
 body {
+    background-color: var(--bg-canvas) !important;
     color: var(--text-prime);
     position: relative;
     overflow-x: hidden;
 }
+
 /* Apply this exact background color to all your card containers, profiles, and sections */
 .profile-container, 
 .contact-card-v2, 
