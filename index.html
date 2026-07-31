@@ -922,7 +922,69 @@ body::before {
             z-index: -1;
             pointer-events: none;
         }
-        
+        /* =======================
+   Certifications
+======================= */
+
+.certifications-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(420px,1fr));
+    gap:30px;
+}
+
+.certificate-card{
+    background:var(--card-bg);
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:20px;
+    overflow:hidden;
+    transition:.35s ease;
+}
+
+.certificate-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 15px 35px rgba(0,0,0,.35);
+}
+
+.certificate-image{
+    width:100%;
+    display:block;
+}
+
+.certificate-content{
+    padding:25px;
+}
+
+.certificate-provider{
+    color:var(--primary-color);
+    font-weight:600;
+    margin:10px 0;
+}
+
+.certificate-desc{
+    color:var(--text-secondary);
+    line-height:1.7;
+    margin:15px 0;
+}
+
+.certificate-tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin:20px 0;
+}
+
+.certificate-tags span{
+    background:rgba(255,102,0,.12);
+    color:var(--primary-color);
+    padding:6px 12px;
+    border-radius:20px;
+    font-size:.8rem;
+}
+
+/* Footer */
+.footer{
+    ...
+}
     </style>
 </head>
 <body>
