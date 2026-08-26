@@ -1,0 +1,1589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ali Abbas Qureshi | Oracle Systems Architect</title>
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%236366f1'/%3E%3Cstop offset='100%25' stop-color='%2306b6d4'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='32' cy='32' r='32' fill='url(%23g)'/%3E%3Ctext x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' fill='%23ffffff' font-family='sans-serif' font-weight='800' font-size='22'%3EAQ%3C/text%3E%3C/svg%3E">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-deep: #09090b;
+            --bg-surface: #111114;
+            --bg-card: #16161a;
+            --bg-card-hover: #1c1c21;
+            --accent-primary: #6366f1;
+            --accent-secondary: #06b6d4;
+            --accent-gradient: linear-gradient(135deg, #6366f1, #06b6d4);
+            --accent-glow: rgba(99, 102, 241, 0.15);
+            --text-white: #fafafa;
+            --text-primary: #e4e4e7;
+            --text-secondary: #a1a1aa;
+            --text-muted: #52525b;
+            --border-subtle: rgba(255, 255, 255, 0.06);
+            --border-hover: rgba(255, 255, 255, 0.12);
+            --font-display: 'Space Grotesk', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --radius-sm: 12px;
+            --radius-md: 20px;
+            --radius-lg: 28px;
+            --radius-xl: 36px;
+            --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-smooth: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        html {
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-deep);
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        ::selection {
+            background: rgba(99, 102, 241, 0.3);
+            color: var(--text-white);
+        }
+
+        /* ====== CURSOR SYSTEM ====== */
+        .cursor-ring {
+            position: fixed;
+            width: 40px;
+            height: 40px;
+            border: 1.5px solid var(--accent-primary);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 99999;
+            transform: translate(-50%, -50%);
+            transition: width 0.35s var(--transition-smooth),
+                        height 0.35s var(--transition-smooth),
+                        border-color 0.35s ease,
+                        background 0.35s ease,
+                        box-shadow 0.35s ease;
+            mix-blend-mode: difference;
+        }
+
+        .cursor-ring.hovering {
+            width: 64px;
+            height: 64px;
+            border-color: var(--accent-secondary);
+            background: rgba(6, 182, 212, 0.06);
+            box-shadow: 0 0 30px rgba(6, 182, 212, 0.12);
+        }
+
+        .cursor-dot {
+            position: fixed;
+            width: 6px;
+            height: 6px;
+            background: var(--accent-primary);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 100000;
+            transform: translate(-50%, -50%);
+            transition: width 0.25s ease, height 0.25s ease, background 0.3s ease;
+        }
+
+        .cursor-dot.hovering {
+            width: 4px;
+            height: 4px;
+            background: var(--accent-secondary);
+        }
+
+        .cursor-trail {
+            position: fixed;
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: -1;
+            transform: translate(-50%, -50%);
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.04) 0%, transparent 70%);
+            transition: opacity 0.6s ease;
+        }
+
+        /* ====== AMBIENT EFFECTS ====== */
+        .ambient-orb {
+            position: fixed;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: -1;
+            filter: blur(120px);
+            opacity: 0.35;
+        }
+
+        .orb-1 {
+            width: 600px;
+            height: 600px;
+            top: -200px;
+            right: -150px;
+            background: rgba(99, 102, 241, 0.12);
+        }
+
+        .orb-2 {
+            width: 500px;
+            height: 500px;
+            bottom: -100px;
+            left: -150px;
+            background: rgba(6, 182, 212, 0.08);
+        }
+
+        /* ====== NAVIGATION ====== */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1.25rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(9, 9, 11, 0.75);
+            backdrop-filter: blur(24px) saturate(1.5);
+            -webkit-backdrop-filter: blur(24px) saturate(1.5);
+            border-bottom: 1px solid var(--border-subtle);
+            transition: background var(--transition-fast);
+        }
+
+        .nav-logo {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 1.15rem;
+            color: var(--text-white);
+            letter-spacing: -0.03em;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            text-decoration: none;
+        }
+
+        .nav-logo .accent {
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.82rem;
+            font-weight: 500;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            transition: color var(--transition-fast);
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1.5px;
+            background: var(--accent-gradient);
+            border-radius: 1px;
+            transition: width var(--transition-smooth);
+        }
+
+        .nav-links a:hover {
+            color: var(--text-white);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* ====== LAYOUT ====== */
+        .container {
+            max-width: 1320px;
+            margin: 0 auto;
+            padding: 0 3rem;
+        }
+
+        section {
+            padding: 8rem 0;
+            position: relative;
+        }
+
+        /* ====== HERO ====== */
+        #hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 6rem;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 5rem;
+            align-items: center;
+            width: 100%;
+        }
+
+        .hero-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: rgba(99, 102, 241, 0.08);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            padding: 0.5rem 1.1rem;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--accent-primary);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 2rem;
+        }
+
+        .hero-status .pulse {
+            width: 7px;
+            height: 7px;
+            background: #22c55e;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.5); }
+            50% { box-shadow: 0 0 0 8px rgba(34, 197, 94, 0); }
+        }
+
+        .hero-name {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-weight: 700;
+            line-height: 1.08;
+            letter-spacing: -0.04em;
+            margin-bottom: 1.75rem;
+        }
+
+        .hero-title .line {
+            display: block;
+        }
+
+        .hero-title .line-1 {
+            font-size: 4.2rem;
+            color: var(--text-white);
+        }
+
+        .hero-title .line-2 {
+            font-size: 4.2rem;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-title .line-3 {
+            font-size: 3.6rem;
+            color: var(--text-muted);
+            -webkit-text-stroke: 1px rgba(255,255,255,0.15);
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-tech-row {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-tech-row .sep {
+            color: var(--accent-primary);
+            font-weight: 700;
+        }
+
+        .hero-desc {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            max-width: 560px;
+            margin-bottom: 2.5rem;
+            line-height: 1.75;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.9rem 2rem;
+            border-radius: 100px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            transition: all var(--transition-smooth);
+            cursor: pointer;
+            border: none;
+            font-family: var(--font-body);
+        }
+
+        .btn-fill {
+            background: var(--accent-gradient);
+            color: #fff;
+            box-shadow: 0 4px 24px rgba(99, 102, 241, 0.25);
+        }
+
+        .btn-fill:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(99, 102, 241, 0.35);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--text-white);
+            border: 1px solid var(--border-hover);
+        }
+
+        .btn-outline:hover {
+            background: rgba(255,255,255,0.04);
+            border-color: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Profile Card */
+        .profile-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-xl);
+            padding: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            box-shadow: 0 24px 80px rgba(0,0,0,0.4);
+            animation: floatCard 7s ease-in-out infinite;
+        }
+
+        @keyframes floatCard {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        .profile-top {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+        }
+
+        .profile-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--accent-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 1.15rem;
+            color: #fff;
+        }
+
+        .profile-meta h3 {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-white);
+            margin-bottom: 2px;
+        }
+
+        .profile-meta p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .stat-box {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 1.25rem;
+        }
+
+        .stat-box h4 {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 700;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 2px;
+        }
+
+        .stat-box p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .tags-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border-subtle);
+            padding: 0.4rem 0.9rem;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            transition: all var(--transition-fast);
+        }
+
+        .tag.active {
+            background: rgba(99, 102, 241, 0.1);
+            border-color: rgba(99, 102, 241, 0.25);
+            color: var(--accent-primary);
+        }
+
+        .tag:hover {
+            border-color: var(--border-hover);
+            color: var(--text-white);
+        }
+
+        /* ====== SECTION HEADER ====== */
+        .section-label {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--accent-primary);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 0.75rem;
+            display: block;
+        }
+
+        .section-heading {
+            font-family: var(--font-display);
+            font-size: 3.2rem;
+            font-weight: 700;
+            color: var(--text-white);
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .section-desc {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            line-height: 1.7;
+        }
+
+        .section-header {
+            margin-bottom: 4rem;
+        }
+
+        /* ====== EXPERTISE ====== */
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+
+        .expertise-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 2.25rem 1.75rem;
+            transition: all var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .expertise-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--accent-gradient);
+            opacity: 0;
+            transition: opacity var(--transition-smooth);
+        }
+
+        .expertise-card:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-4px);
+            background: var(--bg-card-hover);
+        }
+
+        .expertise-card:hover::before {
+            opacity: 1;
+        }
+
+        .expertise-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: var(--radius-sm);
+            background: rgba(99, 102, 241, 0.08);
+            border: 1px solid rgba(99, 102, 241, 0.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            color: var(--accent-primary);
+            margin-bottom: 1.75rem;
+        }
+
+        .expertise-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--text-white);
+            margin-bottom: 0.75rem;
+        }
+
+        .expertise-card p {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            line-height: 1.65;
+            margin-bottom: 1.5rem;
+        }
+
+        .expertise-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-top: auto;
+        }
+
+        .expertise-tag {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border-subtle);
+            padding: 0.3rem 0.7rem;
+            border-radius: 100px;
+            font-size: 0.65rem;
+            font-family: var(--font-mono);
+            color: var(--text-muted);
+        }
+
+        /* ====== PROJECTS WALKTHROUGH ====== */
+        .project-row {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 4rem;
+            align-items: center;
+            padding: 4rem 0;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .project-row:last-child {
+            border-bottom: none;
+        }
+
+        .project-img-wrap {
+            position: relative;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            border: 1px solid var(--border-subtle);
+            background: var(--bg-card);
+            aspect-ratio: 16 / 11;
+        }
+
+        .project-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s ease;
+        }
+
+        .project-row:hover .project-img-wrap img {
+            transform: scale(1.03);
+        }
+
+        .project-info h3 {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-white);
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-tag-label {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--accent-primary);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1.25rem;
+            display: block;
+        }
+
+        .project-info p {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 2rem;
+        }
+
+        .project-features {
+            background: rgba(255,255,255,0.015);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 1.75rem;
+            margin-bottom: 2rem;
+        }
+
+        .project-features h4 {
+            font-family: var(--font-display);
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-white);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1.25rem;
+            padding-left: 0.75rem;
+            border-left: 2px solid var(--accent-primary);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .feature-item {
+            position: relative;
+            padding-left: 1.25rem;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .feature-item strong {
+            display: block;
+            color: var(--text-primary);
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .feature-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 7px;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: var(--accent-primary);
+        }
+
+        .live-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.8rem 1.5rem;
+            border-radius: 100px;
+            background: rgba(99, 102, 241, 0.08);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            color: var(--text-white);
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-decoration: none;
+            transition: all var(--transition-smooth);
+        }
+
+        .live-link:hover {
+            background: var(--accent-primary);
+            border-color: var(--accent-primary);
+            box-shadow: 0 4px 20px rgba(99, 102, 241, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .live-link i {
+            font-size: 0.75rem;
+            transition: transform 0.3s ease;
+        }
+
+        .live-link:hover i {
+            transform: translateX(3px);
+        }
+
+        /* ====== PROJECT CARDS ====== */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            transition: all var(--transition-smooth);
+        }
+
+        .project-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--border-hover);
+        }
+
+        .card-img {
+            width: 100%;
+            aspect-ratio: 16 / 10;
+            overflow: hidden;
+            background: var(--bg-deep);
+        }
+
+        .card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.85;
+            transition: all 0.5s ease;
+        }
+
+        .project-card:hover .card-img img {
+            opacity: 1;
+            transform: scale(1.03);
+        }
+
+        .card-body {
+            padding: 2rem;
+        }
+
+        .card-body h3 {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-white);
+            margin-bottom: 0.6rem;
+        }
+
+        .card-body p {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            line-height: 1.65;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+        }
+
+        .card-tag {
+            background: rgba(99, 102, 241, 0.06);
+            border: 1px solid rgba(99, 102, 241, 0.12);
+            color: var(--accent-primary);
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            padding: 0.35rem 0.8rem;
+            border-radius: 100px;
+            font-weight: 600;
+        }
+
+        /* ====== TIMELINE ====== */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 28px;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: var(--border-subtle);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 80px;
+            margin-bottom: 3.5rem;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 22px;
+            top: 28px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: 2px solid var(--accent-primary);
+            background: var(--bg-deep);
+            z-index: 2;
+            transition: background var(--transition-fast);
+        }
+
+        .timeline-item:hover .timeline-dot {
+            background: var(--accent-primary);
+        }
+
+        .timeline-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 2rem;
+            transition: border-color var(--transition-fast);
+        }
+
+        .timeline-card:hover {
+            border-color: var(--border-hover);
+        }
+
+        .timeline-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-white);
+            margin-bottom: 0.25rem;
+        }
+
+        .timeline-org {
+            font-weight: 600;
+            font-size: 0.95rem;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.4rem;
+        }
+
+        .timeline-date {
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            margin-bottom: 1.25rem;
+            display: block;
+        }
+
+        .timeline-card ul {
+            list-style: none;
+        }
+
+        .timeline-card ul li {
+            position: relative;
+            padding-left: 1.1rem;
+            margin-bottom: 0.6rem;
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+        }
+
+        .timeline-card ul li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: var(--accent-primary);
+        }
+
+        /* ====== CONTACT ====== */
+        #contact {
+            text-align: center;
+        }
+
+        .contact-heading {
+            font-family: var(--font-display);
+            font-size: 3.5rem;
+            font-weight: 700;
+            letter-spacing: -0.04em;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-sub {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            max-width: 520px;
+            margin: 0 auto 3rem auto;
+            line-height: 1.7;
+        }
+
+        .contact-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-xl);
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 3.5rem;
+            text-align: left;
+        }
+
+        .contact-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-white);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-card > p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .form-grid .full {
+            grid-column: 1 / -1;
+        }
+
+        .input-field {
+            width: 100%;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-sm);
+            padding: 1rem 1.25rem;
+            color: var(--text-white);
+            font-size: 0.9rem;
+            font-family: var(--font-body);
+            outline: none;
+            transition: all var(--transition-fast);
+        }
+
+        .input-field::placeholder {
+            color: var(--text-muted);
+        }
+
+        .input-field:focus {
+            border-color: rgba(99, 102, 241, 0.4);
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.08);
+        }
+
+        textarea.input-field {
+            resize: none;
+            min-height: 130px;
+        }
+
+        .btn-submit {
+            margin-top: 1rem;
+            background: var(--accent-gradient);
+            color: #fff;
+            border: none;
+            padding: 1rem 2.5rem;
+            border-radius: 100px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            font-family: var(--font-body);
+            transition: all var(--transition-smooth);
+            box-shadow: 0 4px 20px rgba(99, 102, 241, 0.25);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(99, 102, 241, 0.4);
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 3rem;
+        }
+
+        .contact-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid var(--border-subtle);
+            padding: 0.7rem 1.5rem;
+            border-radius: 100px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all var(--transition-smooth);
+        }
+
+        .contact-link:hover {
+            border-color: var(--border-hover);
+            color: var(--text-white);
+            transform: translateY(-2px);
+        }
+
+        .contact-link.email:hover { color: #ea4335; }
+        .contact-link.phone:hover { color: #06b6d4; }
+        .contact-link.wa:hover { color: #25d366; }
+        .contact-link.li:hover { color: #0077b5; }
+
+        /* ====== FOOTER ====== */
+        .footer {
+            border-top: 1px solid var(--border-subtle);
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        .footer p {
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            letter-spacing: 0.04em;
+        }
+
+        /* ====== RESPONSIVE ====== */
+        @media (max-width: 1200px) {
+            .hero-grid { grid-template-columns: 1fr; gap: 3rem; }
+            .hero-title .line-1,
+            .hero-title .line-2 { font-size: 3.2rem; }
+            .hero-title .line-3 { font-size: 2.8rem; }
+            .expertise-grid { grid-template-columns: repeat(2, 1fr); }
+            .project-row { grid-template-columns: 1fr; gap: 2rem; }
+            .cards-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            nav { padding: 1rem 1.5rem; }
+            .nav-links { display: none; }
+            .container { padding: 0 1.5rem; }
+            section { padding: 5rem 0; }
+            .hero-title .line-1,
+            .hero-title .line-2 { font-size: 2.5rem; }
+            .hero-title .line-3 { font-size: 2.2rem; }
+            .section-heading { font-size: 2.4rem; }
+            .contact-heading { font-size: 2.5rem; }
+            .expertise-grid { grid-template-columns: 1fr; }
+            .feature-grid { grid-template-columns: 1fr; }
+            .cards-grid { grid-template-columns: 1fr; }
+            .form-grid { grid-template-columns: 1fr; }
+            .cursor-ring, .cursor-dot, .cursor-trail { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="cursor-ring"></div>
+    <div class="cursor-dot"></div>
+    <div class="cursor-trail"></div>
+
+    <div class="ambient-orb orb-1"></div>
+    <div class="ambient-orb orb-2"></div>
+
+    <nav>
+        <a href="#hero" class="nav-logo">
+            <span class="accent">&lt;</span>ALI_QURESHI<span class="accent">/&gt;</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="#expertise">Expertise</a></li>
+            <li><a href="#work">Projects</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO -->
+    <section id="hero">
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-left">
+                    <div class="hero-status">
+                        <span class="pulse"></span> Available for opportunities
+                    </div>
+
+                    <p class="hero-name">Ali Abbas Qureshi</p>
+
+                    <div class="hero-title">
+                        <span class="line line-1">Oracle ERP</span>
+                        <span class="line line-2">Application &</span>
+                        <span class="line line-3">Systems Developer</span>
+                    </div>
+
+                    <div class="hero-tech-row">
+                        PL/SQL <span class="sep">//</span> Oracle Forms <span class="sep">//</span> APEX <span class="sep">//</span> Reports
+                    </div>
+
+                    <p class="hero-desc">
+                        Engineering enterprise-grade ERP systems with deep expertise in Oracle PL/SQL, Forms, Reports, and APEX — spanning Inventory, Finance, Textile Manufacturing, and Business Automation.
+                    </p>
+
+                    <div class="hero-actions">
+                        <a href="#work" class="btn btn-fill"><i class="fa-solid fa-folder-open"></i> View Projects</a>
+                        <a href="#contact" class="btn btn-outline"><i class="fa-regular fa-paper-plane"></i> Get In Touch</a>
+                    </div>
+                </div>
+
+                <div class="profile-card">
+                    <div class="profile-top">
+                        <div class="profile-avatar">AQ</div>
+                        <div class="profile-meta">
+                            <h3>Ali Abbas Qureshi</h3>
+                            <p>Oracle Developer &middot; Karachi, PK</p>
+                        </div>
+                    </div>
+
+                    <div class="stats-grid">
+                        <div class="stat-box">
+                            <h4>4+</h4>
+                            <p>Years Experience</p>
+                        </div>
+                        <div class="stat-box">
+                            <h4>12+</h4>
+                            <p>Production Modules</p>
+                        </div>
+                        <div class="stat-box">
+                            <h4>5</h4>
+                            <p>Enterprise Systems</p>
+                        </div>
+                        <div class="stat-box">
+                            <h4>100%</h4>
+                            <p>Data Integrity</p>
+                        </div>
+                    </div>
+
+                    <div class="tags-row">
+                        <span class="tag active">PL/SQL</span>
+                        <span class="tag">Oracle Forms</span>
+                        <span class="tag">Reports</span>
+                        <span class="tag">Oracle DB 11g</span>
+                        <span class="tag">ERP Customization</span>
+                        <span class="tag">Triggers</span>
+                        <span class="tag">Procedures</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPERTISE -->
+    <section id="expertise">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">// What I Do</span>
+                <h2 class="section-heading">Core Expertise</h2>
+                <p class="section-desc">4+ years building database-driven enterprise frameworks — from schema architecture to production deployment.</p>
+            </div>
+
+            <div class="expertise-grid">
+                <div class="expertise-card">
+                    <div class="expertise-icon"><i class="fa-solid fa-layer-group"></i></div>
+                    <h3>Oracle Forms & Reports</h3>
+                    <p>Designing interactive FMB canvases, report layouts, and alert systems across versions 6i, 10g, and 11g.</p>
+                    <div class="expertise-tags">
+                        <span class="expertise-tag">6i / 10g / 11g</span>
+                        <span class="expertise-tag">FMB Design</span>
+                        <span class="expertise-tag">Triggers</span>
+                    </div>
+                </div>
+
+                <div class="expertise-card">
+                    <div class="expertise-icon"><i class="fa-solid fa-database"></i></div>
+                    <h3>Database Engineering</h3>
+                    <p>Building optimized Packages, Stored Procedures, Functions, Views, and automated Oracle Scheduler Jobs.</p>
+                    <div class="expertise-tags">
+                        <span class="expertise-tag">PL/SQL</span>
+                        <span class="expertise-tag">Scheduler Jobs</span>
+                        <span class="expertise-tag">Performance</span>
+                    </div>
+                </div>
+
+                <div class="expertise-card">
+                    <div class="expertise-icon"><i class="fa-solid fa-industry"></i></div>
+                    <h3>Industrial SCM & ERP</h3>
+                    <p>Textile manufacturing workflows — Yarn to Processing, Gate Pass logs, and real-time material movement tracking.</p>
+                    <div class="expertise-tags">
+                        <span class="expertise-tag">Fabric & Yarn</span>
+                        <span class="expertise-tag">Gate Pass</span>
+                        <span class="expertise-tag">Process Planning</span>
+                    </div>
+                </div>
+
+                <div class="expertise-card">
+                    <div class="expertise-icon"><i class="fa-solid fa-calculator"></i></div>
+                    <h3>Financial Ledgers</h3>
+                    <p>Double-entry accounting, multi-tier voucher lines, Chart of Accounts hierarchies, and corporate GL frameworks.</p>
+                    <div class="expertise-tags">
+                        <span class="expertise-tag">Accounts ERP</span>
+                        <span class="expertise-tag">Vouchers</span>
+                        <span class="expertise-tag">Bug Fixing</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS WALKTHROUGH -->
+    <section id="work">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">// Project Deep Dive</span>
+                <h2 class="section-heading">System Walkthroughs</h2>
+                <p class="section-desc">Detailed look into the logic, table structures, and architecture behind every production system.</p>
+            </div>
+
+            <div class="project-row">
+                <div class="project-img-wrap">
+                    <img src="GL.jpeg" alt="General Ledger System">
+                </div>
+                <div class="project-info">
+                    <h3>General Ledger & Financial Engine</h3>
+                    <span class="project-tag-label">Enterprise Ledger Architecture</span>
+                    <p>A double-entry accounting matrix running inside a single Oracle Forms canvas, tracking cash flow system-wide.</p>
+                    <div class="project-features">
+                        <h4>System Capabilities</h4>
+                        <div class="feature-grid">
+                            <div class="feature-item">
+                                <strong>Form Vouchers</strong>
+                                Journal Vouchers (JV), Bank Receipts (BR), Bank Payments (BP), Cash Receipts (CR), Cash Payments (CP)
+                            </div>
+                            <div class="feature-item">
+                                <strong>Banking</strong>
+                                Post-Dated Check monitoring, RTGS clearance tracking
+                            </div>
+                            <div class="feature-item">
+                                <strong>Reports</strong>
+                                Dynamic GL Reports (Detail + Summary), Trial Balance Sheets
+                            </div>
+                            <div class="feature-item">
+                                <strong>Chart of Accounts</strong>
+                                Centralized hierarchical setup with relational integrity
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-row">
+                <div class="project-img-wrap">
+                    <img src="PO_TRANS.jpeg" alt="SCM System">
+                </div>
+                <div class="project-info">
+                    <h3>Multi-Store SCM & Inventory Matrix</h3>
+                    <span class="project-tag-label">Supply Chain Management Core</span>
+                    <p>Automated tracking controlling material allocation, quality checkpoints, and cross-warehouse transfers.</p>
+                    <div class="project-features">
+                        <h4>System Capabilities</h4>
+                        <div class="feature-grid">
+                            <div class="feature-item">
+                                <strong>Procurement</strong>
+                                Purchase Orders, Delivery Orders, vendor performance logs
+                            </div>
+                            <div class="feature-item">
+                                <strong>Inventory</strong>
+                                GRN Engine, vendor returns, physical item transfers
+                            </div>
+                            <div class="feature-item">
+                                <strong>Multi-Store Sync</strong>
+                                Real-time stock balancing across 5 warehouse channels
+                            </div>
+                            <div class="feature-item">
+                                <strong>Thresholds</strong>
+                                Automated reorder logic on safety stock dips
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-row">
+                <div class="project-img-wrap">
+                    <img src="APEX_DASHBOARD.PNG" alt="NOVEL 2.0 Dashboard">
+                </div>
+                <div class="project-info">
+                    <h3>NOVEL 2.0 Procurement Cloud</h3>
+                    <span class="project-tag-label">Oracle APEX Interface Suite</span>
+                    <p>Web-responsive cloud portal migrating production data into interactive analytical views.</p>
+                    <div class="project-features">
+                        <h4>System Capabilities</h4>
+                        <div class="feature-grid">
+                            <div class="feature-item">
+                                <strong>Supplier Portals</strong>
+                                Vendor fulfillment history and lead-time analytics
+                            </div>
+                            <div class="feature-item">
+                                <strong>Acquisition Indents</strong>
+                                Automated indent generation with verification rules
+                            </div>
+                            <div class="feature-item">
+                                <strong>Data Export</strong>
+                                Live financial logs to Excel and print servers
+                            </div>
+                            <div class="feature-item">
+                                <strong>Security</strong>
+                                Row-level access filters for private transactions
+                            </div>
+                        </div>
+                    </div>
+                    <a href="https://oracleapex.com/ords/r/aliabbasqureshi786/novel-2-0/login" target="_blank" class="live-link">
+                        <i class="fa-solid fa-bolt"></i> Launch Live Application
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PORTFOLIO CARDS -->
+    <section id="portfolio">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">// Featured Work</span>
+                <h2 class="section-heading">Portfolio Highlights</h2>
+                <p class="section-desc">Production modules deployed across regional distribution centers and integrated enterprise architectures.</p>
+            </div>
+
+            <div class="cards-grid">
+                <div class="project-card">
+                    <div class="card-img"><img src="GL.jpeg" alt="General Ledger"></div>
+                    <div class="card-body">
+                        <h3>General Ledger Engine</h3>
+                        <p>High-performance double-entry financial ledger with dynamic voucher system, Post-Dated Check pipelines, and real-time Trial Balance.</p>
+                        <div class="card-tags">
+                            <span class="card-tag">Enterprise</span>
+                            <span class="card-tag">Oracle Forms 11g</span>
+                            <span class="card-tag">GL</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="card-img"><img src="PO_TRANS.jpeg" alt="SCM Module"></div>
+                    <div class="card-body">
+                        <h3>Multi-Store SCM & Inventory</h3>
+                        <p>Material lifecycle engine tracking items through PO, DO, Quality Inspections, GRN, and Returns across 5 warehouses.</p>
+                        <div class="card-tags">
+                            <span class="card-tag">SCM Suite</span>
+                            <span class="card-tag">PL/SQL</span>
+                            <span class="card-tag">Logistics</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="card-img"><img src="APEX_DASHBOARD.PNG" alt="APEX Dashboard"></div>
+                    <div class="card-body">
+                        <h3>NOVEL 2.0 Cloud Dashboard</h3>
+                        <p>Web-responsive Oracle APEX procurement dashboard visualizing suppliers, dependencies, and acquisition indents.</p>
+                        <div class="card-tags">
+                            <span class="card-tag">Oracle APEX</span>
+                            <span class="card-tag">Cloud UI</span>
+                            <span class="card-tag">Web App</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience">
+        <div class="container">
+            <div class="section-header" style="text-align: center;">
+                <span class="section-label">// Career Path</span>
+                <h2 class="section-heading">Professional Experience</h2>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <h3>Senior Oracle Developer</h3>
+                        <div class="timeline-org">MEKOTEX PVT. LTD</div>
+                        <span class="timeline-date">Feb 2025 — Present</span>
+                        <ul>
+                            <li>Direct core system optimization and logic updates across production environments</li>
+                            <li>Debug complex business operations and maintain data tracking channels for textile operations</li>
+                            <li>Architected the central General Ledger system from Chart layers to transaction vouchers</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <h3>Oracle Developer</h3>
+                        <div class="timeline-org">AUTOSYS COMPUTERS</div>
+                        <span class="timeline-date">Dec 2024 — Jan 2025</span>
+                        <ul>
+                            <li>Optimized SQL routines and form blocks to scale interface query performance</li>
+                            <li>Delivered critical programmatic fixes across production configurations</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <h3>Jr. Oracle Developer</h3>
+                        <div class="timeline-org">KAM INTERNATIONAL</div>
+                        <span class="timeline-date">May 2022 — Nov 2024</span>
+                        <ul>
+                            <li>Mapped production processes, converting operational guidelines into database code</li>
+                            <li>Managed software ticketing desks and system optimization across multi-site inventories</li>
+                            <li>Developed accounting frameworks with Chart of Accounts hierarchies and voucher systems</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="contact-heading">Let's build something great</h2>
+            <p class="contact-sub">Open to enterprise projects, full-time roles, and system consulting. Based in Karachi — available worldwide.</p>
+
+            <div class="contact-card">
+                <h3>Send a Message</h3>
+                <p>Fill in the details and I'll get back to you shortly.</p>
+                <form onsubmit="event.preventDefault(); alert('Message sent! (Demo)');">
+                    <div class="form-grid">
+                        <input type="text" class="input-field" placeholder="Your name" required>
+                        <input type="email" class="input-field" placeholder="Email address" required>
+                        <input type="text" class="input-field full" placeholder="Subject / project type">
+                        <textarea class="input-field full" placeholder="Tell me about your project..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">Send Message <i class="fa-solid fa-arrow-right"></i></button>
+                </form>
+            </div>
+
+            <div class="contact-links">
+                <a href="mailto:Ali.QureshiMis@Outlook.com" class="contact-link email">
+                    <i class="fa-solid fa-envelope"></i> Ali.QureshiMis@Outlook.com
+                </a>
+                <a href="tel:+923453602968" class="contact-link phone">
+                    <i class="fa-solid fa-phone"></i> +92 345 3602968
+                </a>
+                <a href="https://wa.me/923453602968" target="_blank" class="contact-link wa">
+                    <i class="fa-brands fa-whatsapp"></i> WhatsApp
+                </a>
+                <a href="https://www.linkedin.com/in/ali-qureshi-a576942a8?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank" class="contact-link li">
+                    <i class="fa-brands fa-linkedin-in"></i> LinkedIn
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <div class="footer">
+        <div class="container">
+            <p>[ 2026 // CODEWITHALI ] — BSSE Candidate (Virtual University)</p>
+        </div>
+    </div>
+
+    <script>
+        const ring = document.querySelector('.cursor-ring');
+        const dot = document.querySelector('.cursor-dot');
+        const trail = document.querySelector('.cursor-trail');
+        let mouseX = 0, mouseY = 0;
+        let ringX = 0, ringY = 0;
+        let trailX = 0, trailY = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            dot.style.left = mouseX + 'px';
+            dot.style.top = mouseY + 'px';
+        });
+
+        function animateCursor() {
+            ringX += (mouseX - ringX) * 0.15;
+            ringY += (mouseY - ringY) * 0.15;
+            ring.style.left = ringX + 'px';
+            ring.style.top = ringY + 'px';
+
+            trailX += (mouseX - trailX) * 0.06;
+            trailY += (mouseY - trailY) * 0.06;
+            trail.style.left = trailX + 'px';
+            trail.style.top = trailY + 'px';
+
+            requestAnimationFrame(animateCursor);
+        }
+        animateCursor();
+
+        const interactives = document.querySelectorAll('a, button, .project-card, .expertise-card, .timeline-card, .input-field, .live-link, .btn');
+        interactives.forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                ring.classList.add('hovering');
+                dot.classList.add('hovering');
+            });
+            el.addEventListener('mouseleave', () => {
+                ring.classList.remove('hovering');
+                dot.classList.remove('hovering');
+            });
+        });
+
+        // Scroll-triggered nav background
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.style.background = 'rgba(9, 9, 11, 0.92)';
+            } else {
+                nav.style.background = 'rgba(9, 9, 11, 0.75)';
+            }
+        });
+    </script>
+
+</body>
+</html>
