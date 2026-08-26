@@ -1,0 +1,1724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ali Abbas Qureshi | Enterprise Systems Architect</title>
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23a855f7'/%3E%3Cstop offset='100%25' stop-color='%23ff3322'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='32' cy='32' r='32' fill='url(%23g)'/%3E%3Ctext x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' fill='%23ffffff' font-family='sans-serif' font-weight='800' font-size='22'%3EAQ%3C/text%3E%3C/svg%3E">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        :root {
+            --canvas: #09090b;
+            --surface: #111114;
+            --card: #16161a;
+            --card-elevated: #1c1c21;
+            --accent: #818cf8;
+            --accent-bright: #a5b4fc;
+            --accent-dim: rgba(129, 140, 248, 0.12);
+            --accent-glow: rgba(129, 140, 248, 0.06);
+            --green: #34d399;
+            --green-dim: rgba(52, 211, 153, 0.1);
+            --text-w: #fafafa;
+            --text-1: #e4e4e7;
+            --text-2: #a1a1aa;
+            --text-3: #71717a;
+            --text-4: #52525b;
+            --border: rgba(255, 255, 255, 0.06);
+            --border-h: rgba(255, 255, 255, 0.12);
+            --font-d: 'Space Grotesk', sans-serif;
+            --font-b: 'Inter', sans-serif;
+            --font-m: 'JetBrains Mono', monospace;
+            --ease: cubic-bezier(0.16, 1, 0.3, 1);
+            --r-sm: 12px;
+            --r-md: 20px;
+            --r-lg: 28px;
+            --r-xl: 36px;
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+
+        body {
+            font-family: var(--font-b);
+            background: var(--canvas);
+            color: var(--text-1);
+            line-height: 1.65;
+            font-size: 15px;
+            overflow-x: hidden;
+        }
+
+        ::selection { background: rgba(129, 140, 248, 0.25); color: var(--text-w); }
+
+        img { display: block; max-width: 100%; }
+        a { color: inherit; text-decoration: none; }
+        ul { list-style: none; }
+
+        /* ===== CURSOR ===== */
+        .c-ring, .c-dot, .c-glow {
+            position: fixed;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 99999;
+            transform: translate(-50%, -50%);
+        }
+
+        .c-ring {
+            width: 36px; height: 36px;
+            border: 1.5px solid var(--accent);
+            transition: width .3s var(--ease), height .3s var(--ease),
+                        border-color .3s, background .3s, box-shadow .3s;
+            mix-blend-mode: difference;
+        }
+
+        .c-ring.hover {
+            width: 60px; height: 60px;
+            border-color: var(--accent-bright);
+            background: rgba(129, 140, 248, 0.05);
+            box-shadow: 0 0 32px rgba(129, 140, 248, 0.1);
+        }
+
+        .c-dot {
+            width: 5px; height: 5px;
+            background: var(--accent);
+            transition: width .2s, height .2s, background .2s;
+        }
+
+        .c-dot.hover { width: 3px; height: 3px; background: var(--accent-bright); }
+
+        .c-glow {
+            width: 200px; height: 200px;
+            background: radial-gradient(circle, rgba(129, 140, 248, 0.035) 0%, transparent 70%);
+            z-index: -1;
+            transition: opacity .5s;
+        }
+
+        /* ===== AMBIENT ===== */
+        .orb {
+            position: fixed;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: -1;
+            filter: blur(140px);
+        }
+
+        .orb-1 { width: 600px; height: 600px; top: -200px; right: -180px; background: rgba(129, 140, 248, 0.07); }
+        .orb-2 { width: 500px; height: 500px; bottom: -100px; left: -180px; background: rgba(52, 211, 153, 0.04); }
+
+        /* ===== NAV ===== */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            padding: 0 3rem;
+            height: 72px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(9, 9, 11, 0.6);
+            backdrop-filter: blur(24px) saturate(1.8);
+            -webkit-backdrop-filter: blur(24px) saturate(1.8);
+            border-bottom: 1px solid var(--border);
+            transition: background .3s;
+        }
+
+        nav.scrolled { background: rgba(9, 9, 11, 0.92); }
+
+        .nav-logo {
+            font-family: var(--font-d);
+            font-weight: 700;
+            font-size: 1.1rem;
+            letter-spacing: -0.03em;
+            display: flex;
+            align-items: center;
+            gap: .35rem;
+            white-space: nowrap;
+        }
+
+        .nav-logo .bracket { color: var(--accent); }
+        .nav-logo .name { color: var(--text-w); }
+
+        .nav-links {
+            display: flex;
+            gap: 2.25rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-size: .78rem;
+            font-weight: 500;
+            color: var(--text-3);
+            text-transform: uppercase;
+            letter-spacing: .08em;
+            transition: color .25s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px; left: 0;
+            width: 0; height: 1.5px;
+            background: var(--accent);
+            border-radius: 1px;
+            transition: width .35s var(--ease);
+        }
+
+        .nav-links a:hover { color: var(--text-w); }
+        .nav-links a:hover::after { width: 100%; }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 4px;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            width: 22px; height: 1.5px;
+            background: var(--text-1);
+            border-radius: 2px;
+            transition: all .3s var(--ease);
+        }
+
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(4px, 5px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(4px, -5px); }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(9, 9, 11, 0.96);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            z-index: 999;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity .35s;
+        }
+
+        .mobile-menu.open { opacity: 1; pointer-events: auto; }
+
+        .mobile-menu a {
+            font-family: var(--font-d);
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: var(--text-2);
+            letter-spacing: -0.02em;
+            transition: color .25s;
+        }
+
+        .mobile-menu a:hover { color: var(--accent); }
+
+        /* ===== CONTAINER / SECTION ===== */
+        .container { max-width: 1320px; margin: 0 auto; padding: 0 3rem; }
+        section { padding: 7rem 0; position: relative; }
+
+        /* ===== SECTION HEADER ===== */
+        .s-label {
+            font-family: var(--font-m);
+            font-size: .72rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: .15em;
+            margin-bottom: .75rem;
+            display: block;
+        }
+
+        .s-heading {
+            font-family: var(--font-d);
+            font-size: clamp(2.2rem, 4vw, 3.2rem);
+            font-weight: 700;
+            color: var(--text-w);
+            letter-spacing: -0.035em;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .s-desc {
+            font-size: 1.05rem;
+            color: var(--text-2);
+            max-width: 580px;
+            line-height: 1.7;
+        }
+
+        .s-header { margin-bottom: 4rem; }
+
+        /* ===== HERO ===== */
+        #home {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 72px;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.05fr .95fr;
+            gap: 5rem;
+            align-items: center;
+            width: 100%;
+        }
+
+        .badge-status {
+            display: inline-flex;
+            align-items: center;
+            gap: .55rem;
+            background: var(--green-dim);
+            border: 1px solid rgba(52, 211, 153, 0.18);
+            color: var(--green);
+            padding: .4rem 1rem;
+            border-radius: 100px;
+            font-size: .72rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: .08em;
+            margin-bottom: 2rem;
+        }
+
+        .badge-status .dot {
+            width: 6px; height: 6px;
+            background: var(--green);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.45); }
+            50% { box-shadow: 0 0 0 7px rgba(52, 211, 153, 0); }
+        }
+
+        .hero-title-wrap { margin-bottom: 1.5rem; }
+
+        .hero-line {
+            display: block;
+            font-family: var(--font-d);
+            font-size: clamp(2.8rem, 5vw, 4rem);
+            font-weight: 700;
+            line-height: 1.08;
+            letter-spacing: -0.04em;
+            text-transform: uppercase;
+        }
+
+        .hero-line-1 { color: var(--text-w); }
+        .hero-line-2 {
+            background: linear-gradient(135deg, var(--accent), var(--green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero-line-3 {
+            color: transparent;
+            -webkit-text-stroke: 1.2px rgba(255, 255, 255, 0.18);
+        }
+
+        .hero-sub {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text-2);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+        }
+
+        .hero-sub .sep { color: var(--accent); font-weight: 700; }
+
+        .hero-desc {
+            font-size: 1.05rem;
+            color: var(--text-3);
+            max-width: 540px;
+            margin-bottom: 2.5rem;
+            line-height: 1.7;
+        }
+
+        .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+        .btn {
+            padding: .85rem 2rem;
+            border-radius: 100px;
+            font-weight: 600;
+            font-size: .9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: .6rem;
+            transition: all .3s var(--ease);
+            cursor: pointer;
+            border: none;
+            font-family: var(--font-b);
+        }
+
+        .btn-g {
+            background: linear-gradient(135deg, var(--accent), #6366f1);
+            color: #fff;
+            box-shadow: 0 4px 24px rgba(129, 140, 248, 0.2);
+        }
+
+        .btn-g:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(129, 140, 248, 0.3);
+        }
+
+        .btn-o {
+            background: transparent;
+            color: var(--text-w);
+            border: 1px solid var(--border-h);
+        }
+
+        .btn-o:hover {
+            background: rgba(255, 255, 255, 0.04);
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* ===== PROFILE CARD ===== */
+        .profile-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--r-xl);
+            padding: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            box-shadow: 0 32px 80px rgba(0, 0, 0, 0.4);
+            animation: float 7s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        .pc-top { display: flex; align-items: center; gap: 1.25rem; }
+
+        .pc-avatar {
+            width: 56px; height: 56px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), var(--green));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-d);
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #fff;
+            flex-shrink: 0;
+        }
+
+        .pc-name {
+            font-family: var(--font-d);
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-w);
+            margin-bottom: 2px;
+        }
+
+        .pc-role {
+            font-size: .82rem;
+            color: var(--text-4);
+        }
+
+        .pc-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+        .pc-stat {
+            background: rgba(255, 255, 255, 0.015);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            border-radius: var(--r-md);
+            padding: 1.25rem;
+        }
+
+        .pc-stat h4 {
+            font-family: var(--font-d);
+            font-size: 1.9rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent), var(--green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 2px;
+        }
+
+        .pc-stat p { font-size: .78rem; color: var(--text-4); }
+
+        .pc-tags { display: flex; flex-wrap: wrap; gap: .5rem; }
+
+        .pc-tag {
+            background: rgba(255, 255, 255, 0.025);
+            border: 1px solid var(--border);
+            padding: .4rem .9rem;
+            border-radius: 100px;
+            font-size: .75rem;
+            font-weight: 500;
+            color: var(--text-3);
+            transition: all .25s;
+        }
+
+        .pc-tag.hl {
+            background: var(--accent-dim);
+            border-color: rgba(129, 140, 248, 0.2);
+            color: var(--accent);
+        }
+
+        .pc-tag:hover { border-color: var(--border-h); color: var(--text-1); }
+
+        /* ===== EXPERTISE ===== */
+        .exp-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.25rem;
+        }
+
+        .exp-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--r-lg);
+            padding: 2.25rem 1.75rem;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+            transition: all .4s var(--ease);
+        }
+
+        .exp-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent), var(--green));
+            opacity: 0;
+            transition: opacity .4s;
+        }
+
+        .exp-card:hover { border-color: var(--border-h); transform: translateY(-4px); background: var(--card-elevated); }
+        .exp-card:hover::before { opacity: 1; }
+
+        .exp-icon {
+            width: 44px; height: 44px;
+            border-radius: var(--r-sm);
+            background: var(--accent-dim);
+            border: 1px solid rgba(129, 140, 248, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+        }
+
+        .exp-card h3 {
+            font-family: var(--font-d);
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-w);
+            margin-bottom: .6rem;
+            letter-spacing: -0.01em;
+        }
+
+        .exp-card p {
+            font-size: .85rem;
+            color: var(--text-2);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .exp-tags { display: flex; flex-wrap: wrap; gap: .35rem; margin-top: auto; }
+
+        .exp-tag {
+            background: rgba(255, 255, 255, 0.025);
+            border: 1px solid var(--border);
+            padding: .28rem .65rem;
+            border-radius: 100px;
+            font-size: .62rem;
+            font-family: var(--font-m);
+            color: var(--text-4);
+        }
+
+        /* ===== PROJECT WALKTHROUGH ===== */
+        .pw-row {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 4rem;
+            align-items: center;
+            padding: 4rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .pw-row:last-child { border-bottom: none; }
+
+        .pw-img {
+            position: relative;
+            border-radius: var(--r-lg);
+            overflow: hidden;
+            border: 1px solid var(--border);
+            background: var(--card);
+            aspect-ratio: 16 / 11;
+        }
+
+        .pw-img img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            transition: transform .7s ease;
+        }
+
+        .pw-row:hover .pw-img img { transform: scale(1.03); }
+
+        .pw-img::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 60%, rgba(0, 0, 0, 0.3));
+            pointer-events: none;
+        }
+
+        .pw-info h3 {
+            font-family: var(--font-d);
+            font-size: clamp(1.5rem, 2.5vw, 2rem);
+            font-weight: 700;
+            color: var(--text-w);
+            letter-spacing: -0.02em;
+            margin-bottom: .4rem;
+        }
+
+        .pw-tag {
+            font-family: var(--font-m);
+            font-size: .72rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: .1em;
+            margin-bottom: 1.25rem;
+            display: block;
+        }
+
+        .pw-desc {
+            font-size: 1rem;
+            color: var(--text-2);
+            line-height: 1.7;
+            margin-bottom: 2rem;
+        }
+
+        .pw-box {
+            background: rgba(255, 255, 255, 0.015);
+            border: 1px solid var(--border);
+            border-radius: var(--r-md);
+            padding: 1.75rem;
+            margin-bottom: 2rem;
+        }
+
+        .pw-box h4 {
+            font-family: var(--font-d);
+            font-size: .82rem;
+            font-weight: 600;
+            color: var(--text-w);
+            text-transform: uppercase;
+            letter-spacing: .05em;
+            margin-bottom: 1.25rem;
+            padding-left: .75rem;
+            border-left: 2px solid var(--accent);
+        }
+
+        .pw-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .pw-feat {
+            position: relative;
+            padding-left: 1.2rem;
+            font-size: .82rem;
+            color: var(--text-2);
+            line-height: 1.5;
+        }
+
+        .pw-feat strong {
+            display: block;
+            color: var(--text-1);
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .pw-feat::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 7px;
+            width: 4px; height: 4px;
+            border-radius: 50%;
+            background: var(--accent);
+        }
+
+        .live-link {
+            display: inline-flex;
+            align-items: center;
+            gap: .6rem;
+            padding: .75rem 1.5rem;
+            border-radius: 100px;
+            background: var(--accent-dim);
+            border: 1px solid rgba(129, 140, 248, 0.18);
+            color: var(--text-w);
+            font-weight: 600;
+            font-size: .82rem;
+            transition: all .35s var(--ease);
+        }
+
+        .live-link:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            box-shadow: 0 4px 24px rgba(129, 140, 248, 0.25);
+            transform: translateY(-2px);
+        }
+
+        .live-link i { font-size: .7rem; transition: transform .3s; }
+        .live-link:hover i { transform: translateX(3px); }
+
+        /* ===== PROJECT CARDS ===== */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .p-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--r-lg);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: all .4s var(--ease);
+        }
+
+        .p-card:hover { transform: translateY(-6px); border-color: var(--border-h); }
+
+        .p-card-img {
+            width: 100%;
+            aspect-ratio: 16 / 10;
+            overflow: hidden;
+            background: var(--canvas);
+        }
+
+        .p-card-img img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            opacity: .85;
+            transition: all .5s ease;
+        }
+
+        .p-card:hover .p-card-img img { opacity: 1; transform: scale(1.04); }
+
+        .p-card-body { padding: 2rem; display: flex; flex-direction: column; flex: 1; }
+
+        .p-card-body h3 {
+            font-family: var(--font-d);
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-w);
+            margin-bottom: .5rem;
+        }
+
+        .p-card-body p {
+            font-size: .85rem;
+            color: var(--text-2);
+            line-height: 1.65;
+            margin-bottom: 1.5rem;
+            flex: 1;
+        }
+
+        .p-card-tags { display: flex; flex-wrap: wrap; gap: .4rem; }
+
+        .p-card-tag {
+            background: var(--accent-dim);
+            border: 1px solid rgba(129, 140, 248, 0.1);
+            color: var(--accent);
+            font-family: var(--font-m);
+            font-size: .62rem;
+            text-transform: uppercase;
+            letter-spacing: .04em;
+            padding: .32rem .75rem;
+            border-radius: 100px;
+            font-weight: 600;
+        }
+
+        /* ===== TIMELINE ===== */
+        .tl {
+            position: relative;
+            max-width: 780px;
+            margin: 0 auto;
+        }
+
+        .tl::before {
+            content: '';
+            position: absolute;
+            left: 28px; top: 0; bottom: 0;
+            width: 1px;
+            background: var(--border);
+        }
+
+        .tl-item {
+            position: relative;
+            padding-left: 80px;
+            margin-bottom: 3rem;
+        }
+
+        .tl-item:last-child { margin-bottom: 0; }
+
+        .tl-dot {
+            position: absolute;
+            left: 22px; top: 28px;
+            width: 12px; height: 12px;
+            border-radius: 50%;
+            border: 2px solid var(--accent);
+            background: var(--canvas);
+            z-index: 2;
+            transition: background .25s;
+        }
+
+        .tl-item:hover .tl-dot { background: var(--accent); }
+
+        .tl-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--r-md);
+            padding: 2rem;
+            transition: border-color .25s;
+        }
+
+        .tl-card:hover { border-color: var(--border-h); }
+
+        .tl-card h3 {
+            font-family: var(--font-d);
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--text-w);
+            margin-bottom: .2rem;
+        }
+
+        .tl-org {
+            font-weight: 600;
+            font-size: .92rem;
+            background: linear-gradient(135deg, var(--accent), var(--green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: .35rem;
+        }
+
+        .tl-date {
+            font-family: var(--font-m);
+            font-size: .75rem;
+            color: var(--text-4);
+            margin-bottom: 1.2rem;
+            display: block;
+        }
+
+        .tl-card ul li {
+            position: relative;
+            padding-left: 1.1rem;
+            margin-bottom: .55rem;
+            font-size: .85rem;
+            color: var(--text-2);
+        }
+
+        .tl-card ul li::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 8px;
+            width: 4px; height: 4px;
+            border-radius: 50%;
+            background: var(--accent);
+        }
+
+        /* ===== CONTACT ===== */
+        #contact { text-align: center; }
+
+        .contact-hero {
+            font-family: var(--font-d);
+            font-size: clamp(2.5rem, 5vw, 3.8rem);
+            font-weight: 700;
+            letter-spacing: -0.04em;
+            background: linear-gradient(135deg, var(--accent), var(--green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1.25rem;
+            line-height: 1.1;
+        }
+
+        .contact-sub {
+            font-size: 1.05rem;
+            color: var(--text-2);
+            max-width: 520px;
+            margin: 0 auto 3rem;
+            line-height: 1.7;
+        }
+
+        .contact-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--r-xl);
+            max-width: 660px;
+            margin: 0 auto;
+            padding: 3.5rem;
+            text-align: left;
+        }
+
+        .contact-card h3 {
+            font-family: var(--font-d);
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text-w);
+            margin-bottom: .4rem;
+        }
+
+        .contact-card > p {
+            font-size: .88rem;
+            color: var(--text-2);
+            margin-bottom: 2rem;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .form-grid .full { grid-column: 1 / -1; }
+
+        .input {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border);
+            border-radius: var(--r-sm);
+            padding: .95rem 1.25rem;
+            color: var(--text-w);
+            font-size: .88rem;
+            font-family: var(--font-b);
+            outline: none;
+            transition: border-color .25s, box-shadow .25s;
+        }
+
+        .input::placeholder { color: var(--text-4); }
+        .input:focus { border-color: rgba(129, 140, 248, 0.35); box-shadow: 0 0 20px rgba(129, 140, 248, 0.06); }
+        textarea.input { resize: none; min-height: 120px; }
+
+        .btn-send {
+            margin-top: 1rem;
+            background: linear-gradient(135deg, var(--accent), #6366f1);
+            color: #fff;
+            border: none;
+            padding: .95rem 2.25rem;
+            border-radius: 100px;
+            font-weight: 700;
+            font-size: .88rem;
+            cursor: pointer;
+            font-family: var(--font-b);
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+            transition: all .3s var(--ease);
+            box-shadow: 0 4px 20px rgba(129, 140, 248, 0.2);
+        }
+
+        .btn-send:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(129, 140, 248, 0.35); }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 3rem;
+        }
+
+        .c-link {
+            display: inline-flex;
+            align-items: center;
+            gap: .55rem;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border);
+            padding: .65rem 1.4rem;
+            border-radius: 100px;
+            color: var(--text-2);
+            font-size: .82rem;
+            font-weight: 500;
+            transition: all .3s var(--ease);
+        }
+
+        .c-link:hover { border-color: var(--border-h); color: var(--text-w); transform: translateY(-2px); }
+        .c-link.em:hover { color: #ea4335; }
+        .c-link.ph:hover { color: #06b6d4; }
+        .c-link.wa:hover { color: #25d366; }
+        .c-link.li:hover { color: #0077b5; }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            border-top: 1px solid var(--border);
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        .footer p {
+            font-family: var(--font-m);
+            font-size: .75rem;
+            color: var(--text-4);
+            letter-spacing: .04em;
+        }
+
+        /* ===== SCROLL REVEAL ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(32px);
+            transition: opacity .7s var(--ease), transform .7s var(--ease);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== FEATURED ROW (3+3+1) ===== */
+        .feat-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .feat-featured {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .feat-featured .p-card {
+            max-width: 520px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* ===== ACHIEVEMENTS ===== */
+        .ach-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem;
+        }
+
+        .ach-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--r-lg);
+            padding: 2rem 1.75rem;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            position: relative;
+            overflow: hidden;
+            transition: all .4s var(--ease);
+            text-decoration: none;
+        }
+
+        .ach-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent), var(--green));
+            opacity: 0;
+            transition: opacity .4s;
+        }
+
+        .ach-card:hover { border-color: var(--border-h); transform: translateY(-4px); background: var(--card-elevated); }
+        .ach-card:hover::before { opacity: 1; }
+
+        .ach-icon {
+            width: 44px; height: 44px;
+            border-radius: var(--r-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            margin-bottom: 1.25rem;
+            flex-shrink: 0;
+        }
+
+        .ach-icon.award { background: rgba(251, 191, 36, 0.1); border: 1px solid rgba(251, 191, 36, 0.15); color: #fbbf24; }
+        .ach-icon.cert { background: var(--accent-dim); border: 1px solid rgba(129, 140, 248, 0.12); color: var(--accent); }
+
+        .ach-card h3 {
+            font-family: var(--font-d);
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text-w);
+            margin-bottom: .35rem;
+            line-height: 1.3;
+        }
+
+        .ach-org {
+            font-size: .82rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: .25rem;
+        }
+
+        .ach-date {
+            font-family: var(--font-m);
+            font-size: .7rem;
+            color: var(--text-4);
+            margin-bottom: .75rem;
+            display: block;
+        }
+
+        .ach-card > p {
+            font-size: .82rem;
+            color: var(--text-2);
+            line-height: 1.55;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1200px) {
+            .hero-grid { grid-template-columns: 1fr; gap: 3rem; }
+            .exp-grid { grid-template-columns: repeat(2, 1fr); }
+            .pw-row { grid-template-columns: 1fr; gap: 2rem; }
+            .cards-grid { grid-template-columns: repeat(2, 1fr); }
+            .feat-row { grid-template-columns: repeat(2, 1fr); }
+            .ach-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 0 1.25rem; }
+            nav { padding: 0 1.25rem; }
+            .nav-links { display: none; }
+            .hamburger { display: flex; }
+            .mobile-menu { display: flex; }
+            section { padding: 4.5rem 0; }
+            .exp-grid { grid-template-columns: 1fr; }
+            .pw-features { grid-template-columns: 1fr; }
+            .cards-grid { grid-template-columns: 1fr; }
+            .feat-row { grid-template-columns: 1fr; }
+            .feat-featured .p-card { max-width: 100%; }
+            .ach-grid { grid-template-columns: 1fr; }
+            .form-grid { grid-template-columns: 1fr; }
+            .contact-card { padding: 2rem 1.5rem; }
+            .c-ring, .c-dot, .c-glow { display: none; }
+            .profile-card { animation: none; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+            .reveal { opacity: 1; transform: none; }
+            .profile-card { animation: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="c-ring"></div>
+    <div class="c-dot"></div>
+    <div class="c-glow"></div>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+
+    <!-- NAV -->
+    <nav id="nav" role="navigation" aria-label="Main navigation">
+        <a href="#home" class="nav-logo" aria-label="Home">
+            <span class="bracket">&lt;</span>ALI_QURESHI<span class="bracket">/&gt;</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="#expertise">Expertise</a></li>
+            <li><a href="#detailed-projects">Details</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#achievements">Achievements</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" role="dialog" aria-label="Mobile navigation">
+        <a href="#expertise">Expertise</a>
+        <a href="#detailed-projects">Details</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#achievements">Achievements</a>
+        <a href="#contact">Contact</a>
+    </div>
+
+    <!-- HERO -->
+    <section id="home">
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-left">
+                    <div class="badge-status">
+                        <span class="dot"></span> Available for opportunities
+                    </div>
+
+                    <div class="hero-title-wrap">
+                        <span class="hero-line hero-line-1">Oracle</span>
+                        <span class="hero-line hero-line-2">Application &</span>
+                        <span class="hero-line hero-line-3">ERP Developer</span>
+                    </div>
+
+                    <div class="hero-sub">
+                        Oracle Forms <span class="sep">&bull;</span> Reports <span class="sep">&bull;</span> PL/SQL <span class="sep">&bull;</span> Oracle APEX
+                    </div>
+
+                    <p class="hero-desc">
+                        Building enterprise-grade ERP systems using Oracle Forms, Reports, PL/SQL, and Oracle APEX with real-world experience across Inventory, Finance, Payroll, Textile Manufacturing, and Business Automation systems.
+                    </p>
+
+                    <div class="hero-cta">
+                        <a href="#projects" class="btn btn-g"><i class="fa-solid fa-folder-open"></i> View Projects</a>
+                        <a href="#contact" class="btn btn-o"><i class="fa-regular fa-comment"></i> Let's Talk</a>
+                    </div>
+                </div>
+
+                <div class="profile-card">
+                    <div class="pc-top">
+                        <div class="pc-avatar">AQ</div>
+                        <div>
+                            <div class="pc-name">Ali Abbas Qureshi</div>
+                            <div class="pc-role">Oracle Developer &middot; Karachi, PK</div>
+                        </div>
+                    </div>
+
+                    <div class="pc-stats">
+                        <div class="pc-stat">
+                            <h4>4+</h4>
+                            <p>Years experience</p>
+                        </div>
+                        <div class="pc-stat">
+                            <h4>12+</h4>
+                            <p>Production Modules</p>
+                        </div>
+                        <div class="pc-stat">
+                            <h4>5</h4>
+                            <p>Enterprise Systems</p>
+                        </div>
+                        <div class="pc-stat">
+                            <h4>100%</h4>
+                            <p>Data Integrity</p>
+                        </div>
+                    </div>
+
+                    <div class="pc-tags">
+                        <span class="pc-tag hl">PL/SQL</span>
+                        <span class="pc-tag">Oracle Forms</span>
+                        <span class="pc-tag">Reports</span>
+                        <span class="pc-tag">Oracle DB 11g</span>
+                        <span class="pc-tag">ERP Customization</span>
+                        <span class="pc-tag">Triggers</span>
+                        <span class="pc-tag">Procedures</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPERTISE -->
+    <section id="expertise">
+        <div class="container">
+            <div class="s-header reveal">
+                <span class="s-label">// Expertise Portfolio</span>
+                <h2 class="s-heading">What I bring<br>to the table</h2>
+                <p class="s-desc">Over 4 years of hands-on experience developing database frameworks, engineering customized ERP solutions, and deploying industrial-grade infrastructure modules.</p>
+            </div>
+
+            <div class="exp-grid">
+                <div class="exp-card reveal">
+                    <div class="exp-icon"><i class="fa-solid fa-layer-group"></i></div>
+                    <h3>Oracle Forms & Reports</h3>
+                    <p>Advanced development, configuration, and structural installation across runtime versions 6i, 10g, and 11g. Designing interactive FMB canvases, report designs, and alert systems.</p>
+                    <div class="exp-tags">
+                        <span class="exp-tag">6i / 10g / 11g</span>
+                        <span class="exp-tag">Installation</span>
+                        <span class="exp-tag">Triggers</span>
+                    </div>
+                </div>
+
+                <div class="exp-card reveal">
+                    <div class="exp-icon"><i class="fa-solid fa-database"></i></div>
+                    <h3>Database Engineering</h3>
+                    <p>Constructing core database schema infrastructure. Master-level composition of optimized Packages, Stored Procedures, Functions, Views, and automated Oracle Scheduler Jobs.</p>
+                    <div class="exp-tags">
+                        <span class="exp-tag">PL/SQL Blocks</span>
+                        <span class="exp-tag">Scheduler Jobs</span>
+                        <span class="exp-tag">Performance Tuning</span>
+                    </div>
+                </div>
+
+                <div class="exp-card reveal">
+                    <div class="exp-icon"><i class="fa-solid fa-industry"></i></div>
+                    <h3>Industrial SCM & ERP</h3>
+                    <p>Deep domain knowledge in Textile Manufacturing workflow systems. Seamless tracking implementations spanning from raw Yarn to Processing, Gate Pass logs, and physical movement.</p>
+                    <div class="exp-tags">
+                        <span class="exp-tag">Fabric & Yarn SCM</span>
+                        <span class="exp-tag">Gate Pass Logs</span>
+                        <span class="exp-tag">Process Planning</span>
+                    </div>
+                </div>
+
+                <div class="exp-card reveal">
+                    <div class="exp-icon"><i class="fa-solid fa-calculator"></i></div>
+                    <h3>Financial Ledgers</h3>
+                    <p>Deploying critical core corporate Accounts Management frameworks, double-entry financial accounting journal nodes, multi-tier voucher lines, and central Chart schemas.</p>
+                    <div class="exp-tags">
+                        <span class="exp-tag">Accounts ERP</span>
+                        <span class="exp-tag">Voucher Arrays</span>
+                        <span class="exp-tag">Bug Fixing</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DETAILED PROJECTS -->
+    <section id="detailed-projects">
+        <div class="container">
+            <div class="s-header reveal">
+                <span class="s-label">// Deep Dive Log</span>
+                <h2 class="s-heading">Project Walkthroughs</h2>
+                <p class="s-desc">A deep, programmatic look into the logical steps, table structures, and architecture mechanics engineered for every core system.</p>
+            </div>
+
+            <div class="pw-row reveal">
+                <div class="pw-img">
+                    <img src="GL.jpeg" alt="Oracle General Ledger Financial System Canvas Layout" loading="lazy">
+                </div>
+                <div class="pw-info">
+                    <h3>1-GENERAL LEDGER & FINANCIAL ENGINE</h3>
+                    <span class="pw-tag">Enterprise Ledger Core Architecture</span>
+                    <p class="pw-desc">A double-entry accounting matrix running completely inside a single Oracle Forms runtime canvas, tracking cash variables system-wide.</p>
+                    <div class="pw-box">
+                        <h4>System Capabilities & Modules Deployed</h4>
+                        <div class="pw-features">
+                            <div class="pw-feat"><strong>Form Vouchers:</strong> Handles Journal Vouchers (JV), Bank Receipts (BR), Bank Payments (BP), Cash Receipts (CR), and Cash Payments (CP).</div>
+                            <div class="pw-feat"><strong>Banking Pipelines:</strong> Post-Dated Transactions (PD Checks) monitoring state variables and real-time RTGS clearance tracking.</div>
+                            <div class="pw-feat"><strong>Analytical Reports:</strong> Dynamic General Ledger Reports (Detailed + Summary formats) and Trial Balance Sheets (Detailed + Summary).</div>
+                            <div class="pw-feat"><strong>Chart of Accounts:</strong> Powered by a Centralized Chart of Accounts Setup structure enforcing strict relational integrity codes.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pw-row reveal">
+                <div class="pw-img">
+                    <img src="PO_TRANS.jpeg" alt="Oracle Supply Chain Management Framework Canvas Layout" loading="lazy">
+                </div>
+                <div class="pw-info">
+                    <h3>Multi-Store SCM & Inventory Management Matrix</h3>
+                    <span class="pw-tag">Supply Chain Logistical Core Protocol</span>
+                    <p class="pw-desc">An automated tracking matrix controlling material allocation, incoming quality checkpoints, and cross-warehouse structural transfers.</p>
+                    <div class="pw-box">
+                        <h4>System Capabilities & Modules Deployed</h4>
+                        <div class="pw-features">
+                            <div class="pw-feat"><strong>Procurement Flows:</strong> Manages initial Purchase Orders (PO), Delivery Orders (DO), and vendor performance logs.</div>
+                            <div class="pw-feat"><strong>Inventory Routines:</strong> Goods Received Notes (GRN Engine), automatic vendor returns, and physical item transfers.</div>
+                            <div class="pw-feat"><strong>Multi-Store Sync:</strong> Live balancing algorithms tracking stocks instantly across 5 independent warehouse channels.</div>
+                            <div class="pw-feat"><strong>Automated Thresholds:</strong> Triggers reorder logic when stock dips past safety parameters.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pw-row reveal">
+                <div class="pw-img">
+                    <img src="APEX_DASHBOARD.PNG" alt="NOVEL 2.0 Oracle APEX Cloud Interface Layout" loading="lazy">
+                </div>
+                <div class="pw-info">
+                    <h3>NOVEL 2.0 Procurement Cloud Framework</h3>
+                    <span class="pw-tag">Oracle APEX Modern Interface Suite</span>
+                    <p class="pw-desc">A web-responsive cloud portal built on the Oracle APEX engine, migrating production data structures into interactive analytical views.</p>
+                    <div class="pw-box">
+                        <h4>System Capabilities & Modules Deployed</h4>
+                        <div class="pw-features">
+                            <div class="pw-feat"><strong>Supplier Portals:</strong> Secure interface cards showing historical vendor fulfillment details and lead-time analytics.</div>
+                            <div class="pw-feat"><strong>Acquisition Indents:</strong> Automated internal indent generation forms featuring multi-level verification rules.</div>
+                            <div class="pw-feat"><strong>Data Portability:</strong> Native hooks exporting live financial logs directly to Excel sheets and secure print servers.</div>
+                            <div class="pw-feat"><strong>Security Protocols:</strong> Row-level data access filters keeping client transactions private.</div>
+                        </div>
+                    </div>
+                    <a href="https://oracleapex.com/ords/r/aliabbasqureshi786/novel-2-0/login" target="_blank" rel="noopener noreferrer" class="live-link" aria-label="Launch NOVEL 2.0 live application">
+                        <i class="fa-solid fa-bolt"></i> Launch Live Application
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+        <div class="container">
+            <div class="s-header reveal">
+                <span class="s-label">// Portfolio</span>
+                <h2 class="s-heading">Featured Projects</h2>
+                <p class="s-desc">Production modules deployed across regional distribution centers and integrated client architectures.</p>
+            </div>
+
+            <!-- Row 1: 3 cards -->
+            <div class="feat-row">
+                <a href="GL.jpeg" target="_blank" rel="noopener noreferrer" class="p-card reveal" aria-label="View General Ledger Engine project">
+                    <div class="p-card-img">
+                        <img src="GL.jpeg" alt="General Ledger Module Showcase Screen" loading="lazy">
+                    </div>
+                    <div class="p-card-body">
+                        <h3>General Ledger Engine</h3>
+                        <p>High-performance double-entry core financial ledger featuring a dynamic 1-Form Voucher system (JV, BR, BP, CR, CP) with Post-Dated Check pipelines, RTGS terminals, and real-time Trial Balance analytical reports.</p>
+                        <div class="p-card-tags">
+                            <span class="p-card-tag">Enterprise</span>
+                            <span class="p-card-tag">Oracle Forms 11g</span>
+                            <span class="p-card-tag">GL Engine</span>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="STORE_INV.jpeg" target="_blank" rel="noopener noreferrer" class="p-card reveal" aria-label="View Inventory Management project">
+                    <div class="p-card-img">
+                        <img src="STORE_INV.jpeg" alt="Inventory Management Module Showcase Screen" loading="lazy">
+                    </div>
+                    <div class="p-card-body">
+                        <h3>Inventory Management</h3>
+                        <p>End-to-end inventory lifecycle engine managing stock levels, warehouse allocation, automated reorder triggers, and real-time item tracking across multiple store locations.</p>
+                        <div class="p-card-tags">
+                            <span class="p-card-tag">Inventory</span>
+                            <span class="p-card-tag">PL/SQL</span>
+                            <span class="p-card-tag">Oracle Forms</span>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="PROJECT_ESSAK.jpeg" target="_blank" rel="noopener noreferrer" class="p-card reveal" aria-label="View Sales & Purchase module project">
+                    <div class="p-card-img">
+                        <img src="PROJECT_ESSAK.jpeg" alt="Sales & Purchase Module Showcase Screen" loading="lazy">
+                    </div>
+                    <div class="p-card-body">
+                        <h3>Sales & Purchase Module</h3>
+                        <p>Comprehensive sales and procurement pipeline managing vendor transactions, purchase orders, invoice processing, and real-time financial reconciliation across distributed channels.</p>
+                        <div class="p-card-tags">
+                            <span class="p-card-tag">Sales</span>
+                            <span class="p-card-tag">Procurement</span>
+                            <span class="p-card-tag">Oracle Forms</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Row 2: 3 cards -->
+            <div class="feat-row">
+                <a href="PO_TRANS.jpeg" target="_blank" rel="noopener noreferrer" class="p-card reveal" aria-label="View Multi-Store Data Sync project">
+                    <div class="p-card-img">
+                        <img src="PO_TRANS.jpeg" alt="Multi-Store Data Sync Showcase Screen" loading="lazy">
+                    </div>
+                    <div class="p-card-body">
+                        <h3>Multi-Store Data Sync</h3>
+                        <p>Zero-latency material lifecycle engine tracking physical items through PO, DO, Quality Inspections, GRN, and Returns. Synchronizes stock data loops accurately across 5 isolated warehouse facilities.</p>
+                        <div class="p-card-tags">
+                            <span class="p-card-tag">SCM Suite</span>
+                            <span class="p-card-tag">PL/SQL Packages</span>
+                            <span class="p-card-tag">Logistics</span>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="MEKO_ACC.jpeg" target="_blank" rel="noopener noreferrer" class="p-card reveal" aria-label="View Leave & Attendance Management project">
+                    <div class="p-card-img">
+                        <img src="MEKO_ACC.jpeg" alt="Leave & Attendance Management Showcase Screen" loading="lazy">
+                    </div>
+                    <div class="p-card-body">
+                        <h3>Leave & Attendance Management</h3>
+                        <p>Automated employee attendance tracking system with leave request workflows, approval hierarchies, payroll integration, and real-time reporting dashboards for HR operations.</p>
+                        <div class="p-card-tags">
+                            <span class="p-card-tag">HR Module</span>
+                            <span class="p-card-tag">Oracle Forms</span>
+                            <span class="p-card-tag">Automation</span>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="APEX_FUND.jpg" target="_blank" rel="noopener noreferrer" class="p-card reveal" aria-label="View Accounts Management System project">
+                    <div class="p-card-img">
+                        <img src="APEX_FUND.jpg" alt="Accounts Management System Showcase Screen" loading="lazy">
+                    </div>
+                    <div class="p-card-body">
+                        <h3>Accounts Management System</h3>
+                        <p>Full-spectrum corporate accounts framework with Chart of Accounts hierarchies, multi-tier voucher arrays, journal entry automation, and cross-module financial reconciliation engines.</p>
+                        <div class="p-card-tags">
+                            <span class="p-card-tag">Accounts ERP</span>
+                            <span class="p-card-tag">Financial</span>
+                            <span class="p-card-tag">PL/SQL</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Row 3: 1 featured card -->
+            <div class="feat-featured">
+                <a href="https://oracleapex.com/ords/r/aliabbasqureshi786/novel-2-0/login" target="_blank" rel="noopener noreferrer" class="p-card reveal" aria-label="View NOVEL 2.0 Smart Cloud Dashboard project">
+                    <div class="p-card-img">
+                        <img src="APEX_DASHBOARD.PNG" alt="Smart Novel 2.0 Cloud Dashboard Showcase Screen" loading="lazy">
+                    </div>
+                    <div class="p-card-body">
+                        <h3>NOVEL 2.0 Smart Cloud Dashboard</h3>
+                        <p>Web-responsive Cloud Procurement dashboard built on the Oracle APEX engine. Dynamically visualizes international supplier arrays, structural organizational dependencies, and acquisition indents. Features supplier portals, automated indent generation, data export to Excel, and row-level security protocols.</p>
+                        <div class="p-card-tags">
+                            <span class="p-card-tag">Oracle APEX</span>
+                            <span class="p-card-tag">Cloud UI</span>
+                            <span class="p-card-tag">Web App</span>
+                            <span class="p-card-tag">Live Demo</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ACHIEVEMENTS -->
+    <section id="achievements">
+        <div class="container">
+            <div class="s-header reveal">
+                <span class="s-label">// Recognition</span>
+                <h2 class="s-heading">Achievements & Certifications</h2>
+                <p class="s-desc">Professional recognition and academic certifications that validate expertise and commitment to excellence.</p>
+            </div>
+
+            <div class="ach-grid">
+                <div class="ach-card reveal">
+                    <div class="ach-icon award"><i class="fa-solid fa-trophy"></i></div>
+                    <h3>Employee of the Month</h3>
+                    <div class="ach-org">KAM INTERNATIONAL</div>
+                    <span class="ach-date">April 2023</span>
+                    <p>Recognized for outstanding performance, dedication, and contribution to core project delivery and team success.</p>
+                </div>
+
+                <div class="ach-card reveal">
+                    <div class="ach-icon award"><i class="fa-solid fa-medal"></i></div>
+                    <h3>Best Rising Intern</h3>
+                    <div class="ach-org">KAM INTERNATIONAL</div>
+                    <span class="ach-date">2023</span>
+                    <p>Awarded for demonstrating exceptional learning ability, technical growth, and proactive contribution during the internship tenure.</p>
+                </div>
+
+                <div class="ach-card reveal">
+                    <div class="ach-icon award"><i class="fa-solid fa-award"></i></div>
+                    <h3>Silver Achievement Award</h3>
+                    <div class="ach-org">KAM INTERNATIONAL</div>
+                    <span class="ach-date">2023</span>
+                    <p>Received for consistent high-quality output, reliability in meeting deadlines, and collaborative approach to problem-solving.</p>
+                </div>
+
+                <div class="ach-card reveal">
+                    <div class="ach-icon award"><i class="fa-solid fa-certificate"></i></div>
+                    <h3>Certificate of Appreciation</h3>
+                    <div class="ach-org">KAM INTERNATIONAL</div>
+                    <span class="ach-date">2023</span>
+                    <p>Recognized for exceeding expectations in assigned responsibilities and delivering impactful results across multiple project modules.</p>
+                </div>
+
+                <div class="ach-card reveal">
+                    <div class="ach-icon cert"><i class="fa-solid fa-graduation-cap"></i></div>
+                    <h3>Database Programming with PL/SQL</h3>
+                    <div class="ach-org">The University of Melbourne</div>
+                    <span class="ach-date">Feb 2024</span>
+                    <p>Completed professional certification covering PL/SQL block structures, cursors, triggers, packages, and advanced database programming techniques.</p>
+                </div>
+
+                <div class="ach-card reveal">
+                    <div class="ach-icon cert"><i class="fa-solid fa-graduation-cap"></i></div>
+                    <h3>Oracle Database: Introduction to SQL</h3>
+                    <div class="ach-org">Kean University</div>
+                    <span class="ach-date">Mar 2024</span>
+                    <p>Completed foundational certification in Oracle SQL covering DDL, DML, joins, subqueries, indexing, and relational database design principles.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience">
+        <div class="container">
+            <div class="s-header reveal" style="text-align: center;">
+                <span class="s-label">// Chronology</span>
+                <h2 class="s-heading">Professional Systems Engineering</h2>
+            </div>
+
+            <div class="tl">
+                <div class="tl-item reveal">
+                    <div class="tl-dot"></div>
+                    <div class="tl-card">
+                        <h3>Senior Oracle Developer</h3>
+                        <div class="tl-org">MEKOTEX PVT. LTD</div>
+                        <span class="tl-date">Feb 2025 &mdash; Present</span>
+                        <ul>
+                            <li>Direct core system optimization and logic updates across production environments.</li>
+                            <li>Debug complex business operations and maintain data tracking channels for textile operations.</li>
+                            <li>Architected and pushed the central General Ledger system from initial Chart structural layers down into transaction voucher desks.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="tl-item reveal">
+                    <div class="tl-dot"></div>
+                    <div class="tl-card">
+                        <h3>Oracle Developer</h3>
+                        <div class="tl-org">AUTOSYS Computers</div>
+                        <span class="tl-date">Dec 2024 &mdash; Jan 2025</span>
+                        <ul>
+                            <li>Optimized SQL code routines and form blocks to scale up interface query performance.</li>
+                            <li>Delivered crucial programmatic fixes across production business configurations.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="tl-item reveal">
+                    <div class="tl-dot"></div>
+                    <div class="tl-card">
+                        <h3>Jr. Oracle Developer</h3>
+                        <div class="tl-org">KAM INTERNATIONAL</div>
+                        <span class="tl-date">May 2022 &mdash; Nov 2024</span>
+                        <ul>
+                            <li>Mapped production processes, converting operational guidelines into database code levels.</li>
+                            <li>Managed software ticketing desks and system optimization tasks across multi-site inventories.</li>
+                            <li>Developed accounting frameworks, implementing Chart of Accounts data hierarchies and voucher desks.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="contact-hero reveal">lets build something<br>great together</h2>
+            <p class="contact-sub reveal">Open to enterprise projects, full-time engineering roles, and system consulting. Based in Karachi — available for remote work architectures worldwide.</p>
+
+            <div class="contact-card reveal">
+                <h3>Send a message</h3>
+                <p>Fill in the details below and I'll get back to you.</p>
+                <form class="form-grid" onsubmit="event.preventDefault(); alert('Message sent! (Demo)');">
+                    <input type="text" class="input" placeholder="Your name" required aria-label="Your name">
+                    <input type="email" class="input" placeholder="Email address" required aria-label="Email address">
+                    <input type="text" class="input full" placeholder="Subject / project type" aria-label="Subject">
+                    <textarea class="input full" rows="5" placeholder="Tell me about your project..." aria-label="Message"></textarea>
+                    <button type="submit" class="btn-send">Send Message <i class="fa-solid fa-arrow-right"></i></button>
+                </form>
+            </div>
+
+            <div class="contact-links reveal">
+                <a href="mailto:Ali.QureshiMis@Outlook.com" class="c-link em" aria-label="Send email">
+                    <i class="fa-solid fa-envelope"></i> Ali.QureshiMis@Outlook.com
+                </a>
+                <a href="tel:+923453602968" class="c-link ph" aria-label="Call phone number">
+                    <i class="fa-solid fa-phone"></i> +92 345 3602968
+                </a>
+                <a href="https://wa.me/923453602968" target="_blank" rel="noopener noreferrer" class="c-link wa" aria-label="Open WhatsApp">
+                    <i class="fa-brands fa-whatsapp"></i> WhatsApp
+                </a>
+                <a href="https://www.linkedin.com/in/ali-qureshi-a576942a8?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank" rel="noopener noreferrer" class="c-link li" aria-label="Open LinkedIn profile">
+                    <i class="fa-brands fa-linkedin-in"></i> LinkedIn
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <div class="footer">
+        <div class="container">
+            <p>[ 2026 // CODEWITHALI ] &mdash; BSSE Candidate (Virtual University)</p>
+        </div>
+    </div>
+
+    <script>
+        /* ===== CURSOR ===== */
+        const cRing = document.querySelector('.c-ring');
+        const cDot = document.querySelector('.c-dot');
+        const cGlow = document.querySelector('.c-glow');
+        let mx = 0, my = 0, rx = 0, ry = 0, gx = 0, gy = 0;
+
+        document.addEventListener('mousemove', e => {
+            mx = e.clientX;
+            my = e.clientY;
+            cDot.style.left = mx + 'px';
+            cDot.style.top = my + 'px';
+        });
+
+        (function animate() {
+            rx += (mx - rx) * 0.14;
+            ry += (my - ry) * 0.14;
+            cRing.style.left = rx + 'px';
+            cRing.style.top = ry + 'px';
+            gx += (mx - gx) * 0.055;
+            gy += (my - gy) * 0.055;
+            cGlow.style.left = gx + 'px';
+            cGlow.style.top = gy + 'px';
+            requestAnimationFrame(animate);
+        })();
+
+        document.querySelectorAll('a, button, .p-card, .exp-card, .tl-card, .input, .live-link, .btn, .btn-send').forEach(el => {
+            el.addEventListener('mouseenter', () => { cRing.classList.add('hover'); cDot.classList.add('hover'); });
+            el.addEventListener('mouseleave', () => { cRing.classList.remove('hover'); cDot.classList.remove('hover'); });
+        });
+
+        /* ===== NAV SCROLL ===== */
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => {
+            nav.classList.toggle('scrolled', window.scrollY > 40);
+        });
+
+        /* ===== HAMBURGER ===== */
+        const hamburger = document.querySelector('.hamburger');
+        const mobileMenu = document.querySelector('.mobile-menu');
+
+        hamburger.addEventListener('click', () => {
+            const open = hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('open', open);
+            hamburger.setAttribute('aria-expanded', open);
+            document.body.style.overflow = open ? 'hidden' : '';
+        });
+
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                mobileMenu.classList.remove('open');
+                hamburger.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = '';
+            });
+        });
+
+        /* ===== SCROLL REVEAL ===== */
+        const reveals = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+        reveals.forEach(el => observer.observe(el));
+    </script>
+
+</body>
+</html>
