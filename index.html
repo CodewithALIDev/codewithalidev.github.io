@@ -527,12 +527,16 @@
         .project-img-wrap img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
+            background: var(--bg-secondary);
             transition: transform 0.6s ease;
             opacity: 0.9;
         }
 
         .project-detail:hover .project-img-wrap img { transform: scale(1.03); opacity: 1; }
+
+        .project-img-wrap { cursor: zoom-in; }
+
 
         .project-detail-content h3 {
             font-family: var(--font-heading);
@@ -624,29 +628,88 @@
             transition: all var(--transition);
             display: flex;
             flex-direction: column;
+            font-family: var(--font-body);
+            text-align: left;
+            width: 100%;
+            padding: 0;
+            color: inherit;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-2));
+            opacity: 0;
+            transition: opacity var(--transition);
+            z-index: 2;
         }
 
         .project-card:hover {
             transform: translateY(-6px);
             border-color: var(--border-hover);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(0, 180, 216, 0.12);
+        }
+
+        .project-card:hover::before { opacity: 1; }
+
+        .project-card:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 3px;
         }
 
         .project-card-img {
-            aspect-ratio: 16/9;
+            aspect-ratio: 16/10;
             overflow: hidden;
             background: var(--bg-secondary);
+            position: relative;
         }
 
         .project-card-img img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
+            background: var(--bg-secondary);
             transition: transform 0.5s ease;
-            opacity: 0.85;
+            opacity: 0.9;
         }
 
         .project-card:hover .project-card-img img { transform: scale(1.04); opacity: 1; }
+
+        /* Zoom badge on card images */
+        .project-card-img::after {
+            content: '\f002';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(8, 8, 13, 0.75);
+            backdrop-filter: blur(8px);
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            color: var(--text-primary);
+            font-size: 0.85rem;
+            opacity: 0;
+            transform: scale(0.7) rotate(-45deg);
+            transition: all var(--transition);
+            pointer-events: none;
+        }
+
+        .project-card:hover .project-card-img::after {
+            opacity: 1;
+            transform: scale(1) rotate(0);
+        }
 
         .project-card-body { padding: 28px; flex: 1; display: flex; flex-direction: column; }
 
@@ -694,6 +757,51 @@
         .card-link:hover { gap: 12px; }
         .card-link i { font-size: 0.7rem; transition: transform var(--transition-fast); }
         .card-link:hover i { transform: translateX(3px); }
+
+        /* Card footer affordance */
+        .card-foot {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            padding-top: 16px;
+            border-top: 1px solid var(--border);
+        }
+
+        .card-foot-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--accent);
+            letter-spacing: 0.02em;
+        }
+
+        .card-foot-label i { font-size: 0.7rem; transition: transform var(--transition-fast); }
+        .project-card:hover .card-foot-label i { transform: translateX(4px); }
+
+        .card-foot-arrow {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: var(--accent-dim);
+            border: 1px solid rgba(0, 180, 216, 0.2);
+            color: var(--accent);
+            font-size: 0.72rem;
+            flex-shrink: 0;
+            transition: all var(--transition);
+        }
+
+        .project-card:hover .card-foot-arrow {
+            background: var(--accent);
+            color: #fff;
+            border-color: var(--accent);
+            transform: rotate(-45deg);
+        }
 
         /* ─── ACHIEVEMENTS ─── */
         .achievements-grid {
@@ -777,11 +885,32 @@
 
         .lightbox-overlay.open { display: flex; }
 
+        .lightbox-inner {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            max-width: 100%;
+            max-height: 92vh;
+            align-items: center;
+        }
+
         .lightbox-overlay img {
-            max-width: 90%;
-            max-height: 90vh;
+            max-width: 100%;
+            max-height: 80vh;
+            width: auto;
+            height: auto;
             border-radius: var(--radius-md);
             box-shadow: 0 20px 80px rgba(0, 0, 0, 0.5);
+            background: var(--bg-secondary);
+        }
+
+        .lightbox-caption {
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            font-weight: 600;
+            color: #fff;
+            text-align: center;
+            letter-spacing: -0.01em;
         }
 
         .lightbox-close {
@@ -1318,7 +1447,7 @@
 
             <!-- Project 1 -->
             <div class="project-detail reveal">
-                <div class="project-img-wrap">
+                <div class="project-img-wrap" data-img="PROJECT_ESSAK.jpeg" data-title="A.ESSAK &amp; SONS TEXTILE COMPLETE ERP SUITE" role="button" tabindex="0" aria-label="View full screenshot: A.ESSAK &amp; SONS TEXTILE COMPLETE ERP SUITE">
                     <img src="PROJECT_ESSAK.jpeg" alt="A.Essak & Sons Textile Complete ERP Suite" loading="lazy">
                 </div>
                 <div class="project-detail-content">
@@ -1341,7 +1470,7 @@
 
             <!-- Project 2 -->
             <div class="project-detail reverse reveal">
-                <div class="project-img-wrap">
+                <div class="project-img-wrap" data-img="GL.jpeg" data-title="GENERAL LEDGER &amp; FINANCIAL ENGINE" role="button" tabindex="0" aria-label="View full screenshot: GENERAL LEDGER &amp; FINANCIAL ENGINE">
                     <img src="GL.jpeg" alt="General Ledger & Financial Engine" loading="lazy">
                 </div>
                 <div class="project-detail-content">
@@ -1362,7 +1491,7 @@
 
             <!-- Project 3 -->
             <div class="project-detail reveal">
-                <div class="project-img-wrap">
+                <div class="project-img-wrap" data-img="ZS.jpeg" data-title="ENTERPRISE INVENTORY &amp; WAREHOUSE MANAGEMENT SUITE" role="button" tabindex="0" aria-label="View full screenshot: ENTERPRISE INVENTORY &amp; WAREHOUSE MANAGEMENT SUITE">
                     <img src="ZS.jpeg" alt="Enterprise Inventory & Warehouse Management Suite" loading="lazy">
                 </div>
                 <div class="project-detail-content">
@@ -1387,7 +1516,7 @@
 
             <!-- Project 4 -->
             <div class="project-detail reverse reveal">
-                <div class="project-img-wrap">
+                <div class="project-img-wrap" data-img="PO_TRANS.jpeg" data-title="INVENTORY MANAGEMENT DASHBOARD" role="button" tabindex="0" aria-label="View full screenshot: INVENTORY MANAGEMENT DASHBOARD">
                     <img src="PO_TRANS.jpeg" alt="Inventory Management Dashboard" loading="lazy">
                 </div>
                 <div class="project-detail-content">
@@ -1408,7 +1537,7 @@
 
             <!-- Project 5 -->
             <div class="project-detail reveal">
-                <div class="project-img-wrap">
+                <div class="project-img-wrap" data-img="MEKO_ACC.jpeg" data-title="ACCOUNTS &amp; FINANCIAL MANAGEMENT SYSTEM" role="button" tabindex="0" aria-label="View full screenshot: ACCOUNTS &amp; FINANCIAL MANAGEMENT SYSTEM">
                     <img src="MEKO_ACC.jpeg" alt="Accounts & Financial Management System" loading="lazy">
                 </div>
                 <div class="project-detail-content">
@@ -1429,7 +1558,7 @@
 
             <!-- Project 6 -->
             <div class="project-detail reveal">
-                <div class="project-img-wrap">
+                <div class="project-img-wrap" data-img="PDC_SRN.jpeg" data-title="PDC WITH SRN TRANSACTION" role="button" tabindex="0" aria-label="View full screenshot: PDC WITH SRN TRANSACTION">
                     <img src="PDC_SRN.jpeg" alt="PDC with SRN Transaction" loading="lazy">
                 </div>
                 <div class="project-detail-content">
@@ -1457,170 +1586,46 @@
             </div>
 
             <!-- Project 7 -->
-<div class="project-detail reveal">
-    <div class="project-img-wrap">
-        <img src="VOU_APR.jpg" alt="Vouchers Approval - Financial Authorization" loading="lazy">
-    </div>
+            <div class="project-detail reveal">
+                <div class="project-img-wrap" data-img="VOU_APR.jpg" data-title="VOUCHERS APPROVAL &amp; FINAL FINANCIAL AUTHORIZATION" role="button" tabindex="0" aria-label="View full screenshot: VOUCHERS APPROVAL &amp; FINAL FINANCIAL AUTHORIZATION">
+                    <img src="VOU_APR.jpg" alt="Vouchers Approval and Final Financial Authorization interface" loading="lazy">
+                </div>
+                <div class="project-detail-content">
+                    <h3>VOUCHERS APPROVAL &amp; FINAL FINANCIAL AUTHORIZATION</h3>
+                    <span class="project-detail-tag">Voucher Approval &bull; CFO Authorization &bull; Financial Control &bull; Ledger Integration</span>
+                    <p>Developed a centralized Vouchers Approval &amp; Final Authorization module within the Accounts &amp; Financial Management System to control the complete lifecycle of financial vouchers. The workflow begins when a user creates a voucher, after which the responsible management personnel review the transaction and send it for approval. The voucher then reaches the final approval stage where the CFO provides the final authorization before the transaction is reflected in the accounting records.</p>
+                    <p>Once the CFO approves a voucher, the transaction becomes part of the finalized financial records and is reflected in the relevant General Ledger and Trial Balance, providing a controlled approval chain between voucher preparation, management review, final CFO authorization, and accounting integration.</p>
+                    <div class="project-modules">
+                        <h4>Enterprise Features &amp; Approval Workflow</h4>
+                        <ul class="modules-grid">
+                            <li><strong>Centralized Approval Dashboard</strong>Single interface to review, monitor, and authorize financial vouchers.</li>
+                            <li><strong>Complete Voucher Lifecycle</strong>Workflow from creation and management review to final CFO approval.</li>
+                            <li><strong>Management Approval Workflow</strong>Authorized management personnel review and mark for further approval.</li>
+                            <li><strong>Send for Approval Control</strong>The Checked checkbox represents the management-level action to send forward.</li>
+                            <li><strong>CFO Final Approval</strong>The Approved checkbox is used by the CFO for final authorization.</li>
+                            <li><strong>Controlled Financial Posting</strong>Vouchers post only after the required approval process completes.</li>
+                            <li><strong>General Ledger Integration</strong>Approved vouchers accessible through corresponding ledger information.</li>
+                            <li><strong>Trial Balance Integration</strong>Final approved transactions reflected in relevant accounting balances.</li>
+                            <li><strong>Voucher Date Filtering</strong>Filter and review vouchers by voucher date for period analysis.</li>
+                            <li><strong>Cheque Date Filtering</strong>Filter by cheque date to locate cheque-related transactions.</li>
+                            <li><strong>Month-Based Search</strong>Retrieve vouchers by selected month of voucher or cheque date.</li>
+                            <li><strong>Voucher Type Filtering</strong>Select voucher type to narrow down the approval list quickly.</li>
+                            <li><strong>Voucher Print Access</strong>Every listed voucher can be opened and printed from the interface.</li>
+                            <li><strong>SRN Print Integration</strong>Direct access to the associated SRN print for document verification.</li>
+                            <li><strong>PO Print Integration</strong>Direct access to corresponding PO print for audit review.</li>
+                            <li><strong>Cheque Print Access</strong>Cheque-related transactions provide direct cheque printing access.</li>
+                            <li><strong>Direct Ledger Access</strong>Open relevant ledger information directly from the voucher record.</li>
+                            <li><strong>Approval Status Visibility</strong>Separate Checked and Approved indicators show workflow state at a glance.</li>
+                            <li><strong>Financial Audit Trail</strong>Traceability between voucher, approvals, documents, and accounting records.</li>
+                            <li><strong>Oracle Forms Architecture</strong>Built with Oracle Forms, PL/SQL procedures, packages, triggers, and SQL.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
 
-    <div class="project-detail-content">
-        <h3>VOUCHERS APPROVAL & FINAL FINANCIAL AUTHORIZATION</h3>
-
-        <span class="project-detail-tag">
-            Voucher Approval &bull; CFO Authorization &bull; Financial Control &bull; Ledger Integration
-        </span>
-
-        <p>
-            Developed a centralized <strong>Vouchers Approval & Final Authorization module</strong>
-            within the Accounts & Financial Management System to control the complete lifecycle of
-            financial vouchers. The workflow begins when a user creates a voucher, after which the
-            responsible management personnel review the transaction and send it for approval.
-            The voucher then reaches the final approval stage where the <strong>CFO</strong> provides
-            the final authorization before the transaction is reflected in the accounting records.
-        </p>
-
-        <p>
-            Once the CFO approves a voucher, the transaction becomes part of the finalized financial
-            records and is reflected in the relevant <strong>General Ledger and Trial Balance</strong>.
-            The module therefore provides a controlled approval chain between voucher preparation,
-            management review, final CFO authorization, and accounting integration.
-        </p>
-
-        <div class="project-modules">
-            <h4>Enterprise Features & Approval Workflow</h4>
-
-            <ul class="modules-grid">
-
-                <li>
-                    <strong>Centralized Voucher Approval Dashboard</strong>
-                    Provides management and finance teams with a single interface to review,
-                    monitor, and authorize financial vouchers.
-                </li>
-
-                <li>
-                    <strong>Complete Voucher Lifecycle</strong>
-                    Supports the complete workflow from initial voucher creation and management
-                    review to final CFO approval and accounting reflection.
-                </li>
-
-                <li>
-                    <strong>Management Approval Workflow</strong>
-                    Once a voucher is prepared by the user, authorized management personnel can
-                    review the transaction and mark it for further approval.
-                </li>
-
-                <li>
-                    <strong>Send for Approval Control</strong>
-                    The <strong>Checked</strong> checkbox represents the management-level action
-                    used to send the voucher forward for the final approval process.
-                </li>
-
-                <li>
-                    <strong>CFO Final Approval</strong>
-                    The <strong>Approved</strong> checkbox is used by the CFO to provide the
-                    final authorization for the financial transaction.
-                </li>
-
-                <li>
-                    <strong>Controlled Financial Posting</strong>
-                    Finalized vouchers are reflected in the accounting records only after the
-                    required approval process, providing stronger financial control.
-                </li>
-
-                <li>
-                    <strong>General Ledger Integration</strong>
-                    Approved voucher transactions can be accessed through the corresponding
-                    ledger information, maintaining consistency between voucher and ledger records.
-                </li>
-
-                <li>
-                    <strong>Trial Balance Integration</strong>
-                    Final approved transactions contribute to the relevant accounting balances
-                    and are reflected in the Trial Balance.
-                </li>
-
-                <li>
-                    <strong>Voucher Date Filtering</strong>
-                    Users can filter and review vouchers according to their voucher date for
-                    targeted financial-period analysis.
-                </li>
-
-                <li>
-                    <strong>Cheque Date Filtering</strong>
-                    Supports filtering based on cheque date, making it easier to locate and
-                    review cheque-related transactions.
-                </li>
-
-                <li>
-                    <strong>Month-Based Voucher Search</strong>
-                    Month selection allows users to retrieve vouchers according to the selected
-                    month of the voucher date or cheque date.
-                </li>
-
-                <li>
-                    <strong>Voucher Type Filtering</strong>
-                    Users can select the required voucher type to narrow down the approval list
-                    and quickly locate specific transactions.
-                </li>
-
-                <li>
-                    <strong>Voucher Print Access</strong>
-                    Every listed voucher can be opened and printed directly from the approval
-                    interface for documentation and financial record keeping.
-                </li>
-
-                <li>
-                    <strong>SRN Print Integration</strong>
-                    Where applicable, users can open the associated SRN print directly from
-                    the voucher approval screen for supporting-document verification.
-                </li>
-
-                <li>
-                    <strong>PO Print Integration</strong>
-                    Purchase Order-related vouchers provide direct access to the corresponding
-                    PO print for transaction verification and audit review.
-                </li>
-
-                <li>
-                    <strong>Cheque Print Access</strong>
-                    Cheque-related transactions provide direct access to cheque printing from
-                    the approval interface.
-                </li>
-
-                <li>
-                    <strong>Direct Ledger Access</strong>
-                    The Ledger option allows authorized users to open the relevant ledger
-                    information directly from the voucher record.
-                </li>
-
-                <li>
-                    <strong>Approval Status Visibility</strong>
-                    Separate Checked and Approved indicators provide immediate visibility into
-                    whether a voucher has been sent for approval and whether final CFO approval
-                    has been completed.
-                </li>
-
-                <li>
-                    <strong>Financial Audit Trail</strong>
-                    The structured approval workflow provides better traceability between the
-                    original voucher, management approval, CFO authorization, supporting
-                    documents, and final accounting records.
-                </li>
-
-                <li>
-                    <strong>Oracle Forms Financial Architecture</strong>
-                    Designed as part of an enterprise Accounts & Financial Management System
-                    using Oracle Forms, PL/SQL procedures, packages, triggers, and SQL-based
-                    financial processing.
-                </li>
-
-            </ul>
-        </div>
-    </div>
-</div>
-            
-            <!-- Project 7 -->
+            <!-- Project 8 -->
             <div class="project-detail reverse reveal">
-                <div class="project-img-wrap">
+                <div class="project-img-wrap" data-img="APEX_DASHBOARD.PNG" data-title="NOVEL 2.0 SMART CLOUD DASHBOARD" role="button" tabindex="0" aria-label="View full screenshot: NOVEL 2.0 SMART CLOUD DASHBOARD">
                     <img src="APEX_DASHBOARD.PNG" alt="NOVEL 2.0 Smart Cloud Dashboard" loading="lazy">
                 </div>
                 <div class="project-detail-content">
@@ -1653,10 +1658,10 @@
                 <p class="section-desc">Enterprise-grade systems and intelligent tools engineered for peak operational efficiency.</p>
             </div>
             <div class="projects-grid">
-                <!-- Card 1 -->
-                <a href="https://oracleapex.com/ords/r/aliabbasqureshi786/novel-2-0/login" target="_blank" rel="noopener" class="project-card reveal" aria-label="Novel 2.0 Dashboard - Live Application">
+                <!-- Card 1 — Live Application -->
+                <a href="https://oracleapex.com/ords/r/aliabbasqureshi786/novel-2-0/login" target="_blank" rel="noopener" class="project-card reveal" aria-label="Novel 2.0 Dashboard — open live application in a new tab">
                     <div class="project-card-img">
-                        <img src="APEX_DASHBOARD.PNG" alt="Novel 2.0 Dashboard" loading="lazy">
+                        <img src="APEX_DASHBOARD.PNG" alt="NOVEL 2.0 Dashboard" loading="lazy">
                     </div>
                     <div class="project-card-body">
                         <div class="project-card-tags">
@@ -1665,15 +1670,18 @@
                             <span class="ptag">PWA</span>
                         </div>
                         <h3>NOVEL 2.0 Dashboard</h3>
-                        <p>Enterprise Procurement & Inventory Management System with Progressive Web App (PWA) support, delivering real-time inventory control, purchasing, and seamless cross-device access.</p>
-                        <span class="card-link">Launch Live App <i class="fa-solid fa-arrow-right"></i></span>
+                        <p>Enterprise Procurement &amp; Inventory Management System with Progressive Web App (PWA) support, delivering real-time inventory control, purchasing, and seamless cross-device access.</p>
+                        <div class="card-foot">
+                            <span class="card-foot-label">Launch Live App <i class="fa-solid fa-arrow-right"></i></span>
+                            <span class="card-foot-arrow"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+                        </div>
                     </div>
                 </a>
 
                 <!-- Card 2 -->
-                <div class="project-card reveal" style="cursor: default;">
+                <button type="button" class="project-card reveal" data-img="PROJECT_ESSAK.jpeg" data-title="A.ESSAK &amp; SONS TEXTILE ERP SUITE" aria-label="View full screenshot of A.ESSAK &amp; SONS TEXTILE ERP SUITE">
                     <div class="project-card-img">
-                        <img src="PROJECT_ESSAK.jpeg" alt="Manufacturing ERP" loading="lazy">
+                        <img src="PROJECT_ESSAK.jpeg" alt="A.ESSAK &amp; SONS TEXTILE ERP SUITE" loading="lazy">
                     </div>
                     <div class="project-card-body">
                         <div class="project-card-tags">
@@ -1681,15 +1689,19 @@
                             <span class="ptag">Oracle Reports</span>
                             <span class="ptag">PL/SQL</span>
                         </div>
-                        <h3>A.ESSAK & SONS TEXTILE ERP SUITE</h3>
+                        <h3>A.ESSAK &amp; SONS TEXTILE ERP SUITE</h3>
                         <p>Enterprise-grade Manufacturing ERP powering production, supply chain, finance, payroll, and business operations across four independent companies.</p>
+                        <div class="card-foot">
+                            <span class="card-foot-label">View Screenshot <i class="fa-solid fa-arrow-right"></i></span>
+                            <span class="card-foot-arrow"><i class="fa-solid fa-expand"></i></span>
+                        </div>
                     </div>
-                </div>
+                </button>
 
                 <!-- Card 3 -->
-                <div class="project-card reveal" style="cursor: default;">
+                <button type="button" class="project-card reveal" data-img="GL.jpeg" data-title="GENERAL LEDGER &amp; FINANCIAL ENGINE" aria-label="View full screenshot of General Ledger and Financial Engine">
                     <div class="project-card-img">
-                        <img src="GL.jpeg" alt="Financial Engine" loading="lazy">
+                        <img src="GL.jpeg" alt="General Ledger &amp; Financial Engine" loading="lazy">
                     </div>
                     <div class="project-card-body">
                         <div class="project-card-tags">
@@ -1697,15 +1709,19 @@
                             <span class="ptag">Oracle Reports</span>
                             <span class="ptag">PL/SQL</span>
                         </div>
-                        <h3>GENERAL LEDGER & FINANCIAL ENGINE</h3>
+                        <h3>GENERAL LEDGER &amp; FINANCIAL ENGINE</h3>
                         <p>Enterprise General Ledger powering automated voucher posting, multi-level approval workflows, real-time ledger updates, and comprehensive financial reporting.</p>
+                        <div class="card-foot">
+                            <span class="card-foot-label">View Screenshot <i class="fa-solid fa-arrow-right"></i></span>
+                            <span class="card-foot-arrow"><i class="fa-solid fa-expand"></i></span>
+                        </div>
                     </div>
-                </div>
+                </button>
 
                 <!-- Card 4 -->
-                <div class="project-card reveal" style="cursor: default;">
+                <button type="button" class="project-card reveal" data-img="MEKO_ACC.jpeg" data-title="ACCOUNTS &amp; FINANCIAL MANAGEMENT" aria-label="View full screenshot of Accounts and Financial Management System">
                     <div class="project-card-img">
-                        <img src="MEKO_ACC.jpeg" alt="Financial Management System" loading="lazy">
+                        <img src="MEKO_ACC.jpeg" alt="Accounts &amp; Financial Management System" loading="lazy">
                     </div>
                     <div class="project-card-body">
                         <div class="project-card-tags">
@@ -1713,36 +1729,37 @@
                             <span class="ptag">Oracle Reports</span>
                             <span class="ptag">PL/SQL</span>
                         </div>
-                        <h3>ACCOUNTS & FINANCIAL MANAGEMENT</h3>
-                        <p>Comprehensive Accounts & Financial Management System with Journal Vouchers, Cash & Bank Receipts/Payments, PDC, RTGS, and dual approval workflows.</p>
+                        <h3>ACCOUNTS &amp; FINANCIAL MANAGEMENT</h3>
+                        <p>Comprehensive Accounts &amp; Financial Management System with Journal Vouchers, Cash &amp; Bank Receipts/Payments, PDC, RTGS, and dual approval workflows.</p>
+                        <div class="card-foot">
+                            <span class="card-foot-label">View Screenshot <i class="fa-solid fa-arrow-right"></i></span>
+                            <span class="card-foot-arrow"><i class="fa-solid fa-expand"></i></span>
+                        </div>
                     </div>
-                </div>
-<!-- Card 5 -->
-<div class="project-card reveal" style="cursor: default;">
-    <div class="project-card-img">
-        <img src="VOU_APR.jpg" alt="Vouchers Approval Module" loading="lazy">
-    </div>
+                </button>
 
-    <div class="project-card-body">
-        <div class="project-card-tags">
-            <span class="ptag">Oracle Forms</span>
-            <span class="ptag">Oracle Reports</span>
-            <span class="ptag">PL/SQL</span>
-        </div>
-
-        <h3>VOUCHERS APPROVAL</h3>
-
-        <p>
-            Centralized Vouchers Approval module managing the complete financial
-            workflow from voucher creation and management review to final CFO
-            authorization, with approval tracking, advanced filtering, voucher/SRN/PO/
-            cheque printing, ledger access, and integration with General Ledger and
-            Trial Balance.
-        </p>
-    </div>
-</div>
                 <!-- Card 5 -->
-                <div class="project-card reveal" style="cursor: default;">
+                <button type="button" class="project-card reveal" data-img="VOU_APR.jpg" data-title="VOUCHERS APPROVAL &amp; FINAL AUTHORIZATION" aria-label="View full screenshot of Vouchers Approval module">
+                    <div class="project-card-img">
+                        <img src="VOU_APR.jpg" alt="Vouchers Approval &amp; Final Financial Authorization module" loading="lazy">
+                    </div>
+                    <div class="project-card-body">
+                        <div class="project-card-tags">
+                            <span class="ptag">Oracle Forms</span>
+                            <span class="ptag">Oracle Reports</span>
+                            <span class="ptag">PL/SQL</span>
+                        </div>
+                        <h3>VOUCHERS APPROVAL</h3>
+                        <p>Centralized Vouchers Approval module managing the complete financial workflow from voucher creation and management review to final CFO authorization, with approval tracking, advanced filtering, voucher/SRN/PO/cheque printing, ledger access, and integration with General Ledger and Trial Balance.</p>
+                        <div class="card-foot">
+                            <span class="card-foot-label">View Screenshot <i class="fa-solid fa-arrow-right"></i></span>
+                            <span class="card-foot-arrow"><i class="fa-solid fa-expand"></i></span>
+                        </div>
+                    </div>
+                </button>
+
+                <!-- Card 6 -->
+                <button type="button" class="project-card reveal" data-img="PDC_SRN.jpeg" data-title="PDC WITH SRN TRANSACTION" aria-label="View full screenshot of PDC with SRN Transaction module">
                     <div class="project-card-img">
                         <img src="PDC_SRN.jpeg" alt="PDC with SRN Transaction" loading="lazy">
                     </div>
@@ -1755,13 +1772,17 @@
                         </div>
                         <h3>PDC WITH SRN TRANSACTION</h3>
                         <p>Enterprise-grade Post Dated Cheque module streamlining supplier payments through intelligent SRN, PO, and SPO allocation with multi-level approval workflows.</p>
+                        <div class="card-foot">
+                            <span class="card-foot-label">View Screenshot <i class="fa-solid fa-arrow-right"></i></span>
+                            <span class="card-foot-arrow"><i class="fa-solid fa-expand"></i></span>
+                        </div>
                     </div>
-                </div>
+                </button>
 
-                <!-- Card 6 -->
-                <div class="project-card reveal" style="cursor: default;">
+                <!-- Card 7 -->
+                <button type="button" class="project-card reveal" data-img="PO_TRANS.jpeg" data-title="INVENTORY MANAGEMENT DASHBOARD" aria-label="View full screenshot of Inventory Management Dashboard">
                     <div class="project-card-img">
-                        <img src="PO_TRANS.jpeg" alt="Inventory Dashboard" loading="lazy">
+                        <img src="PO_TRANS.jpeg" alt="Inventory Management Dashboard" loading="lazy">
                     </div>
                     <div class="project-card-body">
                         <div class="project-card-tags">
@@ -1771,13 +1792,17 @@
                         </div>
                         <h3>INVENTORY MANAGEMENT DASHBOARD</h3>
                         <p>Comprehensive inventory and procurement management streamlining purchasing, warehouse operations, stock control, and inventory movements across multiple stores.</p>
+                        <div class="card-foot">
+                            <span class="card-foot-label">View Screenshot <i class="fa-solid fa-arrow-right"></i></span>
+                            <span class="card-foot-arrow"><i class="fa-solid fa-expand"></i></span>
+                        </div>
                     </div>
-                </div>
+                </button>
 
-                <!-- Card 7 -->
-                <div class="project-card reveal" style="cursor: default;">
+                <!-- Card 8 -->
+                <button type="button" class="project-card reveal" data-img="ZS.jpeg" data-title="ENTERPRISE INVENTORY &amp; WAREHOUSE SUITE" aria-label="View full screenshot of Enterprise Inventory and Warehouse Management Suite">
                     <div class="project-card-img">
-                        <img src="ZS.jpeg" alt="Warehouse Management Suite" loading="lazy">
+                        <img src="ZS.jpeg" alt="Enterprise Inventory &amp; Warehouse Management Suite" loading="lazy">
                     </div>
                     <div class="project-card-body">
                         <div class="project-card-tags">
@@ -1785,10 +1810,14 @@
                             <span class="ptag">Oracle Reports</span>
                             <span class="ptag">PL/SQL</span>
                         </div>
-                        <h3>ENTERPRISE INVENTORY & WAREHOUSE SUITE</h3>
+                        <h3>ENTERPRISE INVENTORY &amp; WAREHOUSE SUITE</h3>
                         <p>Centralized warehouse operations hub integrating goods receiving, inventory transactions, purchase processing, and warehouse management into a single interface.</p>
+                        <div class="card-foot">
+                            <span class="card-foot-label">View Screenshot <i class="fa-solid fa-arrow-right"></i></span>
+                            <span class="card-foot-arrow"><i class="fa-solid fa-expand"></i></span>
+                        </div>
                     </div>
-                </div>
+                </button>
             </div>
         </div>
     </section>
@@ -1802,7 +1831,7 @@
                 <p class="section-desc">Professional certifications demonstrating expertise in Oracle technologies.</p>
             </div>
             <div class="achievements-grid">
-                <div class="achievement-card reveal" onclick="openLightbox('ORDS.jpg')" role="button" tabindex="0" aria-label="View Oracle ORDS & Web Services Certificate">
+                <div class="achievement-card reveal" role="button" tabindex="0" aria-label="View Oracle ORDS & Web Services Certificate">
                     <div class="achievement-img-wrap">
                         <img src="ORDS.jpg" alt="Oracle ORDS & Web Services Certificate" loading="lazy">
                     </div>
@@ -1818,7 +1847,7 @@
                     </div>
                 </div>
 
-                <div class="achievement-card reveal" onclick="openLightbox('APEX_FUND.jpg')" role="button" tabindex="0" aria-label="View Oracle APEX Fundamentals Certificate">
+                <div class="achievement-card reveal" role="button" tabindex="0" aria-label="View Oracle APEX Fundamentals Certificate">
                     <div class="achievement-img-wrap">
                         <img src="APEX_FUND.jpg" alt="Oracle APEX Fundamentals Certificate" loading="lazy">
                     </div>
@@ -1838,9 +1867,12 @@
     </section>
 
     <!-- Lightbox -->
-    <div class="lightbox-overlay" id="lightbox" role="dialog" aria-label="Certificate image viewer">
+    <div class="lightbox-overlay" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
         <button class="lightbox-close" aria-label="Close">&times;</button>
-        <img id="lightboxImg" src="" alt="Certificate">
+        <div class="lightbox-inner">
+            <img id="lightboxImg" src="" alt="">
+            <div class="lightbox-caption" id="lightboxCaption"></div>
+        </div>
     </div>
 
     <!-- EXPERIENCE -->
@@ -2044,29 +2076,56 @@
         reveals.forEach(el => revealObserver.observe(el));
 
         // Lightbox
-        function openLightbox(src) {
+        function openLightbox(src, title) {
             const lb = document.getElementById('lightbox');
             const img = document.getElementById('lightboxImg');
+            const cap = document.getElementById('lightboxCaption');
             img.src = src;
+            img.alt = title || 'Project screenshot';
+            cap.textContent = title || '';
+            cap.style.display = title ? 'block' : 'none';
             lb.classList.add('open');
             document.body.style.overflow = 'hidden';
+            document.querySelector('.lightbox-close').focus();
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('open');
+            document.body.style.overflow = '';
         }
 
         document.getElementById('lightbox').addEventListener('click', function(e) {
             if (e.target === this || e.target.classList.contains('lightbox-close')) {
-                this.classList.remove('open');
-                document.body.style.overflow = '';
+                closeLightbox();
             }
         });
 
         document.addEventListener('keydown', e => {
-            if (e.key === 'Escape') {
-                document.getElementById('lightbox').classList.remove('open');
-                document.body.style.overflow = '';
-            }
+            if (e.key === 'Escape') closeLightbox();
         });
 
-        // Achievement keyboard support
+        // Project cards + walkthrough images open the full screenshot
+        function bindLightbox(el) {
+            el.addEventListener('click', () => openLightbox(el.dataset.img, el.dataset.title));
+            el.addEventListener('keydown', e => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    openLightbox(el.dataset.img, el.dataset.title);
+                }
+            });
+        }
+
+        document.querySelectorAll('.project-card[data-img], .project-img-wrap[data-img]').forEach(bindLightbox);
+
+        // Achievement cards
+        document.querySelectorAll('.achievement-card').forEach(card => {
+            card.addEventListener('click', () => {
+                const img = card.querySelector('img');
+                const title = card.querySelector('h3');
+                openLightbox(img.getAttribute('src'), title ? title.textContent : '');
+            });
+        });
+
         document.querySelectorAll('.achievement-card').forEach(card => {
             card.addEventListener('keydown', e => {
                 if (e.key === 'Enter' || e.key === ' ') {
